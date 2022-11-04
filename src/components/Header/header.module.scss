@@ -1,0 +1,24 @@
+@import '../../styles/common.scss';
+
+.header {
+  // position: fixed;
+  // top: 0;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  backdrop-filter: saturate(180%) blur(15px);
+  height: $header_height;
+  // background: var(--bgheader);
+  background-color: #666 ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  li {
+    padding: calc($header_height/4);
+  }
+}
+
+.header__logo {
+  height: calc($header_height/2);
+}

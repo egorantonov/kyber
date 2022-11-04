@@ -1,0 +1,32 @@
+@import '../../styles/common.scss';
+
+.nav {
+  height: $nav_height;
+}
+
+.link {
+  appearance: none;
+  background: none;
+  font-size: 24px;
+  text-transform: uppercase;
+  padding-left: 12px;
+  padding-right: 12px;
+  outline: none;
+  border: 2px solid transparent;
+  color: rgb(112, 76, 182);
+  padding-bottom: 4px;
+  cursor: pointer;
+  background-color: rgba(112, 76, 182, 0.1);
+  border-radius: 2px;
+  transition: all 150ms;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    border-bottom: 2px solid rgba(112, 76, 182, 0.4);
+  }
+}
+
+.active {
+  border: 2px solid rgba(112, 76, 182, 0.4);
+  background-color: rgba(112, 76, 182, 0.2);
+}

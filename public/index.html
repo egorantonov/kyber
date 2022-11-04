@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://kyber.gg" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="canonical" href="https://kyber-dev.pages.dev" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#282c34" />
+    <meta
+      name="description"
+      content="Custom Kyber API implementation with search and filtering"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>▷◁ Kyber</title>
+  </head>
+  <body>
+    <noscript>
+      <div id="nojs" style="position: fixed; 
+        color: #ddd; 
+        font-family: 'Roboto Condensed', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        inset: 0;
+        ">
+        <span style="border: 2px solid #ddd;
+          border-radius: 5px;
+          padding: 50px;
+          text-transform: uppercase;
+          background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.753), rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0.753));
+          backdrop-filter: blur(5px);
+          ">Padawan, you need to enable JavaScript to run this app.</span>
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script>
+      let isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      console.log(isDark)
+      isDark
+        ? (document.body.className = document.body.className.replace(/light$/, ''))
+        : (document.body.className += 'light')
+    </script>
+  </body>
+</html>
