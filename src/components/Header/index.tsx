@@ -31,25 +31,22 @@ function Clock() {
   )
 }
 
+export function Header() {
 
-export default class Header extends React.Component {
-  render() {
-
-    return (
-      <ul id="header" className={`${style.header}  uppercase`}>
-        <li className="c s2 m2 l2 text-start">          
-          <a href="https://egorantonov.github.io">
-            <img src="https://kyber.gg/logo.svg" alt="logo" className={style.header__logo} />
-            <span>Kyber</span>
-          </a>
-        </li>
-        <li className="c s2 m2 l2 text-center">
-          <Clock />
-        </li>
-        <li className="c s2 m2 l2 text-end">
-          <a href="https://www.youtube.com/channel/UCXMBtkmrtVFIq2iB1fZ3HYA/videos">EYEMVX</a>
-        </li>
-      </ul>
-    )
-  }
+  return (
+    <ul id="header" className={`${style.header}  uppercase`}>
+      <li className="c s2 m2 l2 text-start">          
+        <a href="https://kyber.gg/servers" target="_blank" rel="noreferrer">
+          <img src="https://kyber.gg/logo.svg" alt="logo" className={style.header__logo} />
+          <span>Kyber</span>
+        </a>
+      </li>
+      <li className="c s2 m2 l2 text-center">
+        <Clock />
+      </li>
+      <li className="c s2 m2 l2 text-end">
+        <a href="https://github.com/egorantonov" target="_blank" rel="noreferrer">EYEMVX</a>
+      </li>
+    </ul>
+  )
 }

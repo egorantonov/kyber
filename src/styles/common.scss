@@ -2,16 +2,6 @@ $header_height: 64px;
 $nav_height: 32px;
 $main_shift: calc($header_height + $nav_height);
 
-* {
-  --color: #fff;
-  --bgcolor: #000;
-
-  &.dark {
-    --color: #000;
-    --bgcolor: #fff;
-  }
-}
-
 a {
   text-decoration: none;
 }
@@ -20,7 +10,7 @@ header {
   position: fixed;
   top: 0px;
   width: 100%;
-  background-color: #bbb;
+  background-color: var(--bg-color);
 }
 
 main {

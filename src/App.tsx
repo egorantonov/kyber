@@ -6,7 +6,7 @@ import { About } from './pages/about'
 import { Servers } from './pages/servers'
 import { Nav } from './components/Nav'
 import { Settings } from './pages/settings'
-import Header from './components/Header'
+import { Header } from './components/Header'
 import './styles/common.scss'
 import './styles/grid.scss'
 import './styles/text.scss'
@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <header>
         <Header />
-        <Nav />
+        <Nav />        
       </header>
       <main>
         <Routes>
