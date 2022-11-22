@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { changeTheme, initializeTheme, SYSTEM, THEMES } from '../../contexts/ThemeContext'
+import { changeTheme, getTheme, SYSTEM, THEMES } from '../../contexts/ThemeContext'
 
 const SWITCHES = THEMES.concat(SYSTEM)
 
 export const Theme = () => {
-  const initialTheme = initializeTheme()
+  const initialTheme = getTheme()
   const [theme, setTheme] = useState(initialTheme)
 
   useEffect(() => {
