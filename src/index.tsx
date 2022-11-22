@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals'
 import './index.css'
 import { PersistSelectedStates } from './supports/Persistence'
+import './i18n/i18n'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)

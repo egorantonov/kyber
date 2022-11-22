@@ -1,0 +1,35 @@
+{
+  "pages": {
+    "servers": {
+      "title": "Серверы"
+    },
+    "download": {
+      "title": "Скачать"
+    },
+    "host": {
+      "title": "Создать"
+    },
+    "about": {
+      "title": "Инфо"
+    },
+    "settings": {
+      "title": "Настройки"
+    }
+  },
+  "messages": {
+    "localStorageDisabled": "Локальное хранилище отключено в Вашем браузере!"
+  },
+  "theme": {
+    "title": "Тема: ",
+    "dark": "тёмная",
+    "light": "светлая",
+    "system": "как в браузере"
+  },
+  "nav": {
+    "servers": "серверы",
+    "download": "скачать",
+    "host": "создать",
+    "about": "инфо",
+    "settings": "настройки"
+  }
+}

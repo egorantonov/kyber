@@ -6,7 +6,7 @@ export const THEMES = [DARK, LIGHT]
 
 export function changeTheme(theme: string): void {
   document.documentElement.dataset.theme = THEMES.includes(theme) ? theme : getSystemTheme()
-  localStorage.setItem(THEME, theme)
+  window?.localStorage?.setItem(THEME, theme)
 }
 
 export function initializeTheme() {
@@ -20,7 +20,7 @@ export function getTheme(): string {
 }
 
 function getSystemTheme(): string {
-  const userMedia = window.matchMedia(`(prefers-color-scheme: ${LIGHT})`)
+  const userMedia = window?.matchMedia(`(prefers-color-scheme: ${LIGHT})`)
   return userMedia.matches ? LIGHT : DARK
 }
 

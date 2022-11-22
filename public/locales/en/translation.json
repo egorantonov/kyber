@@ -1,0 +1,35 @@
+{
+  "pages": {
+    "servers": {
+      "title": "Servers"
+    },
+    "download": {
+      "title": "Download"
+    },
+    "host": {
+      "title": "Host"
+    },
+    "about": {
+      "title": "About"
+    },
+    "settings": {
+      "title": "Settings"
+    }
+  },
+  "messages": {
+    "localStorageDisabled": "Local Storage is disabled in your browser"
+  },
+  "theme": {
+    "title": "Theme: ",
+    "dark": "dark",
+    "light": "light",
+    "system": "system"
+  },
+  "nav": {
+    "servers": "servers",
+    "download": "download",
+    "host": "host",
+    "about": "about",
+    "settings": "settings"
+  }
+}
