@@ -1,38 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react'
+import { changeTheme, initializeTheme, SYSTEM, THEMES } from '../../contexts/ThemeContext'
 
-import style from './theme.module.scss'
-
-const THEME = 'theme'
-const DARK = 'dark'
-const LIGHT = 'light'
-const SYSTEM = 'system'
-const THEMES = [ DARK, LIGHT ]
 const SWITCHES = THEMES.concat(SYSTEM)
-
-function initializeTheme(): string {
-  const theme = `${window?.localStorage?.getItem(THEME)}`
-
-  if (THEMES.includes(theme)) {
-    document.documentElement.dataset.theme = theme
-    return theme
-  }
-
-  document.documentElement.dataset.theme = getSystemTheme()
-  return SYSTEM
-}
-
-function getSystemTheme(): string {  
-  const userMedia = window.matchMedia(`(prefers-color-scheme: ${LIGHT})`)
-  return userMedia.matches ? LIGHT : DARK
-}
 
 export const Theme = () => {
   const initialTheme = initializeTheme()
   const [theme, setTheme] = useState(initialTheme)
 
   useEffect(() => {
-    document.documentElement.dataset.theme = THEMES.includes(theme) ? theme : getSystemTheme()
-    localStorage.setItem(THEME, theme)
+    changeTheme(theme)
   })
 
   return (

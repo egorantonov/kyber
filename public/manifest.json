@@ -21,6 +21,6 @@
   "start_url": "https://kyber-dev.pages.dev",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff",  
+  "background_color": "#000000",  
   "description": "Custom Kyber API implementation with search and filtering"
 }

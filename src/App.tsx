@@ -10,8 +10,11 @@ import { Header } from './components/Header'
 import './styles/common.scss'
 import './styles/grid.scss'
 import './styles/text.scss'
+import { initializeTheme } from './contexts/ThemeContext'
 
 function App() {
+  initializeTheme()
+
   return (
     <div className="App">
       <header>
