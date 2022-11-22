@@ -8,8 +8,9 @@ export function About() {
     <>
       <h1>{t('pages.about.title')}</h1>
       <div>
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <Counter /></div>
+        <img src={logo} className="App-logo" alt="logo" />
+        {/* <Counter />*/}
+      </div>
     </>
   )
 }

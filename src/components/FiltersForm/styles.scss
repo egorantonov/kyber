@@ -1,0 +1,143 @@
+* {  
+    --highlight: #2749c9;
+    --blockbg: #fffa;  
+    --blockborder: #000a;
+    --blocktext: #000c;
+    --backdropbrightness: 1;
+    --filtersformbg: #fff8;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    * {
+      --highlight: #ffc400;
+      --blockbg: #000a;
+      --blockborder: #fffa;
+      --blocktext: #fffc;
+      --backdropbrightness: 0.5;
+      --filtersformbg: none;
+    }
+}
+
+.filters {
+    backdrop-filter: blur(10px) brightness(var(--backdropbrightness));
+    // background: -moz-linear-gradient(#000000d0, #000000b0, #000000d0);
+    background: var(--filtersformbg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 3px solid #ffffff33;
+    border-radius: 54px;
+    font-size: 18px;
+    // color: #fffc;
+    color: var(--textcolor);
+
+    hr {
+      display: none;
+    }
+}
+
+@media only screen and (min-width: 1270px) {
+    .filters {
+      flex-direction: column;
+      margin: 10px 0;
+  
+      hr {
+        display: block;
+      }
+    }
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px;
+}
+
+.filters-wrapper[open] .filters {
+    animation: slide .2s ease-in-out;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translate(0, -10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.filters-wrapper {
+    margin-top: -31px;
+    
+    summary {
+        text-align: end;
+    
+        &::-webkit-details-marker {
+            display: none
+        }
+    
+        &:before {
+            content: '+';
+            margin-right: 7px;
+        }
+
+        @media only screen and (min-width: 601px) {
+            text-align: center;   
+        }
+    }
+
+    .filters {
+        margin: 15px;
+    }
+
+    @media only screen and (min-width: 601px) {
+        margin-top: auto; 
+
+        .filters {
+            margin: auto;
+        }
+    }
+}
+
+
+
+.filters-wrapper>summary {
+    list-style: none;
+}
+
+.filters-wrapper[open] summary:before {
+    content: '–';
+}
+
+#modes {
+    background: #fff3;
+}
+
+.search {
+    margin: 10px auto;
+    width: 150px;
+    height: 40px;
+}
+
+#search {
+    border: 1px solid #fff6;
+    padding: 10px;
+    background-color: inherit;
+    color: var(--textcolor);
+    border-radius: 15px;
+
+    @media only screen and (min-width: 601px) {
+        width: 100%;    
+    }
+
+    &::placeholder { /* Most modern browsers support this now. */
+        color: var(--textcolor);
+    }
+}
+
