@@ -11,9 +11,12 @@ import './styles/common.scss'
 import './styles/grid.scss'
 import './styles/text.scss'
 import { initializeTheme } from './contexts/ThemeContext'
+import { useLayoutEffect } from 'react'
 
 function App() {
-  initializeTheme()
+  useLayoutEffect(() => {
+    initializeTheme()
+  })
 
   return (
     <div className="App">
