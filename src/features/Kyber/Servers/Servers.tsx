@@ -4,14 +4,15 @@ import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { MAPS } from '../../../data/maps'
 import { MODES } from '../../../data/modes'
 
-import { clear, fetchServersAsync, selectServers } from './serversSlice'
+import { clear, fetchServersAsync, selectServers, isDebug } from './serversSlice'
 
 export function KyberServers() {
   const servers = useAppSelector(selectServers)
+  const debug = useAppSelector(isDebug)
   const dispatch = useAppDispatch()
 
   useEffect(() => { 
-    dispatch(fetchServersAsync()) 
+    dispatch(fetchServersAsync(debug)) 
     console.log('KyberServers.useEffect() invoked')
   }, [])
 
@@ -23,7 +24,7 @@ export function KyberServers() {
       >Clear</button>
       <button
         aria-label="Fetch servers list"
-        onClick={() => dispatch(fetchServersAsync())}
+        onClick={() => dispatch(fetchServersAsync(debug))}
       >Fetch</button>
       <div className='container'>
         {servers.map((s) => {
@@ -35,7 +36,7 @@ export function KyberServers() {
               margin: 10,
               padding: 10
             }} key={s.id} data-id={s.id}>              
-              <p>{s.name} hosted by {s.host}</p>
+              <p>{s.name} {s.host?.toLowerCase() === 'unknown' ? '' : `hosted by 👤${s.host}`}</p>
               <p>{MODES.find(m => m.mode === s.mode)?.name.toUpperCase()} on {MAPS.find(m => m.map === s.map)?.name.toUpperCase()}</p>
               <p>mods: {s.mods?.length} 👥 {s.users}/{s.maxPlayers} 🕓 {s.startedAtPretty}</p>
               <p>location: <img src={s.proxy?.flag} alt="location flag" style={{width: '24px', height: '16px'}}/> {s.proxy?.name} ip: {s.proxy?.ip}</p>
