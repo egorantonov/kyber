@@ -16,6 +16,11 @@
       "title": "Settings"
     }
   },
+  "features": {
+    "config": {
+      "title": "Current configuration"
+    }
+  },
   "messages": {
     "localStorageDisabled": "Local Storage is disabled in your browser"
   },

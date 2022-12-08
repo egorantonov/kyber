@@ -15,6 +15,11 @@
     "settings": {
       "title": "Настройки"
     }
+  },  
+  "features": {
+    "config": {
+      "title": "Текущая конфигурация"
+    }
   },
   "messages": {
     "localStorageDisabled": "Локальное хранилище отключено в Вашем браузере!"

@@ -17,8 +17,8 @@
 }
 
 :root[data-theme=light] {
-  --bg-img: linear-gradient(#fff2, #fff4), url("../assets/bg-desktop-light.webp");
-  --bg-img-set: linear-gradient(#fff2, #fff4), image-set(    
+  --bg-img: linear-gradient(#fffa, #fff7), url("../assets/bg-desktop-light.webp");
+  --bg-img-set: linear-gradient(#fffa, #fff7), image-set(    
     url("../assets/bg-desktop-light.webp") type("image/webp"),
     url("../assets/bg-desktop-light.jpg") type("image/jpeg"));
   --bg-color: #ddd;
