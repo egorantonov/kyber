@@ -1,3 +1,4 @@
+import { getJson } from '../extensions/fetch'
 import { CONSTANTS } from '../features/Kyber/constants'
 import { KYBER_API } from './endpoints'
 import { KyberServer, KyberServersResponse } from './models'
@@ -12,8 +13,7 @@ export const fetchServers = async () => {
   let pageCount = 0
   let servers: KyberServer[] = []
 
-  await fetch(`${KYBER_API.servers}1`)
-    .then((response) => response.json())
+  await getJson(`${KYBER_API.servers}1`)
     .then(
       (data: KyberServersResponse) => {
         servers = data.servers
@@ -25,8 +25,7 @@ export const fetchServers = async () => {
 
   if (pageCount > 1) {
     for (let i = 2; i <= pageCount; i++) {
-      await fetch(`${KYBER_API.servers}${i}`)
-        .then((response) => response.json())
+      await getJson(`${KYBER_API.servers}${i}`)
         .then(
           (data: KyberServersResponse) => {
             servers = servers.concat(data.servers)

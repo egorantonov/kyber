@@ -4,6 +4,7 @@ import { KYBER_API } from '../../../api/endpoints'
 import { Side } from '../../../data/models'
 import { MAPS } from '../../../data/maps'
 import { MODES } from '../../../data/modes'
+import { getJson, getText } from '../../../extensions/fetch'
 
 enum KYBER_MODE {
   SERVER = 'SERVER',
@@ -39,46 +40,152 @@ interface KyberConfigResponse {
   SERVER_OPTIONS?: KyberServerOptions
 }
 
+interface CloudflareTrace {
+  h: string,
+  ip: string,
+  ts: string,
+  visit_scheme: string,
+  uag: string,
+  colo: string,
+  sliver: string,
+  http: string,
+  loc: string,
+  tls: string,
+  sni: string,
+  warp: string,
+  gateway: string,
+  kex: string,
+}
+function parseCloudflareTrace(value: string): CloudflareTrace {
+  return JSON.parse(`{\n"${value.trim().replaceAll('=','":"').replaceAll('\n','",\n"')}"\n}`)
+}
+
 export function KyberConfig() {
   const initialConfig: KyberConfigResponse = {}
+  const initialClient: Partial<CloudflareTrace> = {}
 
   const { t, i18n } = useTranslation('translation')
+  const [ip, setIp] = useState('')
+  const [client, setClient] = useState(initialClient)
   const [config, setConfig] = useState(initialConfig)
 
   useEffect(() => {
-    fetch(KYBER_API.config)
-      .then(response => response.json())
+    getText('https://kraken.rambler.ru/userip') // change to Cloudflare
+      .then(data => setIp(data))
+
+    getJson(KYBER_API.config)
       .then(data => setConfig(data))
+
+    getText('https://www.cloudflare.com/cdn-cgi/trace')
+      .then(data => {
+        const cl = parseCloudflareTrace(data)
+        setClient(cl)
+        console.log(cl)
+      })
   }, [])
 
   // TODO: translate
   return (
     <div>
       <p>{t('features.config.title')}</p> 
-      <div>STATUS: {config.message || config.KYBER_MODE}</div>
-      <div>CLIENT OPTIONS</div>
-      <hr/>
-      {/* TODO: share server by its id */}
-      <div>ID: {config.CLIENT_OPTIONS?.SERVER_ID} <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a></div>
-      <div>NAME: {config.CLIENT_OPTIONS?.SERVER_NAME}</div>
-      <div>PASSWORD: {config.CLIENT_OPTIONS?.SERVER_PASSWORD}</div>
-      <div>FACTION: {config.CLIENT_OPTIONS?.PREFERRED_FACTION === Side.Light 
-        ? Side[Side.Light] 
-        : Side[Side.Dark]}
-      </div>
-      <div>IP: {config.CLIENT_OPTIONS?.SERVER_IP}</div>
-      <div>PROXIED: {config.CLIENT_OPTIONS?.SERVER_PROXIED ? '✅' : '❌'}</div>
-      <br/>
-      <div>SERVER OPTIONS</div>
-      <hr/>
-      <div>BALANCED: {config.SERVER_OPTIONS?.AUTO_BALANCE_TEAMS ? '✅' : '❌'}</div>
-      <div>DESCRIPTION: {window.atob(config.SERVER_OPTIONS?.DESCRIPTION || '')}</div>
-      <div>MAP: {MAPS.find(m => m.map === config.SERVER_OPTIONS?.MAP)?.name || 'N\\A'}</div>
-      <div>MAX_PLAYERS: {config.SERVER_OPTIONS?.MAX_PLAYERS || 'N\\A'}</div>
-      <div>MODE: {MODES.find(m => m.mode === config.SERVER_OPTIONS?.MODE)?.name || 'N\\A'}</div>
-      <div>PORT: {config.SERVER_OPTIONS?.PORT || 'N\\A'}</div>
-      <div>PROXY_ADDRESS: {config.SERVER_OPTIONS?.PROXY_ADDRESS || 'N\\A'}</div>
-      <div>PROXY_PORT: {config.SERVER_OPTIONS?.PROXY_PORT || 'N\\A'}</div>
+      <table>
+        {/* <caption>
+          Features
+        </caption> */}
+        <thead>
+          <th>Key</th>
+          <th>Value</th>
+        </thead>
+        <colgroup>
+          <col style={{backgroundColor: '#704cb677'}} />
+          <col style={{backgroundColor: '#77777733'}} />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td><b>CLIENT IP:</b></td>
+            <td>{client.ip}</td>
+          </tr>
+          <tr>
+            <td><b>LOCALE:</b></td>
+            <td>{client.loc}</td>
+          </tr>
+          <tr>
+            <td><b>USER AGENT:</b> </td>
+            <td>{client.uag}</td>
+          </tr>  
+          <tr>
+            <td><b>STATUS</b>:</td>
+            <td> {config.message || config.KYBER_MODE}</td>
+          </tr>
+          <tr>
+            <td colSpan={2}><b>CLIENT OPTIONS</b></td>
+          </tr>
+          {/* TODO: share server by its id */}
+          <tr>
+            <td><b>ID</b>:</td>
+            <td> {config.CLIENT_OPTIONS?.SERVER_ID} <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a></td>
+          </tr>
+          <tr>
+            <td><b>NAME</b>:</td>
+            <td> {config.CLIENT_OPTIONS?.SERVER_NAME}</td>
+          </tr>
+          <tr>
+            <td><b>PASSWORD</b>:</td>
+            <td> {config.CLIENT_OPTIONS?.SERVER_PASSWORD}</td>
+          </tr>
+          <tr>
+            <td><b>FACTION</b>:</td>
+            <td> {config.CLIENT_OPTIONS?.PREFERRED_FACTION === Side.Light 
+              ? Side[Side.Light] 
+              : Side[Side.Dark]}
+            </td>
+          </tr>
+          <tr>
+            <td><b>IP</b>:</td>
+            <td> {config.CLIENT_OPTIONS?.SERVER_IP}</td>
+          </tr>
+          <tr>
+            <td><b>PROXIED</b>:</td>
+            <td> {config.CLIENT_OPTIONS?.SERVER_PROXIED ? '✅' : '❌'}</td>
+          </tr>
+          <tr>
+            <td colSpan={2}><b>SERVER OPTIONS</b></td>
+          </tr>
+          <tr>
+            <td><b>BALANCED</b>:</td>
+            <td> {config.SERVER_OPTIONS?.AUTO_BALANCE_TEAMS ? '✅' : '❌'}</td>
+          </tr>
+          <tr>
+            <td><b>DESCRIPTION</b>:</td>
+            <td> {window.atob(config.SERVER_OPTIONS?.DESCRIPTION || '')}</td>
+          </tr>
+          <tr>
+            <td><b>MAP</b>:</td>
+            <td> {MAPS.find(m => m.map === config.SERVER_OPTIONS?.MAP)?.name || 'N\\A'}</td>
+          </tr>
+          <tr>
+            <td><b>MAX_PLAYERS</b>:</td>
+            <td> {config.SERVER_OPTIONS?.MAX_PLAYERS || 'N\\A'}</td>
+          </tr>
+          <tr>
+            <td><b>MODE</b>:</td>
+            <td> {MODES.find(m => m.mode === config.SERVER_OPTIONS?.MODE)?.name || 'N\\A'}</td>
+          </tr>
+          <tr>
+            <td><b>PORT</b>:</td>
+            <td> {config.SERVER_OPTIONS?.PORT || 'N\\A'}</td>
+          </tr>
+          <tr>
+            <td><b>PROXY_ADDRESS</b>:</td>
+            <td> {config.SERVER_OPTIONS?.PROXY_ADDRESS || 'N\\A'}</td>
+          </tr>
+          <tr>
+            <td><b>PROXY_PORT</b>:</td>
+            <td> {config.SERVER_OPTIONS?.PROXY_PORT || 'N\\A'}</td>
+          </tr>
+        </tbody>      
+      </table>
+      
       
     </div> 
   )
