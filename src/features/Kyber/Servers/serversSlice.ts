@@ -1,24 +1,26 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { KYBER_API } from '../../../api/endpoints'
-import { useAppSelector, useAppDispatch } from '../../../app/hooks'
 import { fetchServers } from '../../../api/methods'
-import { KyberProxy, KyberServer, KyberServersResponse } from '../../../api/models'
+import { KyberProxy, KyberServer, } from '../../../api/models'
 import { RootState } from '../../../app/store'
-import { CONSTANTS } from '../constants'
-import { KyberServers } from './Servers'
 import { FAKE_RESPONSE } from '../../../data/fake'
+
+export enum Status {
+  Idle = 0,
+  Loading = 1,
+  Failed = 2
+}
 
 export interface KyberState {
   proxies: KyberProxy[],
   servers: KyberServer[],
-  status: 'idle' | 'loading' | 'failed',
+  status: Status,
   debug: boolean
 }
 
 const initialState: KyberState = {
   proxies: [],
   servers: [],
-  status: 'idle',
+  status: Status.Idle,
   debug: false // TODO: add to localStorage
 }
 
@@ -49,20 +51,21 @@ const serversSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchServersAsync.pending, (state) => {
-        state.status = 'loading'
+        state.status = Status.Loading
       })
       .addCase(fetchServersAsync.fulfilled, (state, action) => {
-        state.status = 'idle'
+        state.status = Status.Idle
         state.servers = action.payload
       })
       .addCase(fetchServersAsync.rejected, (state) => {
-        state.status = 'failed'
+        state.status = Status.Failed
       })
   },
 })
 
 export const selectServers = (state: RootState) => state.servers.servers
 export const isDebug = (state: RootState) => state.servers.debug
+export const getServersStatus = (state: RootState) => state.servers.status
 
 export const { clear, toggleDebug } = serversSlice.actions
 

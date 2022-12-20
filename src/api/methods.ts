@@ -14,24 +14,26 @@ export const fetchServers = async () => {
 
   await fetch(`${KYBER_API.servers}1`)
     .then((response) => response.json())
-    .then((data: KyberServersResponse) => {
-      servers = data.servers
-      pageCount = data.pageCount
-    })
-    .catch(e => {
-      fetchServersErrorMessage(e.message)
-    })
+    .then(
+      (data: KyberServersResponse) => {
+        servers = data.servers
+        pageCount = data.pageCount
+      }, 
+      (error) => { // onRejected
+        fetchServersErrorMessage(error)
+      })
 
   if (pageCount > 1) {
     for (let i = 2; i <= pageCount; i++) {
       await fetch(`${KYBER_API.servers}${i}`)
         .then((response) => response.json())
-        .then((data: KyberServersResponse) => {
-          servers = servers.concat(data.servers)
-        })
-        .catch(e => {
-          fetchServersErrorMessage(e.message, i)
-        })
+        .then(
+          (data: KyberServersResponse) => {
+            servers = servers.concat(data.servers)
+          }, 
+          (error) => { // onRejected
+            fetchServersErrorMessage(error)
+          })
     }
   }
 

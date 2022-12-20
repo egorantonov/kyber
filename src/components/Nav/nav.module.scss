@@ -20,6 +20,7 @@
   border-radius: 2px;
   transition: all 150ms;
   text-decoration: none;
+  display: inline-block; // temp
 
   &:hover, &:focus {
     border-bottom: 2px solid rgba(112, 76, 182, 0.4);
