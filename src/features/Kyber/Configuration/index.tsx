@@ -70,31 +70,35 @@ export function KyberConfig() {
   const [config, setConfig] = useState(initialConfig)
 
   useEffect(() => {
-    getText('https://kraken.rambler.ru/userip') // change to Cloudflare
-      .then(data => setIp(data))
 
     getJson(KYBER_API.config)
-      .then(data => setConfig(data))
+      .then(
+        data => setConfig(data),
+        error => console.error(error)
+      )
 
     getText('https://www.cloudflare.com/cdn-cgi/trace')
-      .then(data => {
-        const cl = parseCloudflareTrace(data)
-        setClient(cl)
-        console.log(cl)
-      })
+      .then(
+        data => {
+          const cl = parseCloudflareTrace(data)
+          setClient(cl)
+          console.log(cl)
+        },
+        error => console.error(error))
   }, [])
 
   // TODO: translate
   return (
     <div>
-      <p>{t('features.config.title')}</p> 
       <table>
-        {/* <caption>
-          Features
-        </caption> */}
+        <caption>
+          {t('features.config.title')}
+        </caption>
         <thead>
-          <th>Key</th>
-          <th>Value</th>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
         </thead>
         <colgroup>
           <col style={{backgroundColor: '#704cb677'}} />
@@ -103,7 +107,7 @@ export function KyberConfig() {
         <tbody>
           <tr>
             <td><b>CLIENT IP:</b></td>
-            <td>{client.ip}</td>
+            <td>{ip}</td>
           </tr>
           <tr>
             <td><b>LOCALE:</b></td>

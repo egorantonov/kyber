@@ -52,7 +52,7 @@ export function KyberServers() {
   }, [])
 
   return(
-    <div style={{}}>
+    <div style={{marginTop: 75}}>
       <button
         aria-label="Clear servers list"
         onClick={() => dispatch(clear())}
