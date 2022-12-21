@@ -65,7 +65,6 @@ export function KyberConfig() {
   const initialClient: Partial<CloudflareTrace> = {}
 
   const { t, i18n } = useTranslation('translation')
-  const [ip, setIp] = useState('')
   const [client, setClient] = useState(initialClient)
   const [config, setConfig] = useState(initialConfig)
 
@@ -107,7 +106,7 @@ export function KyberConfig() {
         <tbody>
           <tr>
             <td><b>CLIENT IP:</b></td>
-            <td>{ip}</td>
+            <td>{client.ip}</td>
           </tr>
           <tr>
             <td><b>LOCALE:</b></td>
