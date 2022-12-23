@@ -83,7 +83,17 @@ export function KyberConfig() {
           setClient(cl)
           console.log(cl)
         },
-        error => console.error(error))
+        error => {
+          const errorMsg = 'Can\'t get client data. Check your adblocker setting for this site'
+          const clError: Partial<CloudflareTrace> = {
+            ip: errorMsg,
+            loc: errorMsg,
+            uag: errorMsg
+          }
+          setClient(clError)
+          console.log(errorMsg)
+          console.error(error)
+        })
   }, [])
 
   // TODO: translate
@@ -114,7 +124,7 @@ export function KyberConfig() {
           </tr>
           <tr>
             <td><b>USER AGENT:</b> </td>
-            <td>{client.uag}</td>
+            <td>{window?.navigator?.userAgent}</td>
           </tr>  
           <tr>
             <td><b>STATUS</b>:</td>

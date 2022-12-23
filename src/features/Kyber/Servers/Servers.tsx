@@ -5,7 +5,7 @@ import { MAPS } from '../../../data/maps'
 import { MODES } from '../../../data/modes'
 import { isNullOrWhiteSpace } from '../../../extensions/string'
 
-import { clear, fetchServersAsync, selectServers, isDebug, getServersStatus, Status } from './serversSlice'
+import { clear, fetchServersAsync, selectServers, isDebug, getServersStatus, Status, toggleAutoUpdate, isLiveUpdate } from './serversSlice'
 
 const IMG_URL_PREFIX = 'https://kyber.gg/static/images/maps/'
 const IMG_URL_POSTFIX = '.jpg'
@@ -43,16 +43,38 @@ function getHost(value?: string): string {
 export function KyberServers() {
   const servers = useAppSelector(selectServers)
   const debug = useAppSelector(isDebug)
+  const liveUpdate = useAppSelector(isLiveUpdate)
   const status = useAppSelector(getServersStatus)
   const dispatch = useAppDispatch()
 
-  useEffect(() => { 
-    dispatch(fetchServersAsync(debug)) 
-    console.log('KyberServers.useEffect() invoked')
-  }, [])
+  useEffect(() => {
+    dispatch(fetchServersAsync(debug))
+
+    let timer: NodeJS.Timeout | undefined
+
+    if(!timer && liveUpdate){
+      timer = setInterval(() => {
+        console.log('timer invoked')
+        dispatch(fetchServersAsync(debug))
+      }, 5000)}
+
+    return (() => {
+      clearInterval(timer)
+    })
+  }, [liveUpdate])
 
   return(
     <div style={{marginTop: 75}}>
+      <div>
+        <input
+          type="checkbox"
+          name="liveUpdate"
+          id="liveUpdate"
+          checked={liveUpdate}
+          onChange={() => dispatch(toggleAutoUpdate())} 
+        />
+        <label htmlFor="liveUpdate">Live Update</label>
+      </div>
       <button
         aria-label="Clear servers list"
         onClick={() => dispatch(clear())}
@@ -61,7 +83,7 @@ export function KyberServers() {
         disabled={status === Status.Loading}
         aria-label="Fetch servers list"
         onClick={() => dispatch(fetchServersAsync(debug))}
-      >Fetch</button>
+      >Fetch</button>{status === Status.Loading ? '🔄' : '✅'}
       <div className='container'>
         {servers.map((s) => {
           const map = getMap(s.map)
@@ -79,7 +101,7 @@ export function KyberServers() {
                 <img src={image} alt={map} style={{width: 160, height: 90}}/>
               </div>
               <div className='server-data-container-1' style={{display: 'inline-block', margin: 10}}>
-                <p>{s.name} {host}</p>
+                <p>{s.requiresPassword && '🔐'}<b>{s.name?.toUpperCase()}</b> {host}</p>
                 <p>{mode} on {map}</p>
               </div>
               <div className='server-data-container-2' style={{display: 'inline-block', margin: 10}}>

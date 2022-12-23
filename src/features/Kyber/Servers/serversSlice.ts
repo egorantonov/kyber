@@ -14,19 +14,24 @@ export interface KyberState {
   proxies: KyberProxy[],
   servers: KyberServer[],
   status: Status,
-  debug: boolean
+  liveUpdate: boolean, // updates Server List each 5 seconds
+  
+  debug: boolean,
 }
 
 const initialState: KyberState = {
   proxies: [],
   servers: [],
   status: Status.Idle,
-  debug: false // TODO: add to localStorage
+  liveUpdate: false,
+
+  debug: true // TODO: add to localStorage
 }
 
 export const fetchServersAsync = createAsyncThunk(
   'servers/fetchServers',
   async (debug: boolean) => {
+    console.log('thunk `servers/fetchServers` invoked')
     if (debug) {
       return FAKE_RESPONSE
     }
@@ -46,6 +51,9 @@ const serversSlice = createSlice({
     },
     toggleDebug: (state) => {
       state.debug = !state.debug
+    },
+    toggleAutoUpdate: (state) => {
+      state.liveUpdate = !state.liveUpdate
     }
   },
   extraReducers: (builder) => {
@@ -64,9 +72,11 @@ const serversSlice = createSlice({
 })
 
 export const selectServers = (state: RootState) => state.servers.servers
-export const isDebug = (state: RootState) => state.servers.debug
 export const getServersStatus = (state: RootState) => state.servers.status
+export const isLiveUpdate = (state: RootState) => state.servers.liveUpdate
 
-export const { clear, toggleDebug } = serversSlice.actions
+export const isDebug = (state: RootState) => state.servers.debug
+
+export const { clear, toggleDebug, toggleAutoUpdate } = serversSlice.actions
 
 export default serversSlice.reducer
