@@ -1,4 +1,14 @@
 {
+  "common": {
+    "side": {      
+      "Light": "Light Side",
+      "Dark": "Dark Side"
+    },
+    "switch": {
+      "on": "On",
+      "off": "Off"
+    }
+  },
   "pages": {
     "servers": {
       "title": "Servers"
@@ -19,6 +29,30 @@
   "features": {
     "config": {
       "title": "Current configuration"
+    },
+    "host": {
+      "title": "Host",
+      "form": {
+        "settings": "Settings",
+        "map": "Map",
+        "mode": "Mode",
+        "name": "Name",
+        "password": "Password",
+        "advanced": "Advanced",
+        "description": "description",
+        "balance": "Auto balance teams",
+        "faction": "Server host faction",
+        "proxy": "Ping site",
+        "maxPlayers": "Max players"
+      },
+      "messages": {
+        "success": "Success, start your game to host this server!",
+        "badRequestValidationFailed": "Bad Request: validation failed!"
+      },
+      "validation": {
+        "property": "Property",
+        "does not meet minimum length of 1": "does not meet minimum length of 1"
+      }
     }
   },
   "messages": {

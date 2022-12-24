@@ -1,4 +1,14 @@
 {
+  "common": {
+    "side": {      
+      "Light": "Светлая сторона",
+      "Dark": "Тёмная сторона"
+    },
+    "switch": {
+      "on": "Вкл",
+      "off": "Выкл"
+    }
+  },
   "pages": {
     "servers": {
       "title": "Серверы"
@@ -19,6 +29,30 @@
   "features": {
     "config": {
       "title": "Текущая конфигурация"
+    },
+    "host": {
+      "title": "Создать",
+      "form": {
+        "settings": "Настройки",
+        "map": "Карта",
+        "mode": "Режим",
+        "name": "Название",
+        "password": "Пароль",
+        "advanced": "Расширенные",
+        "description": "Описание",
+        "balance": "Автобаланс команд",
+        "faction": "Выбор команды",
+        "proxy": "Точка пинга",
+        "maxPlayers": "Максимум игроков"
+      },
+      "messages": {
+        "success": "Сервер создан успешно, теперь запустите игру!",
+        "badRequestValidationFailed": "Неверный запрос: проверка не удалась!"
+      },
+      "validation": {
+        "property": "Свойство",
+        "does not meet minimum length of 1": "не соответствует минимальной длине в 1 символ"
+      }
     }
   },
   "messages": {

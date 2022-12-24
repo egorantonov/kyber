@@ -1,7 +1,7 @@
 import { getJson } from '../extensions/fetch'
 import { CONSTANTS } from '../features/Kyber/constants'
 import { KYBER_API } from './endpoints'
-import { HostKyberServerRequest, HostKyberServerResponse, KyberProxy, KyberServer, KyberServersResponse } from './models'
+import { ApiResponse, HostKyberServerRequest, HostKyberServerResponse, KyberProxy, KyberServer, KyberServersResponse } from './models'
 
 const fetchServersErrorMessage = (message: string, page = 1) => {
   console.error(`${CONSTANTS.MESSAGE.ERROR} ${message} Endpoint: ${KYBER_API.servers}${page}`)
@@ -57,8 +57,12 @@ export const fetchProxies = async (): Promise<{data: KyberProxy[]}> => {
 }
 
 // HOST A SERVER
-export const hostServer = async (data: HostKyberServerRequest) => {
-  let hostResponse: HostKyberServerResponse
+export const hostServer = async (data: HostKyberServerRequest): Promise<ApiResponse<HostKyberServerResponse>> => {
+
+  let hostResponse: HostKyberServerResponse = {message: ''}
+  let status = 0
+  let success = false
+  const errors: any[] = []
 
   await fetch(KYBER_API.host, {
     method: CONSTANTS.METHOD.POST,
@@ -67,18 +71,31 @@ export const hostServer = async (data: HostKyberServerRequest) => {
       [CONSTANTS.HEADER.NAME.CONTENT_TYPE]: `${CONSTANTS.HEADER.VALUE.APP_JSON}`
     }
   })
-    .then(response => {
-      //hostResponse.success = response.ok
-      //hostResponse.code = response.status
-      return response.json()
-    })
+    .then(
+      (response) => {
+        success = response.ok
+        status = response.status
+        return response.json()
+      },
+      (error) => {
+        console.error(error)
+        errors.push(error)
+      } )
     .then(
       (data: HostKyberServerResponse) => {
         hostResponse = data        
       },
       (error) => {
         console.error(error)
+        errors.push(error)
       })
 
-  return new Promise<{data: HostKyberServerResponse}>((resolve) => resolve({data: hostResponse}))
+  const apiResponse: ApiResponse<HostKyberServerResponse> = {
+    data: hostResponse,
+    status,
+    success,
+    errors
+  }
+
+  return new Promise<ApiResponse<HostKyberServerResponse>>((resolve) => resolve(apiResponse))
 }

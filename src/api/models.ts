@@ -1,5 +1,12 @@
 import { Side } from '../data/models'
 
+export interface ApiResponse<T> {
+  data: T,
+  status: number,
+  success: boolean,
+  errors: any[]
+}
+
 export interface KyberApi {
   servers: string,
   proxies: string,
@@ -11,8 +18,6 @@ export interface KyberApi {
 // endpoints: host, join
 export interface MessageResponse {
   message: string
-  success?: boolean
-  code?: number
 }
 
 // endpoints: servers

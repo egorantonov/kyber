@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { KYBER_API } from '../../../api/endpoints'
 import { hostServer } from '../../../api/methods'
-import { HostKyberServerRequest, HostKyberServerResponse, KyberProxy } from '../../../api/models'
+import { ApiResponse, HostKyberServerRequest, HostKyberServerResponse, KyberProxy } from '../../../api/models'
 import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { MAPS } from '../../../data/maps'
 import { BattlefrontMap, Side } from '../../../data/models'
@@ -18,7 +19,30 @@ function getModeMaps(mode: string): BattlefrontMap[] {
   return modeMaps as BattlefrontMap[]
 }
 
+function processResponse(apiResponse: ApiResponse<HostKyberServerResponse>, t: any) {
+  
+  if (apiResponse.success) {
+    alert(`${apiResponse.data?.message}\nServer ID: ${apiResponse.data?.id})`)
+  }  
+  else if (!apiResponse.success && apiResponse.data?.message === 'Bad Request') {
+    const firstRow = t('features.host.messages.badRequestValidationFailed') // t('badRequest.validationFailed')
+    const failedValidations = apiResponse.data.validations?.body
+    const secondRow = failedValidations?.map(v => {
+      return `\n${t('features.host.validation.property')} '${t(`features.host.form.${v.property.replace('instance.','')}`)}' ${t(`features.host.validation.${v.messages[0]}`)}`
+    })
+
+    alert (`${firstRow}${secondRow}`)
+  }
+  else if (!apiResponse.success && apiResponse.data?.message != undefined) {
+    alert (`Kyber API error: ${apiResponse.data?.message}`)
+  }
+  else {
+    alert (`Unknown error: ${apiResponse.errors[0]}`)
+  }
+}
+
 export function Host() {
+  const { t, i18n } = useTranslation('translation')
 
   //const status = useAppSelector(getProxyStatus)
   const [mode, setMode] = useState(MODES[0].mode)
@@ -71,19 +95,21 @@ export function Host() {
       password
     }
 
-    const result = await hostServer(request)
-    processResponse(result.data)
+    hostServer(request)
+      .then(apiResponse => processResponse(apiResponse, t))
+      .catch((e) => console.log(e))
+    //processResponse(apiResponse)
   }
 
   return(
     <div id="host">
       <form id="form-host">
         <div>
-          <p>Settings</p>  
+          <p>{t('features.host.form.settings')}</p>  
 
           {/* INPUT - MODES */}
           <div className="input-modes">
-            <label htmlFor="input-modes">Mode: </label>
+            <label htmlFor="input-modes">{t('features.host.form.mode')}: </label>
             <select value={mode} id="input-modes" name="input-modes" onChange={(e) => setMode(e.target.value)}>
               {/* <option key='empty' value=''>{ALL}</option> */}
               {MODES.map((m) => (
@@ -94,7 +120,7 @@ export function Host() {
 
           {/* INPUT - MAPS */}
           <div className="input-maps">
-            <label htmlFor="input-maps">Map: </label>
+            <label htmlFor="input-maps">{t('features.host.form.map')}: </label>
             <select value={map} id="input-maps" name="input-maps" onChange={(e) => setMap(e.target.value)}>
               {getModeMaps(mode).map((m) => ( 
                 <option key={m.map} value={m.map}>{m.name}</option>
@@ -104,50 +130,50 @@ export function Host() {
 
           {/* INPUT - NAME */}
           <div className="input-name">
-            <label htmlFor="input-name">Name: </label>
+            <label htmlFor="input-name">{t('features.host.form.name')}: </label>
             <input id="input-name" type="text" required={true} placeholder="Required" onChange={(e) => setName(e.target.value)}></input>
           </div>
 
           {/* INPUT - PASSWORD */}
           <div className="input-password">
-            <label htmlFor="input-password">Password: </label>
+            <label htmlFor="input-password">{t('features.host.form.password')}: </label>
             <input id="input-password" type="password" placeholder="Optional" onChange={(e) => setPassword(e.target.value)}></input>
           </div>
 
-          <p>Advanced</p>
+          <p>{t('features.host.form.advanced')}</p>
 
           {/* INPUT - DESCRIPTION */}
           <div className="input-description">
-            <label htmlFor="input-description">Description: </label>
+            <label htmlFor="input-description">{t('features.host.form.description')}: </label>
             <input id="input-description" type="text" placeholder="Optional" onChange={(e) => setDescription(e.target.value)}></input>
           </div>
           
           {/* INPUT - BALANCE */}
           <div className="input-balance">
-            Auto balance teams:
+            {t('features.host.form.balance')}:
             <input type="radio" id="balance-on" name="balance" value="on" checked={balance} 
               onChange={() => setBalance(true)}/>
-            <label htmlFor="balance-on">ON</label>
+            <label htmlFor="balance-on">{t('common.switch.on')}</label>
             <input type="radio" id="balance-off" name="balance" value="off" checked={!balance}
               onChange={() => setBalance(false)}/>
-            <label htmlFor="balance-off">OFF</label>
+            <label htmlFor="balance-off">{t('common.switch.off')}</label>
           </div>
 
           {/* INPUT - FACTION */}
           <div className="input-faction">
-            Server host faction:
+            {t('features.host.form.faction')}:
             <input type="radio" id="faction-light" name="faction" value={Side.Light} checked={faction === Side.Light} 
               onChange={() => setFaction(Side.Light)}/>
-            <label htmlFor="faction-light">{Side[Side.Light]}</label>
+            <label htmlFor="faction-light">{t(`common.side.${Side[Side.Light]}`)}</label>
             <input type="radio" id="faction-dark" name="faction" value={Side.Dark} checked={faction === Side.Dark}
               onChange={() => setFaction(Side.Dark)}/>
-            <label htmlFor="faction-dark">{Side[Side.Dark]}</label>
+            <label htmlFor="faction-dark">{t(`common.side.${Side[Side.Dark]}`)}</label>
           </div>
 
           {/* INPUT - PROXIES */}
           
           <div className="input-proxies">
-            <label htmlFor="input-proxies">Ping site: </label>
+            <label htmlFor="input-proxies">{t('features.host.form.proxy')}: </label>
             <select value={proxyIp} id="input-proxies" name="input-proxies" onChange={(e) => setProxyIp(e.target.value)}>
               {proxies.map((p) => (
                 <option key={p.ip} value={p?.ip ?? 'loading'}>{p.name}</option>
@@ -159,8 +185,8 @@ export function Host() {
 
           {/* INPUT - MAX PLAYERS */}
           <div className="input-players">
-            <label htmlFor="input-players">Max players: {maxPlayers}</label>
-            <input id="input-players" type="range" min={2} max={64} onChange={(e) => setMaxPlayers(+e.target.value)}></input>
+            <label htmlFor="input-players">{t('features.host.form.maxPlayers')}</label>
+            <input id="input-players" type="range" min={2} max={64} onChange={(e) => setMaxPlayers(+e.target.value)}/>{maxPlayers}
           </div>
 
           <input type="button" value="Host" onClick={(e) => handleSubmit(e)} />
@@ -169,24 +195,3 @@ export function Host() {
     </div>
   )
 }
-
-
-function processResponse(data: HostKyberServerResponse) {
-  
-  if (data.success) {
-    alert(`${data.message}\nServer ID: ${data.id})`)
-  }  
-  else if (!data.success && data.message === 'Bad Request') {
-    const failedValidations = data.validations?.body
-    const firstRow = `${data.message}: validation failed!`
-    const secondRow = failedValidations?.map(v => {
-      return `\nProperty '${v.property.replace('instance.','')}' ${v.messages[0]}`
-    })
-
-    alert (`${firstRow}${secondRow}`)
-  }
-  else {
-    alert (`Unknown error: ${data.message}`)
-  }
-}
-
