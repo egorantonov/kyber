@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { CONSTANTS } from '../constants'
 import { MODES } from '../../../data/modes'

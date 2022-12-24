@@ -1,3 +1,5 @@
+import { Side } from '../data/models'
+
 export interface KyberApi {
   servers: string,
   proxies: string,
@@ -6,10 +8,14 @@ export interface KyberApi {
   host: string,
 }
 
+// endpoints: host, join
 export interface MessageResponse {
   message: string
+  success?: boolean
+  code?: number
 }
 
+// endpoints: servers
 export interface KyberServersResponse {
   page: number,
   pageCount: number,
@@ -36,7 +42,35 @@ export interface KyberServer {
 }
 
 export interface KyberProxy {
-  ip?: string,
+  ip: string,
   name?: string,
   flag?: string
+}
+
+export interface HostKyberServerRequest {
+  autoBalanceTeams: boolean,
+  description: string,
+  displayInBrowser: boolean, // ?
+  faction: Side,
+  kyberProxy: string, // proxy IP string
+  map: string, // BattlefrontMap.map
+  maxPlayers: number,
+  mode: string, // BattlefrontMode.mode
+  name: string,
+  password: string
+}
+
+export interface HostKyberServerResponse extends MessageResponse {
+  id?: string
+  validations?: HostKyberServerValidation
+}  
+
+interface HostKyberServerValidation {
+  body: HostKyberPropertyValidation[]
+}
+
+interface HostKyberPropertyValidation {
+  value: string,
+  property: string,
+  messages: string[]
 }

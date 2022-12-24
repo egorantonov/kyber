@@ -1,21 +1,29 @@
 import './App.css'
 import { Route, Routes } from 'react-router'
-import { Download } from './pages/download'
-import { Host } from './pages/host'
-import { About } from './pages/about'
-import { Servers } from './pages/servers'
+import { DownloadPage } from './pages/download'
+import { HostPage } from './pages/host'
+import { AboutPage } from './pages/about'
+import { ServersPage } from './pages/servers'
 import { Nav } from './components/Nav'
-import { Settings } from './pages/settings'
+import { SettingsPage } from './pages/settings'
 import { Header } from './components/Header'
 import './styles/common.scss'
 import './styles/grid.scss'
 import './styles/text.scss'
 import { initializeTheme } from './contexts/ThemeContext'
-import { useLayoutEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
+import { useAppDispatch } from './app/hooks'
+import { fetchProxiesAsync } from './features/Kyber/Servers/serversSlice'
 
 function App() {
+  const dispatch = useAppDispatch()
+
   useLayoutEffect(() => {
-    initializeTheme()
+    initializeTheme()    
+  })
+
+  useEffect(() => {
+    dispatch(fetchProxiesAsync())
   })
 
   return (
@@ -26,11 +34,11 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path='/' element={<Servers />} />
-          <Route path='/download' element={<Download />} />
-          <Route path='/host' element={<Host />}/>
-          <Route path='/about' element={<About />}/>
-          <Route path='/settings' element={<Settings />}/>
+          <Route path='/' element={<ServersPage />} />
+          <Route path='/download' element={<DownloadPage />} />
+          <Route path='/host' element={<HostPage />}/>
+          <Route path='/about' element={<AboutPage />}/>
+          <Route path='/settings' element={<SettingsPage />}/>
         </Routes>
       </main>
       <footer>

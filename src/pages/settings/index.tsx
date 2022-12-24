@@ -5,7 +5,7 @@ import { KyberConfig } from '../../features/Kyber/Configuration'
 
 
 
-export function Settings() {
+export function SettingsPage() {
   const { t, i18n } = useTranslation('translation')
 
   return (

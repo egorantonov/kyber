@@ -1,14 +1,14 @@
 import { getJson } from '../extensions/fetch'
 import { CONSTANTS } from '../features/Kyber/constants'
 import { KYBER_API } from './endpoints'
-import { KyberServer, KyberServersResponse } from './models'
+import { HostKyberServerRequest, HostKyberServerResponse, KyberProxy, KyberServer, KyberServersResponse } from './models'
 
 const fetchServersErrorMessage = (message: string, page = 1) => {
   console.error(`${CONSTANTS.MESSAGE.ERROR} ${message} Endpoint: ${KYBER_API.servers}${page}`)
 }
 
 // FETCH SERVERS
-export const fetchServers = async () => {
+export const fetchServers = async (): Promise<{data: KyberServer[]}> => {
 
   let pageCount = 0
   let servers: KyberServer[] = []
@@ -37,4 +37,48 @@ export const fetchServers = async () => {
   }
 
   return new Promise<{data: KyberServer[]}>((resolve) => resolve({data: servers}))
+}
+
+// FETCH PROXIES
+export const fetchProxies = async (): Promise<{data: KyberProxy[]}> => {
+  let proxies: KyberProxy[] = []
+
+  await getJson(KYBER_API.proxies)
+    .then(
+      (data: KyberProxy[]) => {
+        proxies = data
+      },
+      (error) => {
+        console.error(error)
+      }
+    )
+  
+  return new Promise<{data: KyberProxy[]}>((resolve) => resolve({data: proxies}))
+}
+
+// HOST A SERVER
+export const hostServer = async (data: HostKyberServerRequest) => {
+  let hostResponse: HostKyberServerResponse
+
+  await fetch(KYBER_API.host, {
+    method: CONSTANTS.METHOD.POST,
+    body: JSON.stringify(data),
+    headers: {
+      [CONSTANTS.HEADER.NAME.CONTENT_TYPE]: `${CONSTANTS.HEADER.VALUE.APP_JSON}`
+    }
+  })
+    .then(response => {
+      //hostResponse.success = response.ok
+      //hostResponse.code = response.status
+      return response.json()
+    })
+    .then(
+      (data: HostKyberServerResponse) => {
+        hostResponse = data        
+      },
+      (error) => {
+        console.error(error)
+      })
+
+  return new Promise<{data: HostKyberServerResponse}>((resolve) => resolve({data: hostResponse}))
 }
