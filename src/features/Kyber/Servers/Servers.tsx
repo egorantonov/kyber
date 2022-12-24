@@ -68,7 +68,9 @@ export function KyberServers() {
       {status === Status.Loading ? '🔄' : '✅'}
       <div className='container'>
         {foundServersMessage}
-        {servers.map((s) => { return <Server key={s.id} server={s} /> })}
+        {servers.length > 0 && servers.map((s) => { 
+          return <Server key={s.id} server={s} /> 
+        })}
       </div>
     </div>
   )
