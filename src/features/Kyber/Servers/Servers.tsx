@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 
 import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+import { Modal } from '../../../components/Modal/Modal'
 import { Server } from '../../../components/Server/Server'
 
-import { clear, fetchServersAsync, selectServers, isDebug, getServersStatus, Status, toggleAutoUpdate, isLiveUpdate } from './serversSlice'
+import { clear, fetchServersAsync, selectServers, isDebug, getServersStatus, Status, toggleAutoUpdate, isLiveUpdate, getModalServer } from './serversSlice'
 
 const liveUpdateDelay = 5000 //ms
 
@@ -12,6 +13,7 @@ export function KyberServers() {
   const debug = useAppSelector(isDebug)
   const liveUpdate = useAppSelector(isLiveUpdate)
   const status = useAppSelector(getServersStatus)
+  const modalServer = useAppSelector(getModalServer)
   const dispatch = useAppDispatch()
 
   let foundServersMessage = 'No Kyber servers found' // t('found0')
@@ -45,6 +47,7 @@ export function KyberServers() {
 
   return (
     <div style={{ marginTop: 75 }}>
+      <Modal modalServer={modalServer} />
       <div>
         <input
           type="checkbox"

@@ -13,9 +13,11 @@ export enum Status {
 export interface KyberState {
   proxies: KyberProxy[],
   servers: KyberServer[],
+  modalServer?: KyberServer
   status: Status,
   proxyStatus: Status,
   liveUpdate: boolean, // updates Server List each 5 seconds
+  modalOpen: boolean
   
   debug: boolean,
 }
@@ -26,6 +28,7 @@ const initialState: KyberState = {
   status: Status.Idle,
   proxyStatus: Status.Loading, // loading proxies right immediately after the start
   liveUpdate: false,
+  modalOpen: false,
 
   debug: false // TODO: add to localStorage
 }
@@ -68,6 +71,12 @@ const serversSlice = createSlice({
     },
     toggleAutoUpdate: (state) => {
       state.liveUpdate = !state.liveUpdate
+    },
+    toggleModal: (state) => {
+      state.modalOpen = !state.modalOpen
+    },
+    setModalServer: (state, action) => {
+      state.modalServer = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -98,14 +107,16 @@ const serversSlice = createSlice({
 
 export const selectServers = (state: RootState) => state.servers.servers
 export const getServersStatus = (state: RootState) => state.servers.status
+export const getModalServer = (state: RootState) => state.servers.modalServer
 
 export const selectProxies = (state: RootState) => state.servers.proxies
 export const getProxyStatus = (state: RootState) => state.servers.proxyStatus
 
 export const isLiveUpdate = (state: RootState) => state.servers.liveUpdate
+export const isModalOpen = (state: RootState) => state.servers.modalOpen
 
 export const isDebug = (state: RootState) => state.servers.debug
 
-export const { clear, toggleDebug, toggleAutoUpdate } = serversSlice.actions
+export const { clear, toggleDebug, toggleAutoUpdate, toggleModal, setModalServer } = serversSlice.actions
 
 export default serversSlice.reducer

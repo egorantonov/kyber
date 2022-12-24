@@ -29,7 +29,7 @@ export interface KyberServersResponse {
 }
 
 export interface KyberServer {
-  id?: string, // GUID
+  id: string, // GUID
   name?: string,
   description?: string,
   map?: string,

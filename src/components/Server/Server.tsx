@@ -1,7 +1,9 @@
 import { KyberServer } from '../../api/models'
+import { useAppDispatch } from '../../app/hooks'
 import { MAPS } from '../../data/maps'
 import { MODES } from '../../data/modes'
 import { isNullOrWhiteSpace } from '../../extensions/string'
+import { setModalServer, toggleModal } from '../../features/Kyber/Servers/serversSlice'
 
 const IMG_URL_PREFIX = 'https://kyber.gg/static/images/maps/'
 const IMG_URL_POSTFIX = '.jpg'
@@ -36,11 +38,19 @@ function getHost(value?: string): string {
   return `hosted by 👤${value}`
 }
 
+
+
 export interface KyberServerProps {
   server: KyberServer
 }
 
 export function Server({server}: KyberServerProps) {
+  const dispatch = useAppDispatch()
+
+  function openModal(server: KyberServer) {
+    dispatch(setModalServer(server))
+    dispatch(toggleModal())
+  }
 
   const map = getMap(server.map)
   const mode = getMode(server.mode)
@@ -48,12 +58,17 @@ export function Server({server}: KyberServerProps) {
   const image = mapImage(server.map)
 
   return(
-    <div style={{
-      border: '1px solid #ccc', 
-      backgroundColor: 'var(--bg-color-substrate)',
-      backdropFilter: 'blur(10px)',
-      margin: 10,
-    }} key={server.id} data-id={server.id} data-img={mapImage(server.map)}> 
+    <div key={server.id}
+      data-id={server.id} data-img={mapImage(server.map)} 
+      onClick={() => {
+        openModal(server)
+      }}
+      style={{
+        border: '1px solid #ccc', 
+        backgroundColor: 'var(--bg-color-substrate)',
+        backdropFilter: 'blur(10px)',
+        margin: 10,
+      }} > 
       <div className='server-image-container' style={{display: 'inline-block', margin: 10}}>
         <img src={image} alt={map} style={{width: 160, height: 90}}/>
       </div>
