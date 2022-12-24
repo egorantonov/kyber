@@ -4,13 +4,25 @@ $main_shift: calc($header_height + $nav_height);
 
 a {
   text-decoration: none;
+  color: var(--highlight);
+
+  &:hover {
+    color: var(--highlight-hover);
+  }
+
+  &:active {
+    color: var(--highlight-active)
+  }
 }
 
+// TODO: rewrite to use on mobile
 header {
   position: fixed;
   top: 0px;
   width: 100%;
-  background-color: var(--bg-color);
+  //  background-color: var(--color-substrate);
+  backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 main {
@@ -22,6 +34,37 @@ main {
     content: "";
   }
 }
+
+button {
+  width: 100px;
+  padding: 5px;
+  margin: 5px;
+  color: var(--color);
+  background-color: var(--bg-color-substrate);
+  border: 2px solid var(--color);
+  border-radius: 5px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: var(--highlight-hover);  
+    border: 2px solid var(--highlight-hover);
+  }
+
+  &:active {
+    color: var(--highlight-active);  
+    border: 2px solid var(--highlight-active);
+  }
+
+  &:disabled {
+    color: #777;
+    border: 2px solid #7777;
+    cursor: not-allowed;
+  }
+}
+
+
+
+
 
 ul {
   list-style-type: none;

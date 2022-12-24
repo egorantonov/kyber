@@ -1,12 +1,17 @@
 /* background-image: image-set(...) works only in Firefox */
 
 :root {
+  --bg-color-alpha: #0007;  
   --bg-color: #222;  
   --bg-color-substrate: #2223;
+  --bg-highlight-alpha: #3182ce55;
   --bg-highlight: #3182ce;
   --color: #ddd;
   --color-substrate: #ddd3;
+  --highlight-alpha: #fbb30a77;
   --highlight: #fbb10a;
+  --highlight-hover: #dc9a00;
+  --highlight-active: #f2a900;
 }
 
 :root[data-theme=dark] {
@@ -21,12 +26,18 @@
   --bg-img-set: linear-gradient(#fffa, #fff7), image-set(    
     url("../assets/bg-desktop-light.webp") type("image/webp"),
     url("../assets/bg-desktop-light.jpg") type("image/jpeg"));
+
+  --bg-color-alpha: #fff7; 
   --bg-color: #ddd;
-  --bg-color-substrate: #ddd3;
+  --bg-color-substrate: #ddd7;
   --bg-highlight: #fbb10a;
+  --bg-highlight-alpha: #fbb30a77;
   --color: #222;
   --color-substrate: #2223;
-  --highlight: #3182ce;
+  --highlight-alpha: #3182ce77;  
+  --highlight: #3182ce;  
+  --highlight-hover: #0084ff;
+  --highlight-active: #005eb6;
 }
 
 body {

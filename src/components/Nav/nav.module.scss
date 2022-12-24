@@ -1,33 +1,42 @@
 @import '../../styles/common.scss';
 
+nav {
+  background-color: var(--bg-color-substrate);
+}
+
 .nav {
   height: $nav_height;
+  
 }
 
 .link {
   appearance: none;
-  background: none;
+  // background: none;
   font-size: 24px;
   text-transform: uppercase;
   padding-left: 12px;
   padding-right: 12px;
   outline: none;
   border: 2px solid transparent;
-  color: rgb(112, 76, 182);
+  // color: rgb(112, 76, 182);
+  color: var(--color);
   padding-bottom: 4px;
   cursor: pointer;
-  background-color: rgba(112, 76, 182, 0.1);
+  // background-color: rgba(112, 76, 182, 0.1);
   border-radius: 2px;
   transition: all 150ms;
   text-decoration: none;
   display: inline-block; // temp
 
   &:hover, &:focus {
-    border-bottom: 2px solid rgba(112, 76, 182, 0.4);
+    // border-bottom: 2px solid rgba(112, 76, 182, 0.4);
+    border-bottom: 2px solid var(--highlight-hover);
   }
 }
 
 .active {
-  border: 2px solid rgba(112, 76, 182, 0.4);
-  background-color: rgba(112, 76, 182, 0.2);
+  // border: 2px solid rgba(112, 76, 182, 0.4);
+  color: var(--highlight-active);
+  border-bottom: 2px solid var(--highlight-active);
+  // background-color: rgba(112, 76, 182, 0.2);
 }

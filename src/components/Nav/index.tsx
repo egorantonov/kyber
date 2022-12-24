@@ -3,7 +3,7 @@ import { NavLinkPersist } from '../../supports/Persistence'
 import style from './nav.module.scss'
 
 export function Nav() {
-  const { t, i18n } = useTranslation('translation')
+  const { t } = useTranslation('translation')
   const className = ({ isActive }: { isActive: boolean }) => {
     return `${isActive ? style.active : ''} ${style.link}`
   }

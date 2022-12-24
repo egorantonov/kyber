@@ -1,31 +1,6 @@
-* {  
-    --highlight: #2749c9;
-    --blockbg: #fffa;  
-    --blockborder: #000a;
-    --blocktext: #000c;
-    --backdropbrightness: 1;
-    --modalbg1: #fffa;    
-    --modalbg2: #fff8;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    * {
-      // --textcolor: #fff;
-      // --bgcolor: #141414;
-      --highlight: #ffc400;
-      --blockbg: #000a;
-      --blockborder: #fffa;
-      --blocktext: #fffc;
-      --backdropbrightness: 0.5;
-      --modalbg1: #0009;      
-      --modalbg2: #0006;
-    }
-}
-
 .modal {
     position: fixed;
-    background-color: var(--modalbg1);
-    background: linear-gradient(var(--modalbg2), var(--modalbg1), var(--modalbg2));
+    background-color: var(--bg-color-substrate);
     opacity: 0;
     pointer-events: none;
     display: grid;
@@ -40,19 +15,20 @@
   
     &.open {
         opacity: 1;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(25px);
         pointer-events: auto;
     }
   }
 
-button:disabled {
-    color: #ccca;
-    border-color: #ccca;
-    cursor: not-allowed;
-
-    &:hover {
-        color: #ccca;
-        text-shadow: none;
-        border-color: #ccca;
-    }
+// rewrite/remove? its for server.mods details block
+.server-mods-details-content {
+  //font-size: 10px;
+  background: var(--bg-color);
+  border: 2px solid var(--color-substrate);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+  overflow-y: scroll;
+  max-height: 150px;
+  height: min-content;
 }

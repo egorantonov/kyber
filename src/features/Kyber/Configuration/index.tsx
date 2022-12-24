@@ -110,7 +110,7 @@ export function KyberConfig() {
           </tr>
         </thead>
         <colgroup>
-          <col style={{backgroundColor: '#704cb677'}} />
+          <col style={{backgroundColor: 'var(--bg-highlight-alpha)'}} />
           <col style={{backgroundColor: '#77777733'}} />
         </colgroup>
         <tbody>

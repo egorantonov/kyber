@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { KYBER_API } from '../../api/endpoints'
 import { KyberServer, MessageResponse } from '../../api/models'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
@@ -6,6 +6,8 @@ import { PlayRequest, Side } from '../../data/models'
 import { isNullOrWhiteSpace } from '../../extensions/string'
 import { CONSTANTS } from '../../features/Kyber/constants'
 import { isModalOpen, toggleModal } from '../../features/Kyber/Servers/serversSlice'
+
+import './styles.scss'
 
 const MODS_SEARCH = 'https://www.nexusmods.com/starwarsbattlefront22017/search/?gsearchtype=mods&gsearch='
 const MODS_ICON = 'https://images.nexusmods.com/favicons/ReskinOrange/favicon-16x16.png'
@@ -28,10 +30,12 @@ export function Modal({modalServer}: ModalProps) {
   const status = useAppSelector(isModalOpen)
   const className = `modal${status ? ' open' : ''}`
 
-  document.body.style.overflow = 'hidden'
+  document.body.style.overflow = status ? 'hidden' : 'unset'
 
   const [faction, setFaction] = useState(Side.Light)
   const [password, setPassword] = useState('')
+
+  
 
   async function joinServer(id: string, faction: Side, password: string): Promise<void> {
     const data: PlayRequest = { id, faction: +faction, password: password ?? '' }

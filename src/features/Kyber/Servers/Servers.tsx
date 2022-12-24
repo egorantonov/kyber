@@ -46,8 +46,10 @@ export function KyberServers() {
   }, [liveUpdate])
 
   return (
-    <div style={{ marginTop: 75 }}>
-      <Modal modalServer={modalServer} />
+    <div style={{ marginTop: 25 }}>
+      <div>
+        <Modal modalServer={modalServer} />
+      </div>
       <div>
         <input
           type="checkbox"

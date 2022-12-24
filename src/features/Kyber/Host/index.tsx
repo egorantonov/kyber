@@ -102,7 +102,14 @@ export function Host() {
   return(
     <div id="host">
       <form id="form-host">
-        <div>
+        <div style={{
+          margin: 10, 
+          padding: 10,
+          backgroundColor: 'var(--bg-color-substrate)', 
+          backdropFilter: 'blur(10px)',
+          border: '1px solid var(--color-substrate)',
+          borderRadius: 5
+        }}>
           <p>{t('features.host.form.settings')}</p>
           <Mode mode={mode} setMode={setMode} />
           <Map map={map} setMap={setMap} selectedMode={mode} />
@@ -115,7 +122,7 @@ export function Host() {
           <Faction faction={faction} setFaction={setFaction} />        
           <Proxies proxies={proxies} proxyIp={proxyIp} setProxyIp={setProxyIp} />
           <MaxPlayers maxPlayers={maxPlayers} setMaxPlayers={setMaxPlayers} />
-          <input type="button" value="Host" onClick={(e) => handleSubmit(e)} />
+          <button type="button" value="Host" onClick={(e) => handleSubmit(e)} >Host</button>
         </div>
       </form>
     </div>

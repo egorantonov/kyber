@@ -1,15 +1,12 @@
 @import '../../styles/common.scss';
 
 .header {
-  // position: fixed;
-  // top: 0;
   width: 100%;
   margin: 0px;
   padding: 0px;
-  backdrop-filter: saturate(180%) blur(15px);
   height: $header_height;
-  // background: var(--bgheader);
-  background-color: #666 ;
+  background-color: var(--bg-color-alpha);
+  // backdrop-filter: saturate(180%) blur(15px);
   display: flex;
   align-items: center;
   justify-content: space-between;
