@@ -53,6 +53,9 @@
         "property": "Property",
         "does not meet minimum length of 1": "does not meet minimum length of 1"
       }
+    },
+    "status": {
+      "message": "Hmmm... Kyber API seems to be down. Try open <1>Kyber official site</1> or check status on <3>Discord server</3>"
     }
   },
   "messages": {
@@ -63,6 +66,9 @@
     "dark": "dark",
     "light": "light",
     "system": "system"
+  },
+  "header": {
+    "offline": "is offline"
   },
   "nav": {
     "servers": "servers",

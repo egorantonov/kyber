@@ -19,3 +19,14 @@
 .header__logo {
   height: calc($header_height/2);
 }
+
+.status {
+  color: #b60101;
+  animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

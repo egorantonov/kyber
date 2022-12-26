@@ -1,4 +1,4 @@
-$header_height: 64px;
+$header_height: 32px;
 $nav_height: 32px;
 $main_shift: calc($header_height + $nav_height);
 
@@ -14,6 +14,7 @@ a {
     color: var(--highlight-active)
   }
 }
+
 
 // TODO: rewrite to use on mobile
 header {

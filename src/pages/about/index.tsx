@@ -3,7 +3,7 @@ import { Counter } from '../../features/counter/Counter'
 import { useTranslation } from 'react-i18next'
 
 export function AboutPage() {
-  const { t, i18n } = useTranslation('translation')
+  const { t } = useTranslation('translation')
   return (
     <div id="page-about">
       <h1>{t('pages.about.title')}</h1>

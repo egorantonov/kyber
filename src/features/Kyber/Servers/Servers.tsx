@@ -67,7 +67,7 @@ export function KyberServers() {
         onClick={() => dispatch(fetchServersAsync(debug))}>
         Fetch
       </button>
-      {status === Status.Loading ? '🔄' : '✅'}
+      {status === Status.Loading ? '🔄' : status === Status.Idle ? '✅' : '❌'}
       <div className='container'>
         {foundServersMessage}
         {servers.length > 0 && servers.map((s) => { 

@@ -64,7 +64,7 @@ export function KyberConfig() {
   const initialConfig: KyberConfigResponse = {}
   const initialClient: Partial<CloudflareTrace> = {}
 
-  const { t, i18n } = useTranslation('translation')
+  const { t } = useTranslation('translation')
   const [client, setClient] = useState(initialClient)
   const [config, setConfig] = useState(initialConfig)
 

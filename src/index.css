@@ -15,17 +15,17 @@
 }
 
 :root[data-theme=dark] {
-  --bg-img: url("../assets/bg-desktop-dark.webp");
+  --bg-img: url("./assets/bg-desktop-dark.webp");
   --bg-img-set: image-set(
-    url("../assets/bg-desktop-dark.webp") type("image/webp"),
-    url("../assets/bg-desktop-dark.jpg") type("image/jpeg"));
+    url("./assets/bg-desktop-dark.webp") type("image/webp"),
+    url("./assets/bg-desktop-dark.jpg") type("image/jpeg"));
 }
 
 :root[data-theme=light] {
-  --bg-img: linear-gradient(#fffa, #fff7), url("../assets/bg-desktop-light.webp");
+  --bg-img: linear-gradient(#fffa, #fff7), url("./assets/bg-desktop-light.webp");
   --bg-img-set: linear-gradient(#fffa, #fff7), image-set(    
-    url("../assets/bg-desktop-light.webp") type("image/webp"),
-    url("../assets/bg-desktop-light.jpg") type("image/jpeg"));
+    url("./assets/bg-desktop-light.webp") type("image/webp"),
+    url("./assets/bg-desktop-light.jpg") type("image/jpeg"));
 
   --bg-color-alpha: #fff7; 
   --bg-color: #ddd;
@@ -58,6 +58,7 @@ body {
   background-size: cover;
   background-origin: padding-box;
   background-clip: border-box;
+  overflow-y: scroll;
 }
 
 code {

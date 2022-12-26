@@ -5,6 +5,8 @@ import { MODES } from '../../data/modes'
 import { isNullOrWhiteSpace } from '../../extensions/string'
 import { setModalServer, toggleModal } from '../../features/Kyber/Servers/serversSlice'
 
+import pic from '../../assets/bg-desktop-light.webp'
+
 const IMG_URL_PREFIX = 'https://kyber.gg/static/images/maps/'
 const IMG_URL_POSTFIX = '.jpg'
 
@@ -56,6 +58,7 @@ export function Server({server}: KyberServerProps) {
   const mode = getMode(server.mode)
   const host = getHost(server.host)
   const image = mapImage(server.map)
+  //const srcset = `${image} 1920w` // TODO: fix after Kyber is online
 
   return(
     <div key={server.id}
@@ -70,7 +73,8 @@ export function Server({server}: KyberServerProps) {
         margin: 10,
       }} > 
       <div className='server-image-container' style={{display: 'inline-block', margin: 10}}>
-        <img src={image} alt={map} style={{width: 160, height: 90}}/>
+        {/* TODO: fix src={image} after Kyber is online */}
+        <img srcSet={pic} src={image} alt={map} style={{width: 160, height: 90}}/>
       </div>
       <div className='server-data-container-1' style={{display: 'inline-block', margin: 10}}>
         <p>{server.requiresPassword && '🔐'}<b>{server.name?.toUpperCase()}</b> {host}</p>

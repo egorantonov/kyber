@@ -14,6 +14,7 @@ import { initializeTheme } from './contexts/ThemeContext'
 import { useEffect, useLayoutEffect } from 'react'
 import { useAppDispatch } from './app/hooks'
 import { fetchProxiesAsync } from './features/Kyber/Servers/serversSlice'
+import { KyberStatus } from './features/Status'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -30,6 +31,7 @@ function App() {
     <div className="App">
       <header>
         <Header />
+        <KyberStatus />
         <Nav />        
       </header>
       <main>

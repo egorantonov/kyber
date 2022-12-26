@@ -1,0 +1,65 @@
+@import '../../styles/common.scss';
+
+.status {
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+
+  display: flex;
+  height: $header_height;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-highlight);
+  backdrop-filter: blur(10px);  
+  //z-index: 0;
+}
+
+.shown {
+  animation: slide-open .5s ease-in-out;
+}
+
+.closed {
+  opacity: 0;
+  animation: slide-close .5s ease-in-out;
+  top: -$header_height;
+}
+
+@keyframes slide-open {
+  0% {
+      opacity: 0;
+      transform: translate(0, -$header_height);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-close {
+  0% {
+      opacity: 1;
+      transform: translate(0, $header_height);
+  }
+
+  100% {
+      opacity: 0;
+      transform: translate(0, -$header_height);
+  }
+}
+
+.image {
+  display: none;
+}
+
+.info {
+  cursor: help;
+  padding: 0 15px;
+}
+
+.close {
+  cursor: pointer;
+  padding: 0 15px;
+}
+

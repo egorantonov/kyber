@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import counterReducer from '../features/counter/counterSlice'
 import serversReducer from '../features/Kyber/Servers/serversSlice'
+import kyberApiStatusReducer from '../features/Status/statusSlice'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-    servers: serversReducer
+    servers: serversReducer,
+    kyberApiStatus: kyberApiStatusReducer
   },
 })
 

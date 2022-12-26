@@ -1,0 +1,7 @@
+a {
+  &.external {
+    &::after {
+      content: "↗";
+    }
+  }
+}
