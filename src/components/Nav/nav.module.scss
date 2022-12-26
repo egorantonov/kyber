@@ -5,8 +5,14 @@ nav {
 }
 
 .nav {
-  height: $nav_height;
-  
+  //height: $nav_height;
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav {
+    justify-content: space-evenly;
+  }
 }
 
 .link {
@@ -23,10 +29,23 @@ nav {
   border-radius: 2px;
   transition: all 250ms;
   text-decoration: none;
-  display: inline-block; // temp
 
   &:hover, &:focus {
     border-bottom: 3px solid var(--highlight-hover);
+  }
+}
+
+@media only screen and (max-width: 1270px) {
+  .link {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .link {
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 12px;
   }
 }
 

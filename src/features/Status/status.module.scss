@@ -7,7 +7,7 @@
 
 
   display: flex;
-  height: $header_height;
+  min-height: $header_height;
   justify-content: space-between;
   align-items: center;
   background-color: var(--bg-highlight);
@@ -18,13 +18,14 @@
 .shown {
   animation: slide-open .5s ease-in-out;
 }
-
+// TODO: bug for mobile
 .closed {
   opacity: 0;
   animation: slide-close .5s ease-in-out;
   top: -$header_height;
 }
 
+// TODO: bug for mobile
 @keyframes slide-open {
   0% {
       opacity: 0;

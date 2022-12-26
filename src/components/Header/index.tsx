@@ -1,10 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import style from './header.module.scss'
-import logo from '../../logo.svg'
 import { useAppSelector } from '../../app/hooks'
 import { getKyberApiStatus, KyberApiStatus } from '../../features/Status/statusSlice'
 import { useTranslation } from 'react-i18next'
+
+import style from './header.module.scss'
+import '../../styles/grid.scss'
+import logo from '../../logo.svg'
 
 function Clock() {
 
@@ -41,18 +43,18 @@ export function Header() {
 
   return (
     <>
-      <ul id="header" className={`${style.header}`}>
-        <li className="c s2 m2 l2 text-start">          
-          <a href="https://kyber.gg/servers" target="_blank" rel="noreferrer">
+      <ul id="header" className={`r ${style.header}`}>
+        <li className="c s4 m4 l4 text-start">          
+          <a href="https://kyber.gg/servers" target="_blank" rel="noreferrer" className={style.padleft}>
             <img src={logo} alt="logo" className={style.header__logo} />
             <span> Kyber </span>
           </a><span className={style.status}>{status === KyberApiStatus.Unavailable && t('header.offline')}</span>
         </li>
-        <li className="c s2 m2 l2 text-center">
+        <li className="c s4 m4 l4 text-center">
           <Clock />
         </li>
-        <li className="c s2 m2 l2 text-end">
-          <a href="https://github.com/egorantonov" target="_blank" rel="noreferrer">EYEMVX</a>
+        <li className="c s4 m4 l4 text-end">
+          <a href="https://github.com/egorantonov" target="_blank" rel="noreferrer" className={style.padright}>EYEMVX</a>
         </li>
       </ul>
     </>

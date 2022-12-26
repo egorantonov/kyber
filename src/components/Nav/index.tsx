@@ -9,7 +9,8 @@ export function Nav() {
   }
 
   return (
-    <nav>
+    // TODO: add rows/columns style
+    <nav className={style.nav}> 
       <NavLinkPersist className={className} to='/'>{t('nav.servers')}</NavLinkPersist>
       <NavLinkPersist className={className} to='/download'>{t('nav.download')}</NavLinkPersist>
       <NavLinkPersist className={className} to='/host'>{t('nav.host')}</NavLinkPersist>
