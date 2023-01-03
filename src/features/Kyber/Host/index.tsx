@@ -16,6 +16,15 @@ import { Balance } from './Components/Balance'
 import { Faction } from './Components/Faction'
 import { Proxies } from './Components/Proxies'
 import { MaxPlayers } from './Components/Players'
+import { url } from 'inspector'
+
+// TODO: move to global constants
+const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
+const IMG_URL_POSTFIX = '.jpg'
+
+function mapImage(value?: string): string {
+  return IMG_URL_PREFIX + value?.replaceAll('/', '-') + IMG_URL_POSTFIX
+}
 
 function processResponse(apiResponse: ApiResponse<HostKyberServerResponse>, t: any) {
   
@@ -99,18 +108,23 @@ export function Host() {
       .catch((e) => console.log(e))
   }
 
+  const imageUrl = mapImage(map)
+
   return(
     <div id="host">
       <form id="form-host">
         <div className="bd-filter-blur-10" style={{
           margin: 10, 
           padding: 10,
-          backgroundColor: 'var(--bg-color-substrate)', 
+          // backgroundColor: 'var(--bg-color-substrate)', 
+          background: `linear-gradient(90deg, var(--bg-color), var(--bg-color-substrate)), url(${imageUrl}) center center / cover`,          
           border: '1px solid var(--color-substrate)',
           borderRadius: 5
         }}>
+          {/* TODO: img is not updated after mode changed */}
+          <img style={{width: 80, height: 45}} src={mapImage(map)} alt={map} />
           <p>{t('features.host.form.settings')}</p>
-          <Mode mode={mode} setMode={setMode} />
+          <Mode mode={mode} setMode={setMode}  />
           <Map map={map} setMap={setMap} selectedMode={mode} />
           <Name setName={setName} />
           <Password setPassword={setPassword} />
