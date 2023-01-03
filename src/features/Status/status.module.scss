@@ -4,23 +4,39 @@
   position: absolute;
   top: 0;
   width: 100%;
-
-
   display: flex;
   min-height: $header_height;
   justify-content: space-between;
   align-items: center;
   background-color: var(--bg-highlight);
   backdrop-filter: blur(10px);  
-  //z-index: 0;
 }
+
+.text {
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 1270px) {
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .text {
+    font-size: 12px;    
+    white-space: nowrap;
+    overflow-x: scroll;    
+  }
+}
+
 
 .shown {
   animation: slide-open .5s ease-in-out;
 }
 // TODO: bug for mobile
 .closed {
-  opacity: 0;
+  //opacity: 0;
   animation: slide-close .5s ease-in-out;
   top: -$header_height;
 }

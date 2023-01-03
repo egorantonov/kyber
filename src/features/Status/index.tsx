@@ -11,7 +11,7 @@ export function KyberStatus() {
   const [visible, setVisible] = useState(true)
   const dispatch = useAppDispatch()
   const status = useAppSelector(getKyberApiStatus)
-  const className = `${style.status} ${visible ? style.closed : ''}`
+
   function onLoad() {
     dispatch(setKyberApiStatus(KyberApiStatus.Ok))
   }
@@ -35,9 +35,9 @@ export function KyberStatus() {
       {status === KyberApiStatus.Unavailable && (
         <div className={`${style.status} ${visible ? style.shown : style.closed}`}>
           <div className={style.info}>
-            🛈
+            ⚠
           </div>
-          <div>
+          <div className={style.text}>
             <Trans i18nKey="features.status.message">
               Hmmm... Kyber API seems to be down. Try open 
               <ExternalLink href={KYBER_API.hostName}>Kyber official site</ExternalLink>
