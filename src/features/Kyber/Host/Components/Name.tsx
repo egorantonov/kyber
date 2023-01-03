@@ -9,9 +9,10 @@ export function Name({setName}: NameProps) {
   const { t } = useTranslation('translation')
 
   return(
-    <div className="input-name">
-      <label htmlFor="input-name">{t('features.host.form.name')}: </label>
-      <input id="input-name" type="text" required={true} placeholder="Required" onChange={(e) => setName(e.target.value)}></input>
+    <div className="r start input-name">
+      <label className="c s5 m4 l2" htmlFor="input-name">{t('features.host.form.name')}: </label>
+      <input className="c s5 m4 l3" id="input-name" type="text" required={true} placeholder="Required" 
+        onChange={(e) => setName(e.target.value)} />
     </div>
   )
 }

@@ -117,12 +117,12 @@ export function Host() {
           margin: 10, 
           padding: 10,
           // backgroundColor: 'var(--bg-color-substrate)', 
-          background: `linear-gradient(90deg, var(--bg-color), var(--bg-color-substrate)), url(${imageUrl}) center center / cover`,          
+          background: `linear-gradient(90deg, var(--bg-color), var(--bg-color-alpha), var(--bg-color-substrate)), url(${imageUrl}) center center / cover`,          
           border: '1px solid var(--color-substrate)',
           borderRadius: 5
         }}>
           {/* TODO: img is not updated after mode changed */}
-          <img style={{width: 80, height: 45}} src={mapImage(map)} alt={map} />
+          <img style={{width: 80, height: 45, borderRadius: 5}} src={mapImage(map)} alt={map} />
           <p>{t('features.host.form.settings')}</p>
           <Mode mode={mode} setMode={setMode}  />
           <Map map={map} setMap={setMap} selectedMode={mode} />

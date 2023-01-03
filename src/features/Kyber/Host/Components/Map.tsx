@@ -38,9 +38,9 @@ export function Map({map, selectedMode, setMap}: MapsProps) {
   const { t } = useTranslation('translation')
 
   return (
-    <div className="input-maps">
-      <label htmlFor="input-maps">{t('features.host.form.map')}: </label>
-      <select value={map} id="input-maps" name="input-maps" onChange={(e) => setMap(e.target.value)}>
+    <div className="r start input-maps">
+      <label className="c s5 m4 l2" htmlFor="input-maps">{t('features.host.form.map')}: </label>
+      <select className="c s5 m4 l3" value={map} id="input-maps" name="input-maps" onChange={(e) => setMap(e.target.value)}>
         {getModeMaps(selectedMode).map((m) => ( 
           <option key={m.map} value={m.map}>{m.name}</option>
         ))}
