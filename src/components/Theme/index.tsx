@@ -5,7 +5,7 @@ import { changeTheme, getTheme, SYSTEM, THEMES } from '../../contexts/ThemeConte
 const SWITCHES = THEMES.concat(SYSTEM)
 
 export const Theme = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const initialTheme = getTheme()
   const [theme, setTheme] = useState(initialTheme)
   const localStorageDisabled = !window?.localStorage
@@ -17,23 +17,25 @@ export const Theme = () => {
   return (
     <div>
       <p>{t('theme.title')}</p>
-      {SWITCHES.map((x) => (
-        <Fragment key={x}>
-          <input
-            className="radio"
-            type="radio"
-            name="password"
-            id={x}
-            value={x}
-            checked={x === theme}
-            disabled={localStorageDisabled}
-            onChange={(e) => setTheme(e.target.value)} 
-          />
-          <label htmlFor={x}>{t(`theme.${x}`).toLocaleUpperCase()}</label>
-        </Fragment>
-      ))}
+      <div className="radio-wrapper filter-switch">    
+        {SWITCHES.map((x) => (
+          <div className="filter-switch-item" key={x}>
+            <input
+              className="radio"
+              type="radio"
+              name="password"
+              id={x}
+              value={x}
+              checked={x === theme}
+              disabled={localStorageDisabled}
+              onChange={(e) => setTheme(e.target.value)} 
+            />
+            <label htmlFor={x}>{t(`theme.${x}`).toLocaleUpperCase()}</label>
+          </div>
+        ))}
+      </div>
       {localStorageDisabled && (
-        <p>{t('messages.localStorageDisabled')}</p>
+        <p style={{color: 'var(--highlight)'}}>{t('messages.localStorageDisabled')}</p>
       )}
     </div>
 

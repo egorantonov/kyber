@@ -1,13 +1,19 @@
+@import "../../styles/common.scss";
+
 .modal {
     position: fixed;
     background-color: var(--bg-color-substrate);
     opacity: 0;
-    pointer-events: none;
+    pointer-events: auto;
     display: grid;
+    overflow-y: visible;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    inset: 0;
+    padding-top: 10px;
+    //inset: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; //desktop only
     z-index: 100;
     transition-property: all;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
@@ -17,8 +23,29 @@
         opacity: 1;
         backdrop-filter: blur(25px);
         pointer-events: auto;
+        overflow: hidden;
     }
   }
+
+@media only screen and (max-width: 1270px) {
+    .modal {
+      font-size: 14px;
+      padding-top: 5px;
+    }
+  }
+  
+@media only screen and (max-width: 600px) {
+    .modal {
+      font-size: 12px;  
+      padding-top: 0;
+    }
+  }
+
+.modal-header {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
 
 // rewrite/remove? its for server.mods details block
 .server-mods-details-content {
@@ -29,6 +56,12 @@
   margin: 10px;
   padding: 5px;
   overflow-y: scroll;
-  max-height: 150px;
+  max-height: 19ex;
   height: min-content;
+}
+
+@media only screen and (max-width: 1270px) {
+  .server-mods-details-content {
+    max-height: 11.5ex;
+  }
 }

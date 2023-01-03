@@ -16,12 +16,10 @@ a {
 }
 
 
-// TODO: rewrite to use on mobile
 header {
   position: fixed;
   top: 0px;
   width: 100%;
-  //  background-color: var(--color-substrate);
   backdrop-filter: blur(10px);
   z-index: 10;
 }
@@ -73,4 +71,61 @@ ul {
 
 .bd-filter-blur-10 {
   backdrop-filter: blur(10px);
+}
+
+@media only screen and (max-width: 1270px) {
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .text {
+    font-size: 12px;  
+  }
+}
+
+.radio-wrapper {
+  width: fit-content;
+  padding: 5px;
+  display: flex;
+  border-radius: 10px;
+  background-color: #fff3;
+}
+
+.filter-switch-item {
+  
+  label {
+    font-size: 14px;
+    box-shadow: #fff3 0px 1px 3px 0px;
+    margin: 2px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 7px;
+  }
+
+  input {
+    display: none; // TODO: tabulation is broken if display: none
+  }
+
+  input:checked + label {
+    background-color: var(--bg-highlight);
+  }
+
+  input:not(:checked) + label {
+    color: #fffc;
+    --bg-opacity: 0;
+    box-shadow: none;
+  }
+}
+
+.filter-switch label {
+  display: flex;
+  cursor: pointer;
+}
+
+
+.filter-switch-item input:not(:checked) + label {
+  color: var(--labelnotcheckedcolor);
+  --bg-opacity: 0;
+  box-shadow: none;
 }

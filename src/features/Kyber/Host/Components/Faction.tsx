@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { Side } from '../../../../data/models'
 
+const sides = [Side.Light, Side.Dark]
+
 interface FactionProps {
   faction: number,
   setFaction: any
@@ -12,12 +14,22 @@ export function Faction({faction, setFaction}: FactionProps) {
   return(
     <div className="input-faction">
       {t('features.host.form.faction')}:
-      <input type="radio" id="faction-light" name="faction" value={Side.Light} checked={faction === Side.Light} 
-        onChange={() => setFaction(Side.Light)}/>
-      <label htmlFor="faction-light">{t(`common.side.${Side[Side.Light]}`)}</label>
-      <input type="radio" id="faction-dark" name="faction" value={Side.Dark} checked={faction === Side.Dark}
-        onChange={() => setFaction(Side.Dark)}/>
-      <label htmlFor="faction-dark">{t(`common.side.${Side[Side.Dark]}`)}</label>
+      <div className='radio-wrapper filter-switch'>
+        {sides.map((x) => (
+          <div className="filter-switch-item" key={x}>
+            <input
+              className="radio"
+              type="radio"
+              name="faction"
+              id={Side[x]}
+              value={x}
+              checked={faction === x}
+              onChange={(e) => setFaction(+e.target.value)}
+            />
+            <label htmlFor={Side[x]}>{t(`common.side.${Side[x]}`).toLocaleUpperCase()}</label>
+          </div>
+        ))}  
+      </div>
     </div>
   )
 }

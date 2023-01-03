@@ -102,6 +102,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
   {
     id: '3832a9b0273dd57030eb223876505bf3',
     name: 'Star Fight of the Fights',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     map: 'Levels/Space/SB_Endor_01/SB_Endor_01',
     mode: 'Mode7',
     mods: [

@@ -1,6 +1,6 @@
 import { KyberApi } from './models'
 
-const KYBER = 'https://kybers.gg'
+const KYBER = 'https://kyber.gg'
 const API = `${KYBER}/api`
 const API_SERVERS = `${API}/servers?page=`
 const API_PROXIES = `${API}/proxies`

@@ -41,8 +41,6 @@ function getHost(value?: string): string {
   return ` by 👤${value}`
 }
 
-
-
 export interface KyberServerProps {
   server: KyberServer
 }
@@ -69,12 +67,13 @@ export function Server({server}: KyberServerProps) {
       }}
       style={{
         border: '1px solid #ccc', 
+        borderRadius: 10,
         backgroundColor: 'var(--bg-color-substrate)',
         margin: 10,
       }} > 
       <div className='server-image-container' style={{display: 'inline-block', margin: 10}}>
-        <object style={{width: 160, height: 90}} data={image} type="image/jpg" title={map} >
-          <img style={{width: 160, height: 90}} src={pic} alt={map} />
+        <object style={{width: 128, height: 72, borderRadius: 7}} data={image} type="image/jpg" title={map} >
+          <img style={{width: 128, height: 72}} src={pic} alt={map} />
         </object>
       </div>
       <div className='server-data-container-1' style={{display: 'inline-block', margin: 10}}>

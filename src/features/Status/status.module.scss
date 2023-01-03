@@ -16,15 +16,8 @@
   font-size: 16px;
 }
 
-@media only screen and (max-width: 1270px) {
-  .text {
-    font-size: 14px;
-  }
-}
-
 @media only screen and (max-width: 600px) {
-  .text {
-    font-size: 12px;    
+  .text {   
     white-space: nowrap;
     overflow-x: scroll;    
   }
