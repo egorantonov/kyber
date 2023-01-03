@@ -80,7 +80,7 @@ export function Modal({ modalServer }: ModalProps) {
       </div>
 
       {/* BODY */}
-      <div >
+      <div className='modal-body'>
         <div>{modalServer?.description}</div>
         <div>{CONSTANTS.KYBER.JOIN_SERVER_MESSAGE}</div>
 
@@ -140,7 +140,7 @@ export function Modal({ modalServer }: ModalProps) {
       </div>
 
       {/* BUTTONS */}
-      <div style={{ margin: '0 auto' }}>
+      <div className='modal-buttons'>
         <button className="submit-button bd-filter-blur-5" disabled={!!modalServer && !!modalServer.requiresPassword && isNullOrWhiteSpace(password)}
           onClick={() => !!modalServer && joinServer(modalServer.id, faction, password)}>
           {CONSTANTS.BUTTON.JOIN}

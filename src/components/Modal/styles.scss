@@ -9,7 +9,6 @@
     overflow-y: visible;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
     //inset: 0;
     top: 0;
     width: 100%;
@@ -30,21 +29,28 @@
 @media only screen and (max-width: 1270px) {
     .modal {
       font-size: 14px;
-      padding-top: 5px;
     }
   }
   
 @media only screen and (max-width: 600px) {
     .modal {
       font-size: 12px;  
-      padding-top: 0;
     }
   }
 
 .modal-header {
+  margin: 10px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+
+.modal-body {
+  margin: 10px;
+}
+
+.modal-buttons {
+  margin: 0 auto;
 }
 
 // rewrite/remove? its for server.mods details block
