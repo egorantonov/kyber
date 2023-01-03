@@ -1,3 +1,4 @@
+import { KYBER_API } from '../api/endpoints'
 import { KyberServer } from '../api/models'
 
 export const FAKE_RESPONSE: KyberServer[] = [
@@ -48,7 +49,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '165.232.149.242',
       name: 'San Francisco - US',
-      flag: 'https://kyber.gg/static/images/flags/us.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/us.svg`,
     },
   },
   {
@@ -95,7 +96,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '167.99.178.133',
       name: 'Toronto - Canada',
-      flag: 'https://kyber.gg/static/images/flags/ca.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/ca.svg`,
     },
   },
   {
@@ -128,7 +129,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '178.62.116.145',
       name: 'London - UK',
-      flag: 'https://kyber.gg/static/images/flags/gb.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/gb.svg`,
     },
   },
   {
@@ -156,7 +157,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '167.99.178.133',
       name: 'Toronto - Canada',
-      flag: 'https://kyber.gg/static/images/flags/ca.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/ca.svg`,
     },
   },
   {
@@ -176,7 +177,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '207.154.197.74',
       name: 'Frankfurt - Germany',
-      flag: 'https://kyber.gg/static/images/flags/de.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/de.svg`,
     },
   },
   {
@@ -203,7 +204,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '188.166.209.46',
       name: 'Singapore - Asia',
-      flag: 'https://kyber.gg/static/images/flags/sg.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/sg.svg`,
     },
   },
   {
@@ -235,7 +236,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '45.76.117.215',
       name: 'Sydney - Australia',
-      flag: 'https://kyber.gg/static/images/flags/au.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/au.svg`,
     },
   },
   {
@@ -255,7 +256,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '165.232.149.242',
       name: 'San Francisco - US',
-      flag: 'https://kyber.gg/static/images/flags/us.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/us.svg`,
     },
   },
   {
@@ -275,7 +276,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     proxy: {
       ip: '207.154.197.74',
       name: 'Frankfurt - Germany',
-      flag: 'https://kyber.gg/static/images/flags/de.svg',
+      flag: `${KYBER_API.hostName}/static/images/flags/de.svg`,
     },
   },
 ]

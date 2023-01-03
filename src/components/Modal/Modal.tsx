@@ -143,11 +143,11 @@ export function Modal({modalServer}: ModalProps) {
         </div>
       </div>
       <div style={{ margin: '0 auto' }}>
-        <button className="submit-button" disabled={!!modalServer && !!modalServer.requiresPassword && isNullOrWhiteSpace(password)}
+        <button className="submit-button bd-filter-blur-5" disabled={!!modalServer && !!modalServer.requiresPassword && isNullOrWhiteSpace(password)}
           onClick={() => !!modalServer && joinServer(modalServer.id, faction, password)}>
           {CONSTANTS.BUTTON.JOIN}
         </button>
-        <button className="submit-button" onClick={() => closeServer()}>{CONSTANTS.BUTTON.CLOSE}</button>
+        <button className="submit-button bd-filter-blur-5" onClick={() => closeServer()}>{CONSTANTS.BUTTON.CLOSE}</button>
       </div>
     </div>
   )

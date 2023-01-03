@@ -7,11 +7,10 @@ export function AboutPage() {
   return (
     <div id="page-about">
       <h1>{t('pages.about.title')}</h1>
-      <div style={{
+      <div className="bd-filter-blur-10" style={{
         margin: 10, 
         padding: 10,
         backgroundColor: 'var(--bg-color-substrate)', 
-        backdropFilter: 'blur(10px)',
         border: '1px solid var(--color-substrate)',
         borderRadius: 5
       }}>

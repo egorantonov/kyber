@@ -8,6 +8,7 @@ export interface ApiResponse<T> {
 }
 
 export interface KyberApi {
+  hostName: string,
   servers: string,
   proxies: string,
   config: string,

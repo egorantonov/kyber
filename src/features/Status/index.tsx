@@ -5,6 +5,7 @@ import style from './status.module.scss'
 import { useState } from 'react'
 import { Trans } from 'react-i18next'
 import ExternalLink from '../../components/ExternalLink'
+import { KYBER_API } from '../../api/endpoints'
 
 export function KyberStatus() {
   const [visible, setVisible] = useState(true)
@@ -26,7 +27,7 @@ export function KyberStatus() {
     <div id="kyber-status-wrapper" >
       <img id='check-kyber-api'
         className={style.image}
-        src="https://kyber.gg/logo.svg"
+        src={`${KYBER_API.hostName}/logo.svg`}
         width={0} height={0}        
         onLoad={() => onLoad()}
         onError={() => onError()}
@@ -39,7 +40,7 @@ export function KyberStatus() {
           <div>
             <Trans i18nKey="features.status.message">
               Hmmm... Kyber API seems to be down. Try open 
-              <ExternalLink href="https://kyber.gg">Kyber official site</ExternalLink>
+              <ExternalLink href={KYBER_API.hostName}>Kyber official site</ExternalLink>
               or check status on 
               <ExternalLink href="https://discord.com/channels/305338604316655616/922585403180089344">
                 Discord server

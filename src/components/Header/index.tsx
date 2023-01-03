@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import style from './header.module.scss'
 import '../../styles/grid.scss'
 import logo from '../../logo.svg'
+import { KYBER_API } from '../../api/endpoints'
 
 function Clock() {
 
@@ -45,7 +46,7 @@ export function Header() {
     <>
       <ul id="header" className={`r ${style.header}`}>
         <li className="c s4 m4 l4 text-start">          
-          <a href="https://kyber.gg/servers" target="_blank" rel="noreferrer" className={style.padleft}>
+          <a href={`${KYBER_API.hostName}/servers`} target="_blank" rel="noreferrer" className={style.padleft}>
             <img src={logo} alt="logo" className={style.header__logo} />
             <span> Kyber </span>
           </a><span className={style.status}>{status === KyberApiStatus.Unavailable && t('header.offline')}</span>

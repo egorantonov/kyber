@@ -6,8 +6,9 @@ import { isNullOrWhiteSpace } from '../../extensions/string'
 import { setModalServer, toggleModal } from '../../features/Kyber/Servers/serversSlice'
 
 import pic from '../../assets/bg-desktop-light.webp'
+import { KYBER_API } from '../../api/endpoints'
 
-const IMG_URL_PREFIX = 'https://kyber.gg/static/images/maps/'
+const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
 const IMG_URL_POSTFIX = '.jpg'
 
 function mapImage(value?: string): string {
@@ -37,7 +38,7 @@ function getHost(value?: string): string {
     return ''
   }
   
-  return `hosted by 👤${value}`
+  return ` by 👤${value}`
 }
 
 
@@ -58,10 +59,10 @@ export function Server({server}: KyberServerProps) {
   const mode = getMode(server.mode)
   const host = getHost(server.host)
   const image = mapImage(server.map)
-  //const srcset = `${image} 1920w` // TODO: fix after Kyber is online
 
   return(
     <div key={server.id}
+      className="bd-filter-blur-10"
       data-id={server.id} data-img={mapImage(server.map)} 
       onClick={() => {
         openModal(server)
@@ -69,12 +70,12 @@ export function Server({server}: KyberServerProps) {
       style={{
         border: '1px solid #ccc', 
         backgroundColor: 'var(--bg-color-substrate)',
-        backdropFilter: 'blur(10px)',
         margin: 10,
       }} > 
       <div className='server-image-container' style={{display: 'inline-block', margin: 10}}>
-        {/* TODO: fix src={image} after Kyber is online */}
-        <img srcSet={pic} src={image} alt={map} style={{width: 160, height: 90}}/>
+        <object style={{width: 160, height: 90}} data={image} type="image/jpg" title={map} >
+          <img style={{width: 160, height: 90}} src={pic} alt={map} />
+        </object>
       </div>
       <div className='server-data-container-1' style={{display: 'inline-block', margin: 10}}>
         <p>{server.requiresPassword && '🔐'}<b>{server.name?.toUpperCase()}</b> {host}</p>

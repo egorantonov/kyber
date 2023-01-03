@@ -102,11 +102,10 @@ export function Host() {
   return(
     <div id="host">
       <form id="form-host">
-        <div style={{
+        <div className="bd-filter-blur-10" style={{
           margin: 10, 
           padding: 10,
           backgroundColor: 'var(--bg-color-substrate)', 
-          backdropFilter: 'blur(10px)',
           border: '1px solid var(--color-substrate)',
           borderRadius: 5
         }}>
@@ -122,7 +121,7 @@ export function Host() {
           <Faction faction={faction} setFaction={setFaction} />        
           <Proxies proxies={proxies} proxyIp={proxyIp} setProxyIp={setProxyIp} />
           <MaxPlayers maxPlayers={maxPlayers} setMaxPlayers={setMaxPlayers} />
-          <button type="button" value="Host" onClick={(e) => handleSubmit(e)} >Host</button>
+          <button className='bd-filter-blur-5' type="button" value="Host" onClick={(e) => handleSubmit(e)} >Host</button>
         </div>
       </form>
     </div>
