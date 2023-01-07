@@ -48,7 +48,7 @@ export function Header() {
         <li className="c s4 m4 l4 text-start">          
           <a href={`${KYBER_API.hostName}/servers`} target="_blank" rel="noreferrer" className={style.padleft}>
             <img src={logo} alt="logo" className={style.header__logo} />
-            <span> Kyber </span>
+            <span> KYBER </span>
           </a><span className={style.status}>{status === KyberApiStatus.Unavailable && t('header.offline')}</span>
         </li>
         <li className="c s4 m4 l4 text-center">

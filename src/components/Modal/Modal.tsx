@@ -33,7 +33,7 @@ export function Modal({ modalServer }: ModalProps) {
   const status = useAppSelector(isModalOpen)
   const className = `modal${status ? ' open' : ''}`
 
-  document.body.style.overflow = status ? 'hidden' : 'unset'
+  document.body.style.overflowY = status ? 'hidden' : 'scroll'
 
   const [faction, setFaction] = useState(Side.Light)
   const [password, setPassword] = useState('')

@@ -19,25 +19,27 @@ nav {
   appearance: none;
   font-size: 24px;
   text-transform: uppercase;
-  padding-left: 12px;
-  padding-right: 12px;
+  text-decoration: none;
+  text-align: center;  
+  width: 175px;
   outline: none;
   border: 2px solid transparent;
+  border-radius: 2px;
   color: var(--color);
   padding-bottom: 4px;
   cursor: pointer;
-  border-radius: 2px;
   transition: all 250ms;
-  text-decoration: none;
 
-  &:hover, &:focus {
-    border-bottom: 3px solid var(--highlight-hover);
+  &:hover, &:focus {    
+    text-shadow: 0 0 10px var(--highlight-alpha);
+    border-bottom: 2px solid var(--highlight-hover);
   }
 }
 
 @media only screen and (max-width: 1270px) {
   .link {
-    font-size: 28px;
+    font-size: 18px;    
+    width: 125px;
   }
 }
 

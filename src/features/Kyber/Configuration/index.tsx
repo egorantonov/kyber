@@ -136,7 +136,7 @@ export function KyberConfig() {
           {/* TODO: share server by its id */}
           <tr>
             <td><b>ID</b>:</td>
-            <td> {config.CLIENT_OPTIONS?.SERVER_ID} <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a></td>
+            <td style={{wordBreak: 'break-word'}}> {config.CLIENT_OPTIONS?.SERVER_ID} <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a></td>
           </tr>
           <tr>
             <td><b>NAME</b>:</td>
