@@ -16,7 +16,7 @@ import { Balance } from './Components/Balance'
 import { Faction } from './Components/Faction'
 import { Proxies } from './Components/Proxies'
 import { MaxPlayers } from './Components/Players'
-import { url } from 'inspector'
+import style from './host.module.scss'
 
 // TODO: move to global constants
 const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
@@ -112,15 +112,12 @@ export function Host() {
 
   return(
     <div id="host">
-      <form id="form-host">
-        <div className="bd-filter-blur-10" style={{
-          margin: 10, 
-          padding: 10,
-          // backgroundColor: 'var(--bg-color-substrate)', 
-          background: `linear-gradient(90deg, var(--bg-color), var(--bg-color-alpha), var(--bg-color-substrate)), url(${imageUrl}) center center / cover`,          
-          border: '1px solid var(--color-substrate)',
-          borderRadius: 5
-        }}>
+      <form id="form-host" >
+        <div className={`${style.form} bd-filter-blur-10`}
+          style={{
+            background: `linear-gradient(90deg, var(--bg-color), var(--bg-color-alpha), var(--bg-color-substrate)),
+            url(${imageUrl}) center center / cover`,          
+          }}>
           {/* TODO: img is not updated after mode changed */}
           <img style={{width: 80, height: 45, borderRadius: 5}} src={mapImage(map)} alt={map} />
           <p>{t('features.host.form.settings')}</p>

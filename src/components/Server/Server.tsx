@@ -4,10 +4,10 @@ import { MAPS } from '../../data/maps'
 import { MODES } from '../../data/modes'
 import { isNullOrWhiteSpace } from '../../extensions/string'
 import { setModalServer, toggleModal } from '../../features/Kyber/Servers/serversSlice'
-
-import pic from '../../assets/bg-desktop-light.webp'
 import { KYBER_API } from '../../api/endpoints'
+import style from './server.module.scss'
 
+const IMG_NEXUS_MOD = 'https://images.nexusmods.com/favicons/ReskinOrange/favicon-16x16.png'
 const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
 const IMG_URL_POSTFIX = '.jpg'
 
@@ -20,7 +20,7 @@ function getMode(value?: string): string {
     return ''
   }
   
-  const result = MODES.find(m => m.mode === value)?.name.toUpperCase() || ''
+  const result = MODES.find(m => m.mode === value)?.name.replaceAll('Versus', 'vs.').toUpperCase() || ''
   return result
 }
 
@@ -38,7 +38,7 @@ function getHost(value?: string): string {
     return ''
   }
   
-  return ` by 👤${value}`
+  return `👤 ${value?.toUpperCase()}`
 }
 
 export interface KyberServerProps {
@@ -57,32 +57,48 @@ export function Server({server}: KyberServerProps) {
   const mode = getMode(server.mode)
   const host = getHost(server.host)
   const image = mapImage(server.map)
+  const name = `${server.requiresPassword ? '🔐 ' : ''}${server.name?.toUpperCase()}`
+  const background = `linear-gradient(135deg, var(--bg-color), var(--bg-color-alpha), #fff0),
+    url(${image}) center center / cover`
 
   return(
     <div key={server.id}
-      className="bd-filter-blur-10"
-      data-id={server.id} data-img={mapImage(server.map)} 
+      className={`r start ${style.server} bd-filter-blur-10`}
       onClick={() => {
         openModal(server)
       }}
       style={{
-        border: '1px solid #ccc', 
-        borderRadius: 10,
-        backgroundColor: 'var(--bg-color-substrate)',
-        margin: 10,
+        background: background,
       }} > 
-      <div className='server-image-container' style={{display: 'inline-block', margin: 10}}>
-        <object style={{width: 128, height: 72, borderRadius: 7}} data={image} type="image/jpg" title={map} >
-          <img style={{width: 128, height: 72}} src={pic} alt={map} />
-        </object>
+      <div className={`c ${style.image_container}`}
+        style={{
+          background: `url(${image}) center center / cover`,
+        }}  >
       </div>
-      <div className='server-data-container-1' style={{display: 'inline-block', margin: 10}}>
-        <p>{server.requiresPassword && '🔐'}<b>{server.name?.toUpperCase()}</b> {host}</p>
-        <p>{mode} on {map}</p>
-      </div>
-      <div className='server-data-container-2' style={{display: 'inline-block', margin: 10}}>
-        <p>mods: {server.mods?.length} 👥 {server.users}/{server.maxPlayers} 🕓 {server.startedAtPretty}</p>
-        <p>location: <img src={server.proxy?.flag} alt="location flag" style={{width: '24px', height: '16px'}}/> {server.proxy?.name} ip: {server.proxy?.ip}</p>
+      <div className={`c ${style.data_container}`}>
+
+        <div className={style.title}><b className={style.b}>{name}</b></div>
+
+        <div className={style.description_container}>
+        
+          <div className={`${style.description} ${style.sub}`}>
+            <div className={style.info}>🎮 {mode}</div>
+            <div className={style.info}> 🌍 {map}</div>
+            <div className={style.info}> {host} </div>
+          </div>
+
+          <div className={`${style.description} ${style.sub}`} title={`IP: ${server.proxy?.ip}`}>          
+            <div className={style.info}>
+              <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> MODS REQUIRED: {server.mods?.length}
+            </div>  
+            <div className={style.info}> 👥 {server.users} / {server.maxPlayers}</div>             
+            <div className={style.info}>
+              <img className={style.image_proxy_flag} loading="lazy" src={server.proxy?.flag} alt="location flag" /> {server.proxy?.name}
+            </div> 
+            <div className={style.info}> 🕓 {server.startedAtPretty}</div>
+
+          </div>
+        </div>
       </div>
     </div>
   )

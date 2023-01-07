@@ -1,0 +1,128 @@
+$width_100vw: 100vw;
+$margin: 10px;
+$height: 130px;
+$breakpoint_tablet: 900px;
+
+.server {
+  max-width: $width_100vw;
+  border-radius: 10px;
+  margin: $margin;
+  height: $height;
+  transition: transform .25s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--bg-color), var(--bg-color)) !important;
+    transform: translateX(5px);
+    transition: transform .25s ease-in-out;  
+  }
+}
+
+@media (max-width: $breakpoint_tablet) {
+  .server {
+    height: 160px;
+  }
+}
+
+@media (max-width: 650px) {
+  .server {
+    height: 160px;
+  }
+}
+
+@media (min-width: 651px) {
+  .server {
+    background: linear-gradient(90deg, var(--bg-color), var(--bg-color-alpha)) !important;
+  }
+}
+
+.image_container {
+  display: block;
+  min-width: calc(2.25*$height);
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+@media (max-width: $breakpoint_tablet) {
+  .image_container {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 650px) {
+  .image_container {
+    display: none;
+  }
+}
+
+.data_container {
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.title {
+  max-width: calc($width_100vw - 4*$margin);
+  margin-bottom: 5px;
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  font-size: 16px;
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: baseline;
+  color: var(--color-tarnished);
+}
+
+@media (max-width: $breakpoint_tablet) {
+  .title {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}
+
+.info {
+  background-color: var(--bg-color-alpha);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 5px;
+  margin: 2px;
+  white-space: nowrap;
+}
+
+.image_nexus_mod {
+  height: 12px;
+  width: 12px;
+  margin-left: 2px;
+  margin-bottom: -2px;
+}
+
+.image_proxy_flag {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--color);
+  border-radius: 25%;
+  margin-left: 2px;
+  margin-bottom: -2px;
+}
