@@ -85,13 +85,13 @@ export function Server({server}: KyberServerProps) {
 
         <div className={style.description_container}>
         
-          <div className={`${style.description} ${style.sub}`}>
+          <div className={style.description}>
             <div className={style.info}>🎮 {mode}</div>
             <div className={style.info}> 🌍 {map}</div>
             {host}
           </div>
 
-          <div className={`${style.description} ${style.sub}`} title={`IP: ${server.proxy?.ip}`}>          
+          <div className={style.description} title={`IP: ${server.proxy?.ip}`}>          
             {!!server.mods?.length && (<div className={style.info}>
               <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> MODS REQUIRED: {server.mods?.length}
             </div>)}

@@ -5,16 +5,19 @@ $breakpoint_tablet: 900px;
 
 .server {
   max-width: $width_100vw;  
-  height: $height;
+  height: $height;  
+  margin: $margin;  
   border-radius: 10px;
-  margin: $margin;
+  box-shadow: 2px 2px 5px #0003;
   transition: all .25s ease-in-out;
 
   &:hover {
     cursor: pointer;
     background: linear-gradient(90deg, var(--bg-color), var(--bg-color)) !important;
-    transform: translateX(5px);
+    box-shadow: 4px 4px 5px #0003;
+    transform: translate(-2px, -2px);
     transition: all .25s ease-in-out; 
+
     
     .image_svg_container {
       opacity: 1;
