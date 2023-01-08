@@ -6,7 +6,9 @@ h2 {
 }
 
 .host {
-  margin: 10px 150px; 
+  max-width: 1150px;
+  //margin: 10px 150px; 
+  margin: 10px auto;
   border-radius: 10px;
   box-shadow: 2px 2px 5px #0003;
   background: var(--bg-color);
@@ -19,6 +21,8 @@ h2 {
 
 @media screen and (max-width: $breakpoint_tablet) {
   .host {
+    flex-direction: column-reverse;
+    //flex-wrap: wrap;
     font-size: 18px;
     margin: 10px 50px;
   }
@@ -26,6 +30,7 @@ h2 {
 
 @media screen and (max-width: $breakpoint_mobile) {
   .host {
+    flex-direction: row;
     font-size: 14px;
     margin: 10px 10px;
   }
@@ -56,6 +61,7 @@ h2 {
 
 select, input {
   height: 24px;
+  max-width: 250px;
   border-radius: 5px;
   padding: 2px 5px;
   border: 0;
@@ -64,11 +70,28 @@ select, input {
   background-color: var(--bg-color-alpha);
 }
 
+input[type="range"] {
+  width: 70%;
+  max-width: 250px;
+  height: 24px;
+}
+
 .image_container {
+  max-width: 500px;
   display: flex;
   justify-content: flex-end;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+@media screen and (max-width: $breakpoint_tablet) {
+  .image_container{
+    min-height: 240px;
+    max-width: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0;
+  }
 }
 
 @media screen and (max-width: $breakpoint_mobile) {

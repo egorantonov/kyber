@@ -86,21 +86,25 @@ ul {
 }
 
 .radio-wrapper {
-  width: fit-content;
-  padding: 5px;
   display: flex;
-  border-radius: 10px;
-  background-color: #fff3;
+  justify-content: space-around;
+  max-width: 260px;
+  //width: calc(100% + 10px);
+  border-radius: 5px;
+  background-color: var(--bg-color-alpha);
 }
 
 .filter-switch-item {
-  
+  width: 100%;
+  max-width: 125px;
+
   label {
     font-size: 14px;
     box-shadow: #fff3 0px 1px 3px 0px;
     margin: 2px;
     padding: 2px 4px 2px 4px;
-    border-radius: 7px;
+    border-radius: 3px;
+    text-align: center;
   }
 
   input {
@@ -120,6 +124,7 @@ ul {
 
 .filter-switch label {
   display: flex;
+  justify-content: center;
   cursor: pointer;
 }
 

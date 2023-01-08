@@ -11,10 +11,10 @@ export function Description({setDescription}: DescriptionProps) {
 
   return(
     <div className={`r start input-description ${style.line}`}>
-      <label className="c s6 m6 l4" htmlFor="input-description">
+      <label className="c s6 m6 l6" htmlFor="input-description">
         {t('features.host.form.description')}
       </label>
-      <input className="c s5 m4 l3" id="input-description" type="text" placeholder="Optional" onChange={(e) => setDescription(e.target.value)}></input>
+      <input className="c s5 m6 l6" id="input-description" type="text" placeholder="Optional" onChange={(e) => setDescription(e.target.value)}></input>
     </div>
   )
 }

@@ -12,10 +12,10 @@ export function Balance({ balance, setBalance }: BalanceProps) {
 
   return (
     <div className={`r start input-balance ${style.line}`}>
-      <div className="c s6 m6 l4">
+      <div className="c s6 m6 l6">
         {t('features.host.form.balance')}
       </div>
-      <div className="c s5 m4 l3">
+      <div className="c s5 m6 l6">
         <div className='radio-wrapper filter-switch'>
           <div className="filter-switch-item">
             <input type="radio" id="balance-on" name="balance" value="on" checked={balance}

@@ -14,10 +14,10 @@ export function Proxies({ proxies, proxyIp, setProxyIp }: ProxiesProps) {
 
   return (
     <div className={`r start input-proxies ${style.line}`}>
-      <label className="c s6 m6 l4" htmlFor="input-proxies">
+      <label className="c s6 m6 l6" htmlFor="input-proxies">
         {t('features.host.form.proxy')}
       </label>
-      <select className="c s5 m4 l3" id="input-proxies" name="input-proxies"
+      <select className="c s5 m6 l6" id="input-proxies" name="input-proxies"
         value={proxyIp} onChange={(e) => setProxyIp(e.target.value)}>
         {proxies.map((p) => (
           <option key={p.ip} value={p?.ip ?? 'loading'}>{p.name}</option>

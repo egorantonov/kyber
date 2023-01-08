@@ -14,10 +14,10 @@ export function Faction({faction, setFaction}: FactionProps) {
 
   return(
     <div className={`r start input-faction ${style.line}`}>
-      <div className="c s6 m6 l4">
+      <div className="c s6 m6 l6">
         {t('features.host.form.faction')}
       </div>
-      <div className="c s5 m4 l3">
+      <div className="c s5 m6 l6">
         <div className='radio-wrapper filter-switch'>
           {sides.map((x) => (
             <div className="filter-switch-item" key={x}>

@@ -16,9 +16,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <PersistSelectedStates>
-          <App />
-        </PersistSelectedStates>
+        {/* <PersistSelectedStates> */}
+        <App />
+        {/* </PersistSelectedStates> */}
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
