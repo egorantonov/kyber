@@ -33,12 +33,14 @@ function getMap(value?: string): string {
   return result
 }
 
-function getHost(value?: string): string {
+function getHost(value?: string) {
   if (isNullOrWhiteSpace(value) || value?.toLowerCase() === 'unknown') {
     return ''
   }
   
-  return `👤 ${value?.toUpperCase()}`
+  return (
+    <div className={style.info}> 👤 {value?.toUpperCase()} </div>
+  )
 }
 
 export interface KyberServerProps {
@@ -70,27 +72,29 @@ export function Server({server}: KyberServerProps) {
       style={{
         background: background,
       }} > 
-      <div className={`c ${style.image_container}`}
-        style={{
-          background: `url(${image}) center center / cover`,
-        }}  >
+      <div className={`c ${style.image_container}`} style={{ background: `url(${image}) center center / cover` }}>
+        <div className={style.image_svg_container}>
+          <svg className={style.image_play} xmlns="http://www.w3.org/2000/svg" >
+            <path d="M18.4 37.85q-1.25.75-2.45.075-1.2-.675-1.2-2.075v-24q0-1.4 1.2-2.075 1.2-.675 2.45.075L37.2 21.9q1.15.7 1.15 1.975 0 1.275-1.15 1.925Z"/>
+          </svg>
+        </div>        
       </div>
       <div className={`c ${style.data_container}`}>
 
-        <div className={style.title}><b className={style.b}>{name}</b></div>
+        <div className={style.title}><b>{name}</b></div>
 
         <div className={style.description_container}>
         
           <div className={`${style.description} ${style.sub}`}>
             <div className={style.info}>🎮 {mode}</div>
             <div className={style.info}> 🌍 {map}</div>
-            <div className={style.info}> {host} </div>
+            {host}
           </div>
 
           <div className={`${style.description} ${style.sub}`} title={`IP: ${server.proxy?.ip}`}>          
-            <div className={style.info}>
+            {!!server.mods?.length && (<div className={style.info}>
               <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> MODS REQUIRED: {server.mods?.length}
-            </div>  
+            </div>)}
             <div className={style.info}> 👥 {server.users} / {server.maxPlayers}</div>             
             <div className={style.info}>
               <img className={style.image_proxy_flag} loading="lazy" src={server.proxy?.flag} alt="location flag" /> {server.proxy?.name}
