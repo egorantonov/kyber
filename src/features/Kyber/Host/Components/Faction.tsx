@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Side } from '../../../../data/models'
+import style from './../host.module.scss'
 
 const sides = [Side.Light, Side.Dark]
 
@@ -12,9 +13,9 @@ export function Faction({faction, setFaction}: FactionProps) {
   const { t } = useTranslation('translation')
 
   return(
-    <div className="r start input-faction">
-      <div className="c s5 m4 l2">
-        {t('features.host.form.faction')}:
+    <div className={`r start input-faction ${style.line}`}>
+      <div className="c s6 m6 l4">
+        {t('features.host.form.faction')}
       </div>
       <div className="c s5 m4 l3">
         <div className='radio-wrapper filter-switch'>

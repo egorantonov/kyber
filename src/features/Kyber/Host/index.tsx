@@ -109,32 +109,40 @@ export function Host() {
   }
 
   const imageUrl = mapImage(map)
+  const proxy = proxies.find(p => p.ip === proxyIp)
 
   return(
-    <div id="host">
-      <form id="form-host" >
-        <div className={`${style.form} bd-filter-blur-10`}
-          style={{
-            background: `linear-gradient(90deg, var(--bg-color), var(--bg-color-alpha), var(--bg-color-substrate)),
-            url(${imageUrl}) center center / cover`,          
-          }}>
-          {/* TODO: img is not updated after mode changed */}
-          <img style={{width: 80, height: 45, borderRadius: 5}} src={mapImage(map)} alt={map} />
-          <p>{t('features.host.form.settings')}</p>
+    <div id="host" className={`r ${style.host}`}>
+      <div className={`c l12 m12 s12 ${style.form_container}`}>
+        <form id="form-host"  >
+          {/* TODO: img is not updated after mode changed */}          
+          <h2 className='uppercase'>{t('features.host.form.settings')}</h2>
           <Mode mode={mode} setMode={setMode}  />
           <Map map={map} setMap={setMap} selectedMode={mode} />
           <Name setName={setName} />
           <Password setPassword={setPassword} />
 
-          <p>{t('features.host.form.advanced')}</p>
+          <h2 className='uppercase'>{t('features.host.form.advanced')}</h2>
           <Description setDescription={setDescription} />
           <Balance balance={balance} setBalance={setBalance} />
           <Faction faction={faction} setFaction={setFaction} />        
           <Proxies proxies={proxies} proxyIp={proxyIp} setProxyIp={setProxyIp} />
           <MaxPlayers maxPlayers={maxPlayers} setMaxPlayers={setMaxPlayers} />
-          <button className='bd-filter-blur-5' type="button" value="Host" onClick={(e) => handleSubmit(e)} >Host</button>
+          <button className='bd-filter-blur-5' type="button" value="Host" onClick={(e) => handleSubmit(e)} >{t('features.host.title')}</button>
+        </form>
+      </div>        
+      <div className={`c l8 m12 s12 ${style.image_container}`}
+        style={{background: `url(${imageUrl}) center center / cover`}}>
+        <div className={style.info_container}>
+          <div className={style.info}>
+            {map}
+          </div>
+          <div className={style.info}>
+            <img className={style.image_proxy_flag} loading="lazy" alt="location flag" 
+              src={proxy?.flag} /> {proxy?.name}
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   )
 }

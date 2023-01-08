@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import style from './../host.module.scss'
 
 interface BalanceProps {
   balance: boolean,
@@ -10,9 +11,9 @@ export function Balance({ balance, setBalance }: BalanceProps) {
   const { t } = useTranslation('translation')
 
   return (
-    <div className="r start input-balance">
-      <div className="c s5 m4 l2">
-        {t('features.host.form.balance')}:
+    <div className={`r start input-balance ${style.line}`}>
+      <div className="c s6 m6 l4">
+        {t('features.host.form.balance')}
       </div>
       <div className="c s5 m4 l3">
         <div className='radio-wrapper filter-switch'>
