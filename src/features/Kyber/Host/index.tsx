@@ -4,7 +4,7 @@ import { KYBER_API } from '../../../api/endpoints'
 import { hostServer } from '../../../api/methods'
 import { ApiResponse, HostKyberServerRequest, HostKyberServerResponse, KyberProxy } from '../../../api/models'
 import { MAPS } from '../../../data/maps'
-import { Side } from '../../../data/models'
+import { BattlefrontMap, Side } from '../../../data/models'
 import { MODES } from '../../../data/modes'
 import { getJson } from '../../../extensions/fetch'
 import { Mode } from './Components/Mode'
@@ -21,6 +21,30 @@ import style from './host.module.scss'
 // TODO: move to global constants
 const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
 const IMG_URL_POSTFIX = '.jpg'
+
+function overrideMapName(map: BattlefrontMap, modeMapOverrides: BattlefrontMap[]) {
+  const mapWithOverride = modeMapOverrides?.find(mo => mo.map === map.map)
+
+  if (mapWithOverride) {
+    map.name = mapWithOverride.name
+  }
+}
+
+export function getModeMaps(mode: string): BattlefrontMap[] {
+  const selectedMode = MODES.find(md => md.mode === mode)
+
+  const modeMaps = selectedMode?.maps?.map(mapId => {
+    const bfMap = MAPS.find(m => m.map === mapId)
+    
+    if (bfMap && selectedMode?.mapOverrides && selectedMode?.mapOverrides?.length > 0) {
+      overrideMapName(bfMap, selectedMode?.mapOverrides)
+    }
+
+    return bfMap
+  })
+
+  return modeMaps as BattlefrontMap[]
+}
 
 function mapImage(value?: string): string {
   return IMG_URL_PREFIX + value?.replaceAll('/', '-') + IMG_URL_POSTFIX
@@ -117,7 +141,7 @@ export function Host() {
         <form id="form-host"  >
           {/* TODO: img is not updated after mode changed */}          
           <h2 className='uppercase'>{t('features.host.form.settings')}</h2>
-          <Mode mode={mode} setMode={setMode}  />
+          <Mode mode={mode} setMode={setMode} setMap={setMap} />
           <Map map={map} setMap={setMap} selectedMode={mode} />
           <Name setName={setName} />
           <Password setPassword={setPassword} />
