@@ -17,7 +17,7 @@ export const Theme = () => {
   return (
     <div>
       <p>{t('theme.title')}</p>
-      <div className="radio-wrapper filter-switch">    
+      <div className="radio-wrapper x3 filter-switch">    
         {SWITCHES.map((x) => (
           <div className="filter-switch-item" key={x}>
             <input

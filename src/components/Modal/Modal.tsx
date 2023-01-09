@@ -88,7 +88,7 @@ export function Modal({ modalServer }: ModalProps) {
         <div className="">
           <span>Preferred team: </span>
           {!modalServer?.autoBalanceTeams && (
-            <div className="radio-wrapper filter-switch">              
+            <div className="radio-wrapper x2 filter-switch">              
               {sides.map((x) => (
                 <div className="filter-switch-item" key={x}>
                   <input

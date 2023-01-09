@@ -13,6 +13,7 @@
   --bg-highlight-alpha: #3182ce55;
   --bg-highlight: #3182ce;
   --color: #ddd;
+  --color-inverted: #222;
   --color-tarnished: #dddc;
   --color-substrate: #ddd3;
   --highlight-alpha: #fbb30a77;
@@ -40,6 +41,7 @@
   --bg-highlight: #fbb10a;
   --bg-highlight-alpha: #fbb30a77;
   --color: #222;
+  --color-inverted: #ddd;
   --color-tarnished: #222c;
   --color-substrate: #2223;
   --highlight-alpha: #3182ce77;  

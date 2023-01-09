@@ -1,10 +1,9 @@
-import { useTranslation } from 'react-i18next'
 import { Host } from '../../features/Kyber/Host'
+import style from './hostpage.module.scss'
 
 export function HostPage() {
-  const { t, i18n } = useTranslation('translation')
   return (
-    <div id="page-host">
+    <div id="page-host" className={style.host_page}>
       <Host />
     </div>
   )

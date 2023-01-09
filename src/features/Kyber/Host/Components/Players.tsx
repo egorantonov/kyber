@@ -17,10 +17,10 @@ export function MaxPlayers({ maxPlayers, setMaxPlayers }: MaxPlayersProps) {
           {t('features.host.form.maxPlayers')}
         </label>
       </div>
-      <div className="c s5 m6 l6">
-        <span style={{width: '20%'}}>{maxPlayers}</span>
-        <input id="input-players" type="range" min={2} max={64} onChange={(e) => setMaxPlayers(+e.target.value)} />
-                  
+      <div className="c s5 m6 l6">        
+        <input title={maxPlayers.toString()} id="input-players" type="range" min={2} max={64} 
+          onChange={(e) => setMaxPlayers(+e.target.value)} />
+        <div className={style.players} >{maxPlayers}</div>                  
       </div>
     </div>
   )

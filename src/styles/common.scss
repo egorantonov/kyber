@@ -1,6 +1,10 @@
 $header_height: 32px;
 $nav_height: 32px;
 $main_shift: calc($header_height + $nav_height);
+$toggle_default_width: 120px;
+$input_default_height: 28px;
+
+$breakpoint_mobile: 600px;
 
 a {
   text-decoration: none;
@@ -79,31 +83,46 @@ ul {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: $breakpoint_mobile) {
   .text {
     font-size: 12px;  
   }
 }
 
 .radio-wrapper {
+  width: 100%;
   display: flex;
-  justify-content: space-around;
-  max-width: 260px;
-  //width: calc(100% + 10px);
+  justify-content: space-between;  
   border-radius: 5px;
   background-color: var(--bg-color-alpha);
+  height: $input_default_height;
+
+  &.x2 {
+    max-width: calc(2 * $toggle_default_width + 10px);
+  }
+
+  &.x3 {
+    max-width: calc(3 * $toggle_default_width + 10px);
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .radio-wrapper {
+    width: calc(100% + 10px);
+  }
 }
 
 .filter-switch-item {
+
+  min-width: fit-content;
   width: 100%;
-  max-width: 125px;
+  max-width: calc($toggle_default_width + 5px);
 
   label {
+    height: $input_default_height;
     font-size: 14px;
-    box-shadow: #fff3 0px 1px 3px 0px;
-    margin: 2px;
-    padding: 2px 4px 2px 4px;
-    border-radius: 3px;
+    //box-shadow: #fff3 0px 1px 3px 0px;
+    border-radius: 5px;
     text-align: center;
   }
 
@@ -112,19 +131,21 @@ ul {
   }
 
   input:checked + label {
-    background-color: var(--bg-highlight);
+    color: var(--color-inverted);
+    background-color: var(--highlight);
   }
 
   input:not(:checked) + label {
-    color: #fffc;
-    --bg-opacity: 0;
-    box-shadow: none;
+    // color: #fffc;
+    // --bg-opacity: 0;
+    // box-shadow: none;
   }
 }
 
 .filter-switch label {
   display: flex;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 

@@ -18,7 +18,7 @@ export function Faction({faction, setFaction}: FactionProps) {
         {t('features.host.form.faction')}
       </div>
       <div className="c s5 m6 l6">
-        <div className='radio-wrapper filter-switch'>
+        <div className='radio-wrapper x2 filter-switch'>
           {sides.map((x) => (
             <div className="filter-switch-item" key={x}>
               <input

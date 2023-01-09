@@ -16,7 +16,7 @@ export function Balance({ balance, setBalance }: BalanceProps) {
         {t('features.host.form.balance')}
       </div>
       <div className="c s5 m6 l6">
-        <div className='radio-wrapper filter-switch'>
+        <div className='radio-wrapper x2 filter-switch'>
           <div className="filter-switch-item">
             <input type="radio" id="balance-on" name="balance" value="on" checked={balance}
               onChange={() => setBalance(true)} />
