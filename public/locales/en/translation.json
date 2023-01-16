@@ -14,7 +14,15 @@
       "title": "Servers"
     },
     "download": {
-      "title": "Download"
+      "title": "Download",
+      "directDownload": {
+        "title": "Get started",
+        "body": "Download Kyber client <br/> via <1>direct link</1>"
+      },
+      "visitKyber": {
+        "title": "Learn More",
+        "body": "Visit <1>the official site<1><br/>to download from it"
+      }
     },
     "host": {
       "title": "Host"
