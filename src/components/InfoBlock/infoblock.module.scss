@@ -1,0 +1,85 @@
+.infoblock {
+  display: flex;
+  width: 480px;
+  height: 320px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #00000033;
+  backdrop-filter: blur(10px);  
+  cursor: pointer;
+  text-shadow: var(--bg-color) 0px 0px 5px, var(--bg-color) 0px 0px 3px, var(--bg-color) 0px 0px 1px;
+  
+  transition: all .25s ease-in-out; 
+
+  span {
+    color: var(--highlight)
+  }
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 5px rgb(0 0 0 / 20%);
+    transition: all 0.25s ease-in-out;
+    a {
+      span {
+        color: var(--highlight-hover);
+        text-shadow: 0 0 10px var(--highlight-alpha);
+      }
+
+      &:active {
+        span {
+          color: var(--highlight-active)
+        }
+      }
+    }
+  }
+
+
+  
+  //max-width: 640px;
+
+  h4 {
+    color: var(--color-tarnished);
+  }
+
+  a {
+    width: 100%;
+    //pointer-events: none;
+    text-decoration: none;
+    color: var(--color);
+
+    &:hover {
+      color: var(--color);
+    }
+  }
+
+  p {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 1270px) {
+  .infoblock {
+    width: 420px;
+    height: 280px;
+
+    p {
+      font-size: 28px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .infoblock {
+    width: 100%;
+    height: 240px;
+
+    p {
+      font-size: 24px;
+    }
+  }
+}
+
+.content {
+  padding: 10px; // margin???
+  text-transform: uppercase;
+}

@@ -1,20 +1,26 @@
-import { useTranslation } from 'react-i18next'
-import { KYBER_API } from '../../api/endpoints'
-import ExternalLink from '../../components/ExternalLink'
+import { Trans, useTranslation } from 'react-i18next'
+import { InfoBlock } from '../../components/InfoBlock'
+import { directDownload, visitKyber } from './data'
+
 
 export function DownloadPage() {
-  const { t } = useTranslation('translation')
   return (
     <div id='page-download'>
-      <h1>{t('pages.download.title')}</h1>
-      <div className="bd-filter-blur-10" style={{
-        margin: 10, 
-        padding: 10,
-        backgroundColor: 'var(--bg-color-substrate)', 
-        border: '1px solid var(--color-substrate)',
-        borderRadius: 5
-      }}>
-        Download <a href={`${KYBER_API.hostName}/static/client/KyberClient.exe`} title='Kyber'>Kyber client</a> or visit <ExternalLink href={KYBER_API.hostName}>the official site</ExternalLink> to download from it.
+      <div id='page-download-infoblocks' className='flex f-row flex-wrap'>
+        <InfoBlock {...directDownload} >          
+          <p>
+            <Trans i18nKey={`pages.download.${directDownload.id}.body`}>
+              Download Kyber client via <span className="highlight">direct link</span>
+            </Trans>
+          </p>
+        </InfoBlock>
+        <InfoBlock {...visitKyber} >
+          <p>
+            <Trans i18nKey={`pages.download.${visitKyber.id}.body`}>
+              Visit <span className="highlight">the official site</span><br/>to download from it
+            </Trans>
+          </p>
+        </InfoBlock>
       </div>
     </div>
   )

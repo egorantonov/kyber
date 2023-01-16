@@ -1,11 +1,18 @@
 import logo from '../../logo.svg'
 import { Counter } from '../../features/counter/Counter'
 import { useTranslation } from 'react-i18next'
+import { InfoBlock } from '../../components/InfoBlock'
 
 export function AboutPage() {
   const { t } = useTranslation('translation')
   return (
     <div id="page-about">
+      {/* <div className='infoblocks'>
+        <InfoBlock id=''>
+          
+        </InfoBlock>
+      </div> */}
+      
       <h1>{t('pages.about.title')}</h1>
       <div className="bd-filter-blur-10" style={{
         margin: 10, 
