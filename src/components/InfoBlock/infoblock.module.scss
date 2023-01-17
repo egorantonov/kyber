@@ -6,7 +6,6 @@
   border-radius: 10px;
   box-shadow: 2px 2px 5px #00000033;
   backdrop-filter: blur(10px);  
-  cursor: pointer;
   text-shadow: var(--bg-color) 0px 0px 5px, var(--bg-color) 0px 0px 3px, var(--bg-color) 0px 0px 1px;
   
   transition: all .25s ease-in-out; 
@@ -32,23 +31,38 @@
       }
     }
   }
-
-
   
-  //max-width: 640px;
-
   h4 {
     color: var(--color-tarnished);
   }
 
   a {
     width: 100%;
-    //pointer-events: none;
     text-decoration: none;
     color: var(--color);
+    border-radius: 10px;
+    transition: all .25s ease-in-out; 
 
     &:hover {
+      cursor: pointer;
       color: var(--color);
+      backdrop-filter: blur(5px);
+      transition: all .25s ease-in-out; 
+    }
+  }
+
+  div {
+    a {
+      color: var(--highlight);
+
+      &:hover {
+        cursor: pointer;
+        color: var(--highlight-hover);
+      }
+
+      &:active {
+        color: var(--highlight-active);
+      }
     }
   }
 
