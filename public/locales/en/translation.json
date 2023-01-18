@@ -28,7 +28,27 @@
       "title": "Host"
     },
     "about": {
-      "title": "About"
+      "title": "About",
+      "about": {
+        "title": "About this site",
+        "body": "This is a custom `Kyber API` implementation with an additional functionality such as live updates and conﬁguration tab. Advanced search and ﬁltering will be implemented later after the ﬁrst release. Dark theme included to bring the force balance."
+      },
+      "whatAboutKyber": {
+        "title": "About kyber",
+        "body": "This project based on an open Kyber API. Each API endpoint was reverse engineered, documented and implemented. The resulting implementation is not a competitor of the original site, but more like yet another pet project."
+      },
+      "getInvolved": {
+        "title": "Get involved",
+        "body": "Have any suggestions? Found a bug?<br/> Create a new issue on <1>Github</1>"
+      },
+      "aboutAuthor": {
+        "title": "About author",
+        "body": "Created by <1>EYEMVX</1> in 2023. Subscribe or send a friend request: search for @EYEMVX on Origin, Discord, Twitch and Youtube. Have a Github account? Make sure you starred <3>this project</3> 💫"
+      },
+      "otherProjects": {
+        "title": "Other projects",
+        "body": "Love electronic dance music?<br/>Subscribe to my EDM podcast <1>PHASE FLOW</1>"
+      }
     },
     "settings": {
       "title": "Settings"

@@ -1,32 +1,46 @@
 import logo from '../../logo.svg'
 import { Counter } from '../../features/counter/Counter'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { InfoBlock } from '../../components/InfoBlock'
+import { about, whatAboutKyber, getInvolved, aboutAuthor, otherProjects } from './data'
+import ExternalLink from '../../components/ExternalLink'
 
 export function AboutPage() {
   const { t } = useTranslation('translation')
   return (
     <div id="page-about">
-      {/* <div className='infoblocks'>
-        <InfoBlock id=''>
-          
+      <div id='page-about-infoblocks' className='flex f-row flex-wrap'>
+        <InfoBlock {...about}>
+          <p style={{fontSize: 18, textTransform: 'none'}}>
+            {t(`${about.id}.body`)}
+          </p>
         </InfoBlock>
-      </div> */}
-      
-      <h1>{t('pages.about.title')}</h1>
-      <div className="bd-filter-blur-10" style={{
-        margin: 10, 
-        padding: 10,
-        backgroundColor: 'var(--bg-color-substrate)', 
-        border: '1px solid var(--color-substrate)',
-        borderRadius: 5
-      }}>
-        <img src={logo} className="App-logo" alt="logo" width={64} />
-        <p>
-          This is a custom `Kyber API` implementation with an additional functionality such as live updates, 
-          configuration tab, advanced search and filtering. Work in progress
-        </p>
-        {/* <Counter />*/}
+        <InfoBlock {...whatAboutKyber}>
+          <p style={{fontSize: 18, textTransform: 'none'}}>
+            {t(`${whatAboutKyber.id}.body`)}
+          </p>
+        </InfoBlock>
+        <InfoBlock {...getInvolved}>
+          <p  style={{fontSize: 24, textTransform: 'none'}}>
+            <Trans i18nKey={`${getInvolved.id}.body`}>
+            Have any suggestions? Found a bug? Create a new issue on <span>Github</span>
+            </Trans>            
+          </p>
+        </InfoBlock>
+        <InfoBlock {...aboutAuthor}>
+          <p style={{fontSize: 20, textTransform: 'none'}}>
+            <Trans i18nKey={`${aboutAuthor.id}.body`}>
+            Created by <ExternalLink href='https://github.com/egorantonov' title='Github'>EYEMVX</ExternalLink> in 2023. Subscribe or send a friend request: search for @EYEMVX on Origin, Discord, Twitch and Youtube. Have a Github account? Make sure you starred <ExternalLink href='https://github.com/egorantonov/kyber' title='💫'>this project</ExternalLink> 💫
+            </Trans> 
+          </p>
+        </InfoBlock>
+        <InfoBlock {...otherProjects}>
+          <p style={{fontSize: 24, textTransform: 'none'}}>
+            <Trans i18nKey={`${otherProjects.id}.body`}>
+            Love electronic dance music? Subscribe to my EDM podcast <span>PHASE FLOW</span>
+            </Trans> 
+          </p>
+        </InfoBlock>
       </div>
     </div>
   )
