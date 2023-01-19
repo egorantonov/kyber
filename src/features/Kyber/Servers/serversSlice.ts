@@ -27,7 +27,7 @@ const initialState: KyberState = {
   servers: [],
   status: Status.Idle,
   proxyStatus: Status.Loading, // loading proxies right immediately after the start
-  liveUpdate: false,
+  liveUpdate: true,
   modalOpen: false,
 
   debug: false // TODO: add to localStorage
@@ -69,8 +69,9 @@ const serversSlice = createSlice({
     toggleDebug: (state) => {
       state.debug = !state.debug
     },
-    toggleAutoUpdate: (state) => {
-      state.liveUpdate = !state.liveUpdate
+    toggleAutoUpdate: (state, action) => {
+      //state.liveUpdate = !state.liveUpdate
+      state.liveUpdate = action.payload
     },
     toggleModal: (state) => {
       state.modalOpen = !state.modalOpen

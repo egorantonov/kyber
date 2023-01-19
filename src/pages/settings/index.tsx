@@ -6,20 +6,10 @@ import { KyberConfig } from '../../features/Kyber/Configuration'
 
 
 export function SettingsPage() {
-  const { t, i18n } = useTranslation('translation')
+  const { t } = useTranslation('translation')
 
   return (
     <div id="page-settings">
-      <h1>{t('pages.settings.title')}</h1>
-      <div className="bd-filter-blur-10" style={{
-        margin: 10, 
-        padding: 10,
-        backgroundColor: 'var(--bg-color-substrate)', 
-        border: '1px solid var(--color-substrate)',
-        borderRadius: 5
-      }}>
-        <Debug />
-      </div>
       <div className="bd-filter-blur-10" style={{
         margin: 10, 
         padding: 10,
@@ -37,7 +27,16 @@ export function SettingsPage() {
         borderRadius: 5
       }}>
         <KyberConfig />
-      </div> 
+      </div>
+      <div className="bd-filter-blur-10" style={{
+        margin: 10, 
+        padding: 10,
+        backgroundColor: 'var(--bg-color-substrate)', 
+        border: '1px solid var(--color-substrate)',
+        borderRadius: 5
+      }}>
+        <Debug />
+      </div>
     </div>
   )
 }

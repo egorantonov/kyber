@@ -201,4 +201,19 @@ $w11: percentage(math.div(11, 12));
     &-row {
         flex-direction: row;
     }
+
+    &-content {
+
+        &-center {
+            justify-content: center;
+        }
+
+    }
+
+    &-items {
+
+        &-center { 
+            align-items: center;
+        }
+    }
 }

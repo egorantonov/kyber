@@ -82,6 +82,17 @@
         "does not meet minimum length of 1": "does not meet minimum length of 1"
       }
     },
+    "servers": {
+      "liveUpdate": "Live Update",
+      "debugClear": "Clear",
+      "update": "Update",
+      "found_zero": "No Kyber servers found", 
+      "found_one": "Found {{count}} Kyber server",
+      "found_two": "Found {{count}} Kyber servers",
+      "found_few": "Found {{count}} Kyber servers",
+      "found_many": "Found {{count}} Kyber servers",
+      "found_other": "Found {{count}} Kyber servers"
+    },
     "status": {
       "message": "Hmmm... Kyber API seems to be down. Try open <1>Kyber official site</1> or check status on <3>Discord server</3>"
     }
@@ -91,9 +102,9 @@
   },
   "theme": {
     "title": "Theme: ",
-    "dark": "dark",
-    "light": "light",
-    "system": "system"
+    "dark": "🌘 dark",
+    "light": "🔆 light",
+    "system": "💻 system"
   },
   "header": {
     "offline": "is offline"
