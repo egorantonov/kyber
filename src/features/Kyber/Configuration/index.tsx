@@ -5,6 +5,7 @@ import { Side } from '../../../data/models'
 import { MAPS } from '../../../data/maps'
 import { MODES } from '../../../data/modes'
 import { getJson, getText } from '../../../extensions/fetch'
+import { getGPU } from './gpu'
 
 enum KYBER_MODE {
   SERVER = 'SERVER',
@@ -56,9 +57,12 @@ interface CloudflareTrace {
   gateway: string,
   kex: string,
 }
+
 function parseCloudflareTrace(value: string): CloudflareTrace {
   return JSON.parse(`{\n"${value.trim().replaceAll('=','":"').replaceAll('\n','",\n"')}"\n}`)
 }
+
+
 
 export function KyberConfig() {
   const initialConfig: KyberConfigResponse = {}
@@ -67,6 +71,7 @@ export function KyberConfig() {
   const { t } = useTranslation('translation')
   const [client, setClient] = useState(initialClient)
   const [config, setConfig] = useState(initialConfig)
+  const renderer = getGPU()
 
   useEffect(() => {
 
@@ -119,13 +124,17 @@ export function KyberConfig() {
             <td>{client.ip}</td>
           </tr>
           <tr>
-            <td><b>LOCALE:</b></td>
+            <td><b>LOCATION:</b></td>
             <td>{client.loc}</td>
           </tr>
           <tr>
             <td><b>USER AGENT:</b> </td>
             <td>{window?.navigator?.userAgent}</td>
-          </tr>  
+          </tr>
+          <tr>
+            <td><b>GPU:</b> </td>
+            <td>{renderer}</td>
+          </tr>
           <tr>
             <td><b>STATUS</b>:</td>
             <td> {config.message || config.KYBER_MODE}</td>
@@ -136,7 +145,10 @@ export function KyberConfig() {
           {/* TODO: share server by its id */}
           <tr>
             <td><b>ID</b>:</td>
-            <td style={{wordBreak: 'break-word'}}> {config.CLIENT_OPTIONS?.SERVER_ID} <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a></td>
+            <td style={{wordBreak: 'break-word'}}> 
+              {config.CLIENT_OPTIONS?.SERVER_ID} 
+              {/* <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a> */}
+            </td>
           </tr>
           <tr>
             <td><b>NAME</b>:</td>
