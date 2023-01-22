@@ -6,6 +6,7 @@ import { MAPS } from '../../../data/maps'
 import { MODES } from '../../../data/modes'
 import { getJson, getText } from '../../../extensions/fetch'
 import { getGPU } from './gpu'
+import { getUserAgentData, UserAgentData } from './userAgentData'
 
 enum KYBER_MODE {
   SERVER = 'SERVER',
@@ -62,8 +63,6 @@ function parseCloudflareTrace(value: string): CloudflareTrace {
   return JSON.parse(`{\n"${value.trim().replaceAll('=','":"').replaceAll('\n','",\n"')}"\n}`)
 }
 
-
-
 export function KyberConfig() {
   const initialConfig: KyberConfigResponse = {}
   const initialClient: Partial<CloudflareTrace> = {}
@@ -71,9 +70,14 @@ export function KyberConfig() {
   const { t } = useTranslation('translation')
   const [client, setClient] = useState(initialClient)
   const [config, setConfig] = useState(initialConfig)
-  const renderer = getGPU()
+  const [renderer, setRenderer] = useState('')
+  const [userAgent, setUserAgent] = useState({} as Partial<UserAgentData>)
 
   useEffect(() => {
+
+    setUserAgent(getUserAgentData())
+    setRenderer(getGPU())
+    console.log(renderer)
 
     getJson(KYBER_API.config)
       .then(
@@ -129,7 +133,7 @@ export function KyberConfig() {
           </tr>
           <tr>
             <td><b>USER AGENT:</b> </td>
-            <td>{window?.navigator?.userAgent}</td>
+            <td>{userAgent.platform}, {userAgent.browser}{userAgent.mobile && ' (Mobile)'}</td>
           </tr>
           <tr>
             <td><b>GPU:</b> </td>
@@ -137,7 +141,8 @@ export function KyberConfig() {
           </tr>
           <tr>
             <td><b>STATUS</b>:</td>
-            <td> {config.message || config.KYBER_MODE}</td>
+            {/* "Config not found" */}
+            <td> {config.message || config.KYBER_MODE}</td> 
           </tr>
           <tr>
             <td colSpan={2}><b>CLIENT OPTIONS</b></td>
