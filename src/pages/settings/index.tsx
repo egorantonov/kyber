@@ -11,7 +11,7 @@ export function SettingsPage() {
       <div className="bd-filter-blur-10 block-blur">
         <KyberConfig />
       </div>
-      {window?.location?.origin !== 'https://kyber.pages.dev/' && 
+      {window?.location?.origin !== 'https://kyber.pages.dev' && 
       <div className="bd-filter-blur-10 block-blur">
         <Debug />
       </div>}
