@@ -8,6 +8,7 @@ import style from './header.module.scss'
 import '../../styles/grid.scss'
 import logo from '../../logo.svg'
 import { KYBER_API } from '../../api/endpoints'
+import { getTimeHHmm } from '../../extensions/date'
 
 function Clock() {
 
@@ -17,10 +18,6 @@ function Clock() {
     setDate(new Date())
   }
 
-  function checkTwoDigits(number: number): string {
-    return `${number < 10 ? '0' : ''}${number}`
-  }
-
   useEffect(() => {
     const timerId = setInterval(refreshClock, 1000)
     return function cleanup() {
@@ -28,12 +25,11 @@ function Clock() {
     }
   }, [])
 
-  const hours = checkTwoDigits(date.getHours())
-  const minutes = checkTwoDigits(date.getMinutes())
+  const time = getTimeHHmm(date)
 
   return (
     <span>
-      {hours}:{minutes}
+      {time}
     </span>
   )
 }

@@ -6,6 +6,8 @@ import { isNullOrWhiteSpace } from '../../extensions/string'
 import { setModalServer, toggleModal } from '../../features/Kyber/Servers/serversSlice'
 import { KYBER_API } from '../../api/endpoints'
 import style from './server.module.scss'
+import { useTranslation } from 'react-i18next'
+import { getTimeHHmmFromTimeStamp } from '../../extensions/date'
 
 const IMG_NEXUS_MOD = 'https://images.nexusmods.com/favicons/ReskinOrange/favicon-16x16.png'
 const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
@@ -20,7 +22,7 @@ function getMode(value?: string): string {
     return ''
   }
   
-  const result = MODES.find(m => m.mode === value)?.name.replaceAll('Versus', 'vs.').toUpperCase() || ''
+  const result = MODES.find(m => m.mode === value)?.name || ''
   return result
 }
 
@@ -29,7 +31,7 @@ function getMap(value?: string): string {
     return ''
   }
 
-  const result = MAPS.find(m => m.map === value)?.name.toUpperCase() || ''
+  const result = MAPS.find(m => m.map === value)?.name || ''
   return result
 }
 
@@ -43,12 +45,17 @@ function getHost(value?: string) {
   )
 }
 
+function getTime(value: number) {
+  return ` ${getTimeHHmmFromTimeStamp(value)}`
+}
+
 export interface KyberServerProps {
   server: KyberServer
 }
 
 export function Server({server}: KyberServerProps) {
   const dispatch = useAppDispatch()
+  const { t } = useTranslation()
 
   function openModal(server: KyberServer) {
     dispatch(setModalServer(server))
@@ -86,21 +93,20 @@ export function Server({server}: KyberServerProps) {
         <div className={style.description_container}>
         
           <div className={style.description}>
-            <div className={style.info}>🎮 {mode}</div>
-            <div className={style.info}> 🌍 {map}</div>
+            <div data-x={`mods.${mode}`} className={`${style.info} uppercase`}>🎮 {t(`modes.${mode}`).replace('modes.', '')}</div>
+            <div className={`${style.info} uppercase`}> 🌍 {t(`maps.${map}`).replace('maps.', '')}</div>
             {host}
           </div>
 
-          <div className={style.description} title={`IP: ${server.proxy?.ip}`}>          
+          <div className={style.description}>          
             {!!server.mods?.length && (<div className={style.info}>
-              <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> MODS REQUIRED: {server.mods?.length}
+              <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> {t('server.modsRequired')}: {server.mods?.length}
             </div>)}
             <div className={style.info}> 👥 {server.users} / {server.maxPlayers}</div>             
-            <div className={style.info}>
-              <img className={style.image_proxy_flag} loading="lazy" src={server.proxy?.flag} alt="location flag" /> {server.proxy?.name}
+            <div className={style.info} title={`IP: ${server.proxy?.ip}`}>
+              <img className={style.image_proxy_flag} loading="lazy" src={server.proxy?.flag} alt="location flag" /> {t(`locations.${server.proxy?.name}`).replace('locations.', '')}
             </div> 
-            <div className={style.info}> 🕓 {server.startedAtPretty}</div>
-
+            <div className={style.info} title={server.startedAtPretty}> 🕓 {getTime(server.startedAt)}</div>
           </div>
         </div>
       </div>

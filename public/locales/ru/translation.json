@@ -56,11 +56,41 @@
   },  
   "features": {
     "config": {
-      "title": "Текущая конфигурация"
+      "title": "Текущая конфигурация",
+      "key": "Параметр",
+      "value": "Значение",
+      "clientIp": "Ваш IP адрес",
+      "clientIp_unavailable": "Данные клиента недоступны. Проверь подключение к интернету или настройки блокировки трекеров",
+      "location": "Местоположение",
+      "userAgent": "Система/Браузер",
+      "gpu": "Видеокарта",
+      "gpu_unavailable": "Данные видеокарты недоступны в этом браузере",
+      "status": "Статус",
+      "Config not found.": "Конфигурация не найдена",
+      "CLIENT": "КЛИЕНТ",
+      "SERVER": "СЕРВЕР",
+      "clientOptions": "НАСТРОЙКИ КЛИЕНТА",
+      "id": "Идентификатор",
+      "name": "Название",
+      "password": "Пароль",
+      "faction": "Команда",
+      "serverIp": "IP адрес сервера",
+      "proxied": "Прокси-сервер",
+      "serverOptions": "НАСТРОЙКИ СЕРВЕРА",
+      "description": "Описание",
+      "balanced": "Автобаланс",
+      "map": "Карта",
+      "maxPlayers": "Максимум игроков",
+      "mode": "Режим",
+      "port": "Порт",
+      "proxyAddress": "Адрес прокси",
+      "proxyPort": "Порт прокси"
     },
     "host": {
       "title": "Создать",
       "form": {
+        "optional": "Опционально",
+        "required": "Обязательно",
         "settings": "Настройки",
         "map": "Карта",
         "mode": "Режим",
@@ -115,5 +145,34 @@
     "host": "создать",
     "about": "инфо",
     "settings": "настройки"
+  },
+  "server": {
+    "modsRequired": "УСТАНОВЛЕНО МОДОВ"
+  },
+  "modes": {
+    "Heroes Versus Villains": "Герои Против Злодеев",
+    "Galactic Assault": "Галактическая битва",
+    "Supremacy": "Превосходство"
+  },
+  "maps": {
+    "Geonosis": "Джеонозис",
+    "Naboo": "Набу",
+    "Kashyyyk": "Кашиик",
+    "Crait": "Крэйт",
+    "Tatooine": "Татуин",
+    "Scarif": "Скариф",
+    "Starkiller Base": "База 'Старкиллер'",
+    "Bespin": "Беспин",
+    "Endor": "Эндор",
+    "Felucia": "Фелуция"
+  },
+  "locations": {
+    "San Francisco - US": "Сан-Франциско, США",
+    "New York - US": "Нью-Йорк, США",
+    "London - UK": "Лондон, Великобритания",
+    "Toronto - Canada": "Торонто, Канада",
+    "Frankfurt - Germany": "Франкфурт, Германия",
+    "Singapore - Asia": "Сингапур, Азия",
+    "Sydney - Australia": "Сидней, Австралия"
   }
 }

@@ -56,11 +56,41 @@
   },
   "features": {
     "config": {
-      "title": "Current configuration"
+      "title": "Current conﬁguration",
+      "key": "Parameter",
+      "value": "Value",
+      "clientIp": "Your IP Address",
+      "clientIp_unavailable": "Can't get client data. Check your internet connection or adblocker settings",
+      "location": "Location",
+      "userAgent": "User Agent",
+      "gpu": "GPU",
+      "gpu_unavailable": "GPU data is unavailable in this browser",
+      "status": "Status",
+      "Config not found.": "Conﬁg not found",
+      "CLIENT": "CLIENT",
+      "SERVER": "SERVER",
+      "clientOptions": "CLIENT OPTIONS",
+      "id": "ID",
+      "name": "Name",
+      "password": "Password",
+      "faction": "Faction",
+      "serverIp": "Server IP",
+      "proxied": "Proxied",
+      "serverOptions": "SERVER OPTIONS",
+      "description": "Description",
+      "balanced": "Balanced",
+      "map": "Map",
+      "maxPlayers": "Max players",
+      "mode": "Mode",
+      "port": "Port",
+      "proxyAddress": "Proxy Address",
+      "proxyPort": "Proxy Port"
     },
     "host": {
       "title": "Host",
       "form": {
+        "optional": "Optional",
+        "required": "Required",
         "settings": "Settings",
         "map": "Map",
         "mode": "Mode",
@@ -115,5 +145,34 @@
     "host": "host",
     "about": "about",
     "settings": "settings"
+  },
+  "server": {
+    "modsRequired": "MODS REQUIRED"
+  },
+  "modes": {
+    "Heroes Versus Villains": "Heroes vs. Villains",
+    "Galactic Assault": "Galactic Assault",
+    "Supremacy": "Supremacy"
+  },
+  "maps": {
+    "Geonosis": "Geonosis",
+    "Naboo": "Naboo",
+    "Kashyyyk": "Kashyyyk",
+    "Crait": "Crait",
+    "Tatooine": "Tatooine",
+    "Scarif": "Scarif",
+    "Starkiller Base": "Starkiller Base",
+    "Bespin": "Bespin",
+    "Endor": "Endor",
+    "Felucia": "Felucia"
+  },
+  "locations": {
+    "San Francisco - US": "San Francisco - US",
+    "New York - US": "New York - US",
+    "London - UK": "London - UK",
+    "Toronto - Canada": "Toronto - Canada",
+    "Frankfurt - Germany": "Frankfurt - Germany",
+    "Singapore - Asia": "Singapore - Asia",
+    "Sydney - Australia": "Sydney - Australia"
   }
 }

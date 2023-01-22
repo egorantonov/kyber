@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { KYBER_API } from '../../../api/endpoints'
 import { Side } from '../../../data/models'
 import { MAPS } from '../../../data/maps'
 import { MODES } from '../../../data/modes'
 import { getJson, getText } from '../../../extensions/fetch'
-import { getGPU } from './gpu'
+import { getGPU, NOT_AVAILABLE } from './gpu'
 import { getUserAgentData, UserAgentData } from './userAgentData'
 
 enum KYBER_MODE {
@@ -93,7 +93,7 @@ export function KyberConfig() {
           console.log(cl)
         },
         error => {
-          const errorMsg = 'Can\'t get client data. Check your adblocker setting for this site'
+          const errorMsg = t('features.config.clientIp_unavailable') // 'Can\'t get client data. Check your adblocker setting for this site'
           const clError: Partial<CloudflareTrace> = {
             ip: errorMsg,
             loc: errorMsg,
@@ -105,17 +105,110 @@ export function KyberConfig() {
         })
   }, [])
 
-  // TODO: translate
+  function tx(localKey: string): string {
+    return t(`features.config.${localKey}`)
+  }
+
+  function renderClientOptions() {
+    return (
+      <Fragment>
+        <tr>
+          <td colSpan={2}><b>{tx('clientOptions')}</b></td>
+        </tr>
+        {/* TODO: share server by its id */}
+        <tr>
+          <td><b>{tx('id')}</b></td>
+          <td style={{wordBreak: 'break-word'}}> 
+            {config.CLIENT_OPTIONS?.SERVER_ID} 
+            {/* <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a> */}
+          </td>
+        </tr>
+        <tr>
+          <td><b>{tx('name')}</b></td>
+          <td> {config.CLIENT_OPTIONS?.SERVER_NAME}</td>
+        </tr>
+        {config.CLIENT_OPTIONS?.SERVER_PASSWORD && <tr>
+          <td><b>{tx('password')}</b></td>
+          <td> {config.CLIENT_OPTIONS?.SERVER_PASSWORD}</td>
+        </tr>}
+        <tr>
+          <td><b>{tx('faction')}</b></td>
+          <td>
+            {config.CLIENT_OPTIONS?.PREFERRED_FACTION === Side.Light 
+              ? t(`common.side.${Side[Side.Light]}`)
+              : t(`common.side.${Side[Side.Dark]}`)}
+          </td>
+        </tr>
+        <tr>
+          <td><b>{tx('serverIp')}</b></td>
+          <td> {config.CLIENT_OPTIONS?.SERVER_IP}</td>
+        </tr>
+        {/* TODO: ip -> proxy location */}
+        <tr>
+          <td><b>{tx('proxied')}</b></td>
+          <td> {config.CLIENT_OPTIONS?.SERVER_PROXIED ? '✅' : '❌'}</td>
+        </tr>
+      </Fragment>
+    )
+  }
+
+  function renderServerOptions() {
+    return (
+      <Fragment>        
+        <tr>
+          <td colSpan={2}><b>{tx('serverOptions')}</b></td>
+        </tr>
+        {config.SERVER_OPTIONS?.DESCRIPTION && <tr>
+          <td><b>{tx('description')}</b>:</td>
+          <td>{window.atob(config.SERVER_OPTIONS?.DESCRIPTION || '')}</td>
+        </tr>}
+        <tr>
+          <td><b>{tx('balanced')}</b></td>
+          <td> {config.SERVER_OPTIONS?.AUTO_BALANCE_TEAMS ? '✅' : '❌'}</td>
+        </tr>
+        <tr>
+          <td><b>{tx('map')}</b></td>
+          <td>
+            {t(`maps.${MAPS.find(m => m.map === config.SERVER_OPTIONS?.MAP)?.name}`)
+              .replace('maps.', '')}</td>
+        </tr>
+        <tr>
+          <td><b>{tx('mode')}</b></td>
+          <td>
+            {t(`modes.${MODES.find(m => m.mode === config.SERVER_OPTIONS?.MODE)?.name}`)
+              .replace('modes.', '') /* replaces key for not yet translated modes */}
+          </td>
+        </tr>
+        <tr>
+          <td><b>{tx('maxPlayers')}</b></td>
+          <td> {config.SERVER_OPTIONS?.MAX_PLAYERS}</td>
+        </tr>
+        <tr>
+          <td><b>{tx('port')}</b></td>
+          <td> {config.SERVER_OPTIONS?.PORT}</td>
+        </tr>
+        <tr>
+          <td><b>{tx('proxyAddress')}</b></td>
+          <td> {config.SERVER_OPTIONS?.PROXY_ADDRESS}</td>
+        </tr>
+        <tr>
+          <td><b>{tx('proxyPort')}</b></td>
+          <td> {config.SERVER_OPTIONS?.PROXY_PORT}</td>
+        </tr>
+      </Fragment>
+    )
+  }
+
   return (
     <div>
       <table>
         <caption>
-          {t('features.config.title')}
+          {tx('title')}
         </caption>
         <thead>
           <tr>
-            <th>Key</th>
-            <th>Value</th>
+            <th>{tx('key')}</th>
+            <th>{tx('value')}</th>
           </tr>
         </thead>
         <colgroup>
@@ -124,95 +217,29 @@ export function KyberConfig() {
         </colgroup>
         <tbody>
           <tr>
-            <td><b>CLIENT IP:</b></td>
+            <td><b>{tx('clientIp')}</b></td>
             <td>{client.ip}</td>
           </tr>
           <tr>
-            <td><b>LOCATION:</b></td>
+            <td><b>{tx('location')}</b></td>
             <td>{client.loc}</td>
           </tr>
           <tr>
-            <td><b>USER AGENT:</b> </td>
+            <td><b>{tx('userAgent')}</b> </td>
             <td>{userAgent.platform}, {userAgent.browser}{userAgent.mobile && ' (Mobile)'}</td>
           </tr>
           <tr>
-            <td><b>GPU:</b> </td>
-            <td>{renderer}</td>
+            <td><b>{tx('gpu')}</b> </td>
+            <td>{renderer === NOT_AVAILABLE ? t('features.config.gpu_unavailable') : renderer}</td>
           </tr>
           <tr>
-            <td><b>STATUS</b>:</td>
-            {/* "Config not found" */}
-            <td> {config.message || config.KYBER_MODE}</td> 
-          </tr>
-          <tr>
-            <td colSpan={2}><b>CLIENT OPTIONS</b></td>
-          </tr>
-          {/* TODO: share server by its id */}
-          <tr>
-            <td><b>ID</b>:</td>
-            <td style={{wordBreak: 'break-word'}}> 
-              {config.CLIENT_OPTIONS?.SERVER_ID} 
-              {/* <a href={`/#${config.CLIENT_OPTIONS?.SERVER_ID}`}>[SHARE]</a> */}
-            </td>
-          </tr>
-          <tr>
-            <td><b>NAME</b>:</td>
-            <td> {config.CLIENT_OPTIONS?.SERVER_NAME}</td>
-          </tr>
-          <tr>
-            <td><b>PASSWORD</b>:</td>
-            <td> {config.CLIENT_OPTIONS?.SERVER_PASSWORD}</td>
-          </tr>
-          <tr>
-            <td><b>FACTION</b>:</td>
-            <td> {config.CLIENT_OPTIONS?.PREFERRED_FACTION === Side.Light 
-              ? Side[Side.Light] 
-              : Side[Side.Dark]}
-            </td>
-          </tr>
-          <tr>
-            <td><b>IP</b>:</td>
-            <td> {config.CLIENT_OPTIONS?.SERVER_IP}</td>
-          </tr>
-          <tr>
-            <td><b>PROXIED</b>:</td>
-            <td> {config.CLIENT_OPTIONS?.SERVER_PROXIED ? '✅' : '❌'}</td>
-          </tr>
-          <tr>
-            <td colSpan={2}><b>SERVER OPTIONS</b></td>
-          </tr>
-          <tr>
-            <td><b>BALANCED</b>:</td>
-            <td> {config.SERVER_OPTIONS?.AUTO_BALANCE_TEAMS ? '✅' : '❌'}</td>
-          </tr>
-          <tr>
-            <td><b>DESCRIPTION</b>:</td>
-            <td> {window.atob(config.SERVER_OPTIONS?.DESCRIPTION || '')}</td>
-          </tr>
-          <tr>
-            <td><b>MAP</b>:</td>
-            <td> {MAPS.find(m => m.map === config.SERVER_OPTIONS?.MAP)?.name || 'N\\A'}</td>
-          </tr>
-          <tr>
-            <td><b>MAX_PLAYERS</b>:</td>
-            <td> {config.SERVER_OPTIONS?.MAX_PLAYERS || 'N\\A'}</td>
-          </tr>
-          <tr>
-            <td><b>MODE</b>:</td>
-            <td> {MODES.find(m => m.mode === config.SERVER_OPTIONS?.MODE)?.name || 'N\\A'}</td>
-          </tr>
-          <tr>
-            <td><b>PORT</b>:</td>
-            <td> {config.SERVER_OPTIONS?.PORT || 'N\\A'}</td>
-          </tr>
-          <tr>
-            <td><b>PROXY_ADDRESS</b>:</td>
-            <td> {config.SERVER_OPTIONS?.PROXY_ADDRESS || 'N\\A'}</td>
-          </tr>
-          <tr>
-            <td><b>PROXY_PORT</b>:</td>
-            <td> {config.SERVER_OPTIONS?.PROXY_PORT || 'N\\A'}</td>
-          </tr>
+            <td><b>{tx('status')}</b></td>
+            {/* "Config not found." | "CLIENT" | "SERVER" */}
+            <td> {tx(`${config.message || config.KYBER_MODE}`)}</td> 
+          </tr>         
+
+          {config.CLIENT_OPTIONS && renderClientOptions()}
+          {config.SERVER_OPTIONS && renderServerOptions()}
         </tbody>      
       </table>
       

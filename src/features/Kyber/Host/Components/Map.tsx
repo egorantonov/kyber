@@ -20,7 +20,7 @@ export function Map({map, selectedMode, setMap}: MapsProps) {
       <select className="c s5 m6 l6" value={map} id="input-maps" name="input-maps" 
         onChange={(e) => setMap(e.target.value)}>
         {getModeMaps(selectedMode).map((m) => ( 
-          <option key={m.map} value={m.map}>{m.name}</option>
+          <option key={m.map} value={m.map}>{t(`maps.${m.name}`).replace('maps.', '')}</option>
         ))}
       </select>
     </div>

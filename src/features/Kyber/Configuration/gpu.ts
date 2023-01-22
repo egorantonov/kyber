@@ -11,7 +11,7 @@
 
 type RenderingContext = WebGLRenderingContext | WebGL2RenderingContext
 
-const NOT_AVAILABLE = 'N\\A'
+export const NOT_AVAILABLE = 'N\\A'
 
 const ANGLE = 'ANGLE'
 const DIRECT_VERSION = 'Direct'
