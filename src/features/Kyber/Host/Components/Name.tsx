@@ -14,7 +14,7 @@ export function Name({setName}: NameProps) {
       <label className="c s6 m6 l6" htmlFor="input-name">
         {t('features.host.form.name')}
       </label>
-      <input className="c s5 m6 l6" id="input-name" type="text" required={true} placeholder="Required" 
+      <input className="c s5 m6 l6" id="input-name" type="text" required={true} placeholder={t('features.host.form.required') || 'Required'} 
         onChange={(e) => setName(e.target.value)} />
     </div>
   )

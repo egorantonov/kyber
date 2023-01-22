@@ -24,7 +24,7 @@ export function Mode({mode, setMode, setMap}: ModeProps) {
           setMap(getModeMaps(e.target.value)[0].map)
         }}>
         {MODES.map((m) => (
-          <option key={m.name} value={m.mode}>{m.name.replaceAll('Versus', 'vs.')}</option>
+          <option key={m.name} value={m.mode}>{t(`modes.${m.name}`).replace('modes.', '')}</option>
         ))}
       </select>
     </div>

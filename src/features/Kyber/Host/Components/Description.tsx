@@ -14,7 +14,7 @@ export function Description({setDescription}: DescriptionProps) {
       <label className="c s6 m6 l6" htmlFor="input-description">
         {t('features.host.form.description')}
       </label>
-      <input className="c s5 m6 l6" id="input-description" type="text" placeholder="Optional" onChange={(e) => setDescription(e.target.value)}></input>
+      <input className="c s5 m6 l6" id="input-description" type="text" placeholder={t('features.host.form.optional') || 'Optional'} onChange={(e) => setDescription(e.target.value)}></input>
     </div>
   )
 }

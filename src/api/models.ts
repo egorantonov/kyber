@@ -40,7 +40,7 @@ export interface KyberServer {
   maxPlayers?: number, // server capacity
   host?: string,
   autoBalanceTeams?: boolean,
-  startedAt?: number, // started at, ms
+  startedAt: number, // started at, ms
   startedAtPretty?: string,
   requiresPassword?: boolean,
   region?: string,
