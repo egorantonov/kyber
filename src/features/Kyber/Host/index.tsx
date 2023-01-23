@@ -22,7 +22,7 @@ import style from './host.module.scss'
 const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
 const IMG_URL_POSTFIX = '.jpg'
 
-function overrideMapName(bfMap: BattlefrontMap, modeMapOverrides: BattlefrontMap[]) {
+function overrideMapName(bfMap: BattlefrontMap, modeMapOverrides: BattlefrontMap[]):BattlefrontMap {
   //const mapWithOverride =
   return modeMapOverrides?.find(mo => mo.map === bfMap.map)
   /*const overrideBfMap: BattlefrontMap = { map: bfMap.map, name: bfMap.name }
