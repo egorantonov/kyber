@@ -35,9 +35,9 @@ export function getModeMaps(mode: string): BattlefrontMap[] {
 
   const modeMaps = selectedMode?.maps?.map(mapId => {
     const originalBfMap = MAPS.find(m => m.map === mapId)
-    const bfMap: BattlefrontMap = { map: originalBfMap.map, name: originalBfMap.name }
+    const bfMap: BattlefrontMap = { map: originalBfMap?.map, name: originalBfMap?.name }
     
-    if (bfMap && selectedMode?.mapOverrides && selectedMode?.mapOverrides?.length > 0) {
+    if (selectedMode?.mapOverrides && selectedMode?.mapOverrides?.length > 0) {
       overrideMapName(bfMap, selectedMode?.mapOverrides)
     }
 
