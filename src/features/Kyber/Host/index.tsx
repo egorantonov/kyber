@@ -22,11 +22,11 @@ import style from './host.module.scss'
 const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
 const IMG_URL_POSTFIX = '.jpg'
 
-function overrideMapName(map: BattlefrontMap, modeMapOverrides: BattlefrontMap[]) {
-  const mapWithOverride = modeMapOverrides?.find(mo => mo.map === map.map)
+function overrideMapName(bfMap: BattlefrontMap, modeMapOverrides: BattlefrontMap[]) {
+  const mapWithOverride = modeMapOverrides?.find(mo => mo.map === bfMap.map)
 
   if (mapWithOverride) {
-    map.name = mapWithOverride.name
+    bfMap.name = mapWithOverride.name
   }
 }
 
@@ -34,7 +34,8 @@ export function getModeMaps(mode: string): BattlefrontMap[] {
   const selectedMode = MODES.find(md => md.mode === mode)
 
   const modeMaps = selectedMode?.maps?.map(mapId => {
-    const bfMap = MAPS.find(m => m.map === mapId)
+    const originalBfMap = MAPS.find(m => m.map === mapId)
+    const bfMap: BattlefrontMap = { map: originalBfMap.map, name: originalBfMap.name }
     
     if (bfMap && selectedMode?.mapOverrides && selectedMode?.mapOverrides?.length > 0) {
       overrideMapName(bfMap, selectedMode?.mapOverrides)
