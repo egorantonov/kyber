@@ -23,22 +23,25 @@ const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
 const IMG_URL_POSTFIX = '.jpg'
 
 function overrideMapName(bfMap: BattlefrontMap, modeMapOverrides: BattlefrontMap[]) {
-  const mapWithOverride = modeMapOverrides?.find(mo => mo.map === bfMap.map)
+  //const mapWithOverride =
+  return modeMapOverrides?.find(mo => mo.map === bfMap.map)
+  /*const overrideBfMap: BattlefrontMap = { map: bfMap.map, name: bfMap.name }
 
   if (mapWithOverride) {
-    bfMap.name = mapWithOverride.name
+    overrideBfMap.name = mapWithOverride.name
   }
+
+  return overrideBfMap*/
 }
 
 export function getModeMaps(mode: string): BattlefrontMap[] {
   const selectedMode = MODES.find(md => md.mode === mode)
 
   const modeMaps = selectedMode?.maps?.map(mapId => {
-    const originalBfMap = MAPS.find(m => m.map === mapId)
-    const bfMap: BattlefrontMap = { map: originalBfMap?.map, name: originalBfMap?.name }
+    const bfMap = MAPS.find(m => m.map === mapId)
     
-    if (selectedMode?.mapOverrides && selectedMode?.mapOverrides?.length > 0) {
-      overrideMapName(bfMap, selectedMode?.mapOverrides)
+    if (bfMap && selectedMode?.mapOverrides && selectedMode?.mapOverrides?.length > 0) {
+      return overrideMapName(bfMap, selectedMode?.mapOverrides)
     }
 
     return bfMap
