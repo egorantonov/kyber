@@ -1,11 +1,5 @@
 export const CONSTANTS = {
   KYBER: {
-    JOIN_SERVER_MESSAGE: 'Are you sure you want to join this server?',
-    MODS_WARNING:
-      'Warning: This server requires the following Frosty mods.\r\n Please download and apply them in this exact load order before joining this server.',
-    NO_MODS_WARNING: 'This server does not require any Frosty mods.',
-    PLAY_INVALID_PASSWORD: 'Invalid password.', // 401
-    PLAY_SERVER_NOT_FOUND: 'Server not found.', // 404
     PLAY_SUCCESS: 'Success, start your game to join this server!', // 200
   },
 
