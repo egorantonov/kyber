@@ -8,6 +8,7 @@ import { KYBER_API } from '../../api/endpoints'
 import style from './server.module.scss'
 import { useTranslation } from 'react-i18next'
 import { getTimeHHmmFromTimeStamp } from '../../extensions/date'
+import { ensureMapName } from '../../utils/maps'
 
 const IMG_NEXUS_MOD = 'https://images.nexusmods.com/favicons/ReskinOrange/favicon-16x16.png'
 const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
@@ -23,15 +24,6 @@ function getMode(value?: string): string {
   }
   
   const result = MODES.find(m => m.mode === value)?.name || ''
-  return result
-}
-
-function getMap(value?: string): string {
-  if (isNullOrWhiteSpace(value)) {
-    return ''
-  }
-
-  const result = MAPS.find(m => m.map === value)?.name || ''
   return result
 }
 
@@ -62,7 +54,7 @@ export function Server({server}: KyberServerProps) {
     dispatch(toggleModal())
   }
 
-  const map = getMap(server.map)
+  const map = ensureMapName(server.map ?? '', server.mode ?? '')
   const mode = getMode(server.mode)
   const host = getHost(server.host)
   const image = mapImage(server.map)

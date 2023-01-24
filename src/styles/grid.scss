@@ -208,6 +208,13 @@ $w11: percentage(math.div(11, 12));
             justify-content: center;
         }
 
+        &-end {
+            justify-content: flex-end;
+        }
+
+        &-space-between {
+            justify-content: space-between;
+        }
     }
 
     &-items {

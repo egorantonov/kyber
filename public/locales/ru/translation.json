@@ -75,6 +75,7 @@
       "password": "Пароль",
       "faction": "Команда",
       "serverIp": "IP адрес сервера",
+      "serverLocation": "Местоположение сервера",
       "proxied": "Прокси-сервер",
       "serverOptions": "НАСТРОЙКИ СЕРВЕРА",
       "description": "Описание",
@@ -100,8 +101,12 @@
         "description": "Описание",
         "balance": "Автобаланс команд",
         "faction": "Выбор команды",
-        "proxy": "Точка пинга",
-        "maxPlayers": "Максимум игроков"
+        "kyberProxy": "Точка пинга",
+        "maxPlayers": "Максимум игроков",
+        "host": "Создать",
+        "reset": "Сбросить",
+        "validation_tooltip": "Поле «Название» обязательное!",
+        "ready": "Нажми для запуска!"
       },
       "messages": {
         "success": "Сервер создан успешно, теперь запустите игру!",
@@ -109,7 +114,8 @@
       },
       "validation": {
         "property": "Свойство",
-        "does not meet minimum length of 1": "не соответствует минимальной длине в 1 символ"
+        "does not meet minimum length of 1": "не соответствует минимальной длине в 1 символ",
+        "is not one of enum values": "не является значением из списка:"
       }
     },
     "servers": {
@@ -152,19 +158,54 @@
   "modes": {
     "Heroes Versus Villains": "Герои Против Злодеев",
     "Galactic Assault": "Галактическая битва",
-    "Supremacy": "Превосходство"
+    "Supremacy": "Полное Превосходство",
+    "CO-OP Attack": "КО-ОП (Нападение)",
+    "CO-OP Defend": "КО-ОП (Защита)",
+    "Strike": "Превосходство (Strike)",
+    "Extraction": "Эвакуация",
+    "Blast": "Схватка",
+    "Ewok Hunt": "Охота Эвоков",
+    "Jetpack Cargo": "Доставка по воздуху",
+    "Starfighter Assault": "Битвы Звёздных Истребителей",
+    "Hero Starfighters": "Звёздные Истребители Героев",
+    "Hero Showdown": "Столкновение Героев"
   },
   "maps": {
     "Geonosis": "Джеонозис",
+    "Kamino": "Камино",
     "Naboo": "Набу",
+    "Naboo - Theed Palace": "Набу, Дворец Тид",
+    "Naboo - Palace Hangar": "Набу, Ангар Дворца",
     "Kashyyyk": "Кашиик",
-    "Crait": "Крэйт",
-    "Tatooine": "Татуин",
+    "Felucia": "Фелуция",
+    "Kessel": "Кессель",
     "Scarif": "Скариф",
-    "Starkiller Base": "База 'Старкиллер'",
+    "Tatooine": "Татуин",
+    "Tatooine - Mos Eisley": "Татуин, Мос-Эйсли",
+    "Tatooine - Jabba's Palace": "Татуин, Дворец Джаббы",
+    "Yavin": "Явин 4",
+    "Hoth": "Хот",
     "Bespin": "Беспин",
     "Endor": "Эндор",
-    "Felucia": "Фелуция"
+    "Endor - Ewok Village": "Эндор - Деревня Эвоков",
+    "Endor - Ewok Village (WIP)": "Эндор - Деревня Эвоков (WIP)",
+    "Endor - Research Station 9": "Эндор - Исследовательская станция 9",
+    "Death Star II": "Звезда Смерти II",
+    "Jakku": "Джакку",
+    "Takodana": "Такодана",
+    "Starkiller Base": "База «Старкиллер»",
+    "Crait": "Крэйт",
+    "Crait (WIP)": "Крэйт (WIP)",
+    "Ajan Kloss": "Ажан Клосс",
+    "MC85 Star Cruiser": "Звёздный Крейсер МС85",
+    "Republic Venator": "Республиканский Венатор",
+    "Separatist Dreadnought": "Дредноут Сепаратистов",
+    "Resurgent Star Destroyer": "Звёздный Разрушитель Первого Ордена",
+    "First Order Star Destroyer": "Звёздный Разрушитель Первого Ордена",
+    "Ryloth": "Рилот",
+    "Fondor": "Фондор",
+    "Unknown Regions": "Неизвестные Регионы",
+    "D'Qar": "Ди'Кар"
   },
   "locations": {
     "San Francisco - US": "Сан-Франциско, США",
