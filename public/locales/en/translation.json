@@ -75,6 +75,7 @@
       "password": "Password",
       "faction": "Faction",
       "serverIp": "Server IP",
+      "serverLocation": "Server Location",
       "proxied": "Proxied",
       "serverOptions": "SERVER OPTIONS",
       "description": "Description",
@@ -100,8 +101,12 @@
         "description": "description",
         "balance": "Auto balance teams",
         "faction": "Server host faction",
-        "proxy": "Ping site",
-        "maxPlayers": "Max players"
+        "kyberProxy": "Ping site",
+        "maxPlayers": "Max players",
+        "host": "Host",
+        "reset": "Reset",
+        "validation_tooltip": "Field «Name» is required!",
+        "ready": "Click to host"
       },
       "messages": {
         "success": "Success, start your game to host this server!",
@@ -109,7 +114,8 @@
       },
       "validation": {
         "property": "Property",
-        "does not meet minimum length of 1": "does not meet minimum length of 1"
+        "does not meet minimum length of 1": "does not meet minimum length of 1",
+        "is not one of enum values": "is not one of enum values:"
       }
     },
     "servers": {
@@ -152,19 +158,54 @@
   "modes": {
     "Heroes Versus Villains": "Heroes vs. Villains",
     "Galactic Assault": "Galactic Assault",
-    "Supremacy": "Supremacy"
+    "Supremacy": "Supremacy",
+    "CO-OP Attack": "CO-OP Attack",
+    "CO-OP Defend": "CO-OP Defend",
+    "Strike": "Strike",
+    "Extraction": "Extraction",
+    "Blast": "Blast",
+    "Ewok Hunt": "Ewok Hunt",
+    "Jetpack Cargo": "Jetpack Cargo",
+    "Starfighter Assault": "Starfighter Assault",
+    "Hero Starfighters": "Hero Starfighters",
+    "Hero Showdown": "Hero Showdown"
   },
   "maps": {
     "Geonosis": "Geonosis",
+    "Kamino": "Kamino",
     "Naboo": "Naboo",
+    "Naboo - Theed Palace": "Naboo - Theed Palace",
+    "Naboo - Palace Hangar": "Naboo - Palace Hangar",
     "Kashyyyk": "Kashyyyk",
-    "Crait": "Crait",
-    "Tatooine": "Tatooine",
+    "Felucia": "Felucia",
+    "Kessel": "Kessel",
     "Scarif": "Scarif",
-    "Starkiller Base": "Starkiller Base",
+    "Tatooine": "Tatooine",
+    "Tatooine - Mos Eisley": "Tatooine - Mos Eisley",
+    "Tatooine - Jabba's Palace": "Tatooine - Jabba's Palace",
+    "Yavin": "Yavin",
+    "Hoth": "Hoth",
     "Bespin": "Bespin",
     "Endor": "Endor",
-    "Felucia": "Felucia"
+    "Endor - Ewok Village": "Endor - Ewok Village",
+    "Endor - Ewok Village (WIP)": "Endor - Ewok Village (WIP)",
+    "Endor - Research Station 9": "Endor - Research Station 9",
+    "Death Star II": "Death Star II",
+    "Jakku": "Jakku",
+    "Takodana": "Takodana",
+    "Starkiller Base": "Starkiller Base",
+    "Crait": "Crait",
+    "Crait (WIP)": "Crait (WIP)",
+    "Ajan Kloss": "Ajan Kloss",
+    "MC85 Star Cruiser": "MC85 Star Cruiser",
+    "Republic Venator": "Republic Venator",
+    "Separatist Dreadnought": "Separatist Dreadnought",
+    "Resurgent Star Destroyer": "Resurgent Star Destroyer",
+    "First Order Star Destroyer": "First Order Star Destroyer",
+    "Ryloth": "Ryloth",
+    "Fondor": "Fondor",
+    "Unknown Regions": "Unknown Regions",
+    "D'Qar": "D'Qar"
   },
   "locations": {
     "San Francisco - US": "San Francisco - US",

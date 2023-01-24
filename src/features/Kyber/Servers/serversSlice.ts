@@ -55,7 +55,7 @@ export const fetchProxiesAsync = createAsyncThunk(
 
     const response = await fetchProxies()
     // The value we return becomes the `fulfilled` action payload
-    return response.data
+    return response.data.sort((a, b) =>  a.name?.localeCompare(b.name ?? '') ?? 0) // TODO: temp sort until ping implemented
   }
 )
 
