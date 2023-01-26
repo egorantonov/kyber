@@ -198,11 +198,19 @@ $w11: percentage(math.div(11, 12));
         flex-wrap: wrap;
     }
 
+    &-column {
+        flex-direction: column;
+    }
+
     &-row {
         flex-direction: row;
     }
 
     &-content {
+
+        &-start {
+            justify-content: flex-start;
+        }
 
         &-center {
             justify-content: center;

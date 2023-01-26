@@ -1,14 +1,16 @@
-import { Fragment, useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 import { KYBER_API } from '../../api/endpoints'
 import { KyberServer, MessageResponse } from '../../api/models'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { PlayRequest, Side } from '../../data/models'
 import { isNullOrWhiteSpace } from '../../extensions/string'
 import { CONSTANTS } from '../../features/Kyber/constants'
+import { ImageContainer } from './Components/ImageContainer'
 import { isModalOpen, toggleModal } from '../../features/Kyber/Servers/serversSlice'
 
-import './styles.scss'
+//import './styles.scss'
+import style from './modal.module.scss'
 
 const MODS_SEARCH = 'https://www.nexusmods.com/starwarsbattlefront22017/search/?gsearchtype=mods&gsearch='
 const MODS_ICON = 'https://images.nexusmods.com/favicons/ReskinOrange/favicon-16x16.png'
@@ -51,9 +53,9 @@ export function Modal({ modalServer }: ModalProps) {
       .then((response) => response.json())
       .then((data: MessageResponse) => {
         console.log(data.message)
-        alert(data.message)
+        alert(tx(data.message))
         if (data.message === CONSTANTS.KYBER.PLAY_SUCCESS) {
-          closeServer()
+          closeModal()
         }
       })
       .catch(e => {
@@ -62,9 +64,13 @@ export function Modal({ modalServer }: ModalProps) {
       })
   }
 
-  function closeServer() {
+  function closeModal() {
     dispatch(toggleModal())
     setPassword('')
+  }
+
+  function tx(localKey: string): string {
+    return t(`components.modal.${localKey}`)
   }
 
   if (!status) {
@@ -72,80 +78,103 @@ export function Modal({ modalServer }: ModalProps) {
   }
 
   return (
-    <div id="modal" className={className}>
-      {/* CLOSE BUTTON */}
-      <div className='modal-header'>
-        <div>{modalServer?.name}</div>
-        <div onClick={() => closeServer()} style={{ cursor: 'pointer' }}>✕</div>
-      </div>
+    <div id="modal" className={style.modal_wrapper}>
+      <div style={{margin: '0 25px'}}>
+        <div className={`r ${style.modal}`}>
 
-      {/* BODY */}
-      <div className='modal-body'>
-        <div>{modalServer?.description}</div>
-        <div>{CONSTANTS.KYBER.JOIN_SERVER_MESSAGE}</div>
+          {/* TODO: temp */}
+          <ImageContainer map={modalServer?.map as string} mode={modalServer?.mode as string} />
 
-
-        <div className="">
-          <span>Preferred team: </span>
-          {!modalServer?.autoBalanceTeams && (
-            <div className="radio-wrapper x2 filter-switch">              
-              {sides.map((x) => (
-                <div className="filter-switch-item" key={x}>
-                  <input
-                    className="radio"
-                    type="radio"
-                    name="faction"
-                    id={Side[x]}
-                    value={x}
-                    checked={faction === x}
-                    onChange={(e) => setFaction(+e.target.value)}
-                  />
-                  <label htmlFor={Side[x]}>{t(`common.side.${Side[x]}`).toLocaleUpperCase()}</label>
-                </div>
-              ))}            
-            </div>
-          )}
-          {modalServer?.requiresPassword && (
-            <div>
-              <span>Password: </span>
-              <input className="" id="password" required
-                name="password" type="password" placeholder="Type password here"
-                onChange={(e) => setPassword(e.target.value)} />
-            </div>
-          )}
-        </div>
-
-        <div>
-          <div className="server-info-server-mods" style={{ maxWidth: '500px' }}>
-            <span>
-              {modalServer?.mods?.length === 0
-                ? (<div style={{ color: 'var(--highlight)' }}>{CONSTANTS.KYBER.NO_MODS_WARNING}</div>)
-                : (<>
-                  <div style={{ color: 'var(--highlight)' }}>{CONSTANTS.KYBER.MODS_WARNING}</div>
-                  <div className="server-mods-details-content">
-                    {modalServer?.mods?.map((mod, index) => (
-                      <div key={`${index}_${mod}`}>
-                        <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
-                          <img src={MODS_ICON} loading="lazy" />
-                          {mod}
-                        </a>
-                      </div>
-                    ))}
+          <div className='flex c l12 m12 s12'>
+            <div className={`${style.form_container} flex flex-column flex-content-space-between`}>
+              {/* HEADER */}
+              <div className={`${style.modal_header} flex flex-content-space-between`}>
+                <div>{modalServer?.name}</div>
+                <div onClick={() => closeModal()} style={{ cursor: 'pointer' }}>✕</div>
+              </div>
+          
+              {/* BODY */}
+              <div className='modal-body'>
+            
+                {modalServer?.description && (
+                  <div id='modal-description' className={`${style.line} ${style.description}`}>
+                    {tx('description')}: {modalServer?.description}
                   </div>
-                </>
                 )}
-            </span>
-          </div>
-        </div>
-      </div>
+                <div id='modal-join_message' className={style.line}>
+                  {tx('join')}
+                </div>
+                {!modalServer?.autoBalanceTeams && (
+                  <div id='modal-side' className={`r ${style.line} ${style.input} flex-content-start`}>
+                    <span className='c s10 m6 l6'>{tx('faction')}: </span>
+                    <div className='c s12 m6 l6 radio-wrapper x2 filter-switch'>
+                      {sides.map((x) => (
+                        <div className="filter-switch-item" key={x}>
+                          <input
+                            className="radio"
+                            type="radio"
+                            name="faction"
+                            id={Side[x]}
+                            value={x}
+                            checked={faction === x}
+                            onChange={(e) => setFaction(+e.target.value)}
+                          />
+                          <label htmlFor={Side[x]}>{t(`common.side.${Side[x]}`).toLocaleUpperCase()}</label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {modalServer?.requiresPassword && (
+                  <div id='modal-password' className={`r ${style.line} ${style.input} flex-content-start`}>
+                    <span className='c s10 m6 l6'>{tx('password')}: </span>
+                    <input className='c s12 m6 l6' id="password" required
+                      name="password" type="password" placeholder={tx('password_placeholder')}
+                      onChange={(e) => setPassword(e.target.value)} />
+                  </div>
+                )}           
 
-      {/* BUTTONS */}
-      <div className='modal-buttons'>
-        <button className="submit-button bd-filter-blur-5" disabled={!!modalServer && !!modalServer.requiresPassword && isNullOrWhiteSpace(password)}
-          onClick={() => !!modalServer && joinServer(modalServer.id, faction, password)}>
-          {CONSTANTS.BUTTON.JOIN}
-        </button>
-        <button className="submit-button bd-filter-blur-5" onClick={() => closeServer()}>{CONSTANTS.BUTTON.CLOSE}</button>
+                {modalServer?.mods?.length === 0
+                  ? (<div style={{ color: 'var(--highlight)' }}>{tx('no_mods_warning')}</div>)
+                  : (<>
+                    <div style={{ color: 'var(--highlight)' }}>
+                      <p>
+                        <Trans i18nKey='components.modal.mods_warning'>
+                            Warning: This server requires Frosty mods {{ length: modalServer?.mods?.length }}.
+                            Please download and apply them in this exact load order before joining this server.
+                            Click on mod to search on NexusMods.
+                        </Trans>
+                      </p>
+                      {/* {tx('mods_warning')} */}
+                    </div>
+                    <div className={style.mods_details_content}>
+                      {modalServer?.mods?.map((mod, index) => (
+                        <div key={`${index}_${mod}`}>
+                          <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
+                            <img src={MODS_ICON} loading="lazy" />
+                            {mod}
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                  )}
+              </div>
+
+              {/* BUTTONS */}
+              <div className='modal-buttons flex flex-content-center'>
+                <button className="submit-button bd-filter-blur-5" disabled={!!modalServer && !!modalServer.requiresPassword && isNullOrWhiteSpace(password)}
+                  onClick={() => !!modalServer && joinServer(modalServer.id, faction, password)}>
+              ✅ {tx('button_join')}
+                </button>
+                <button className="submit-button bd-filter-blur-5" onClick={() => closeModal()}>
+              ❌ {tx('button_close')}
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   )

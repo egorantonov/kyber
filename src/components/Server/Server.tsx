@@ -92,7 +92,7 @@ export function Server({server}: KyberServerProps) {
 
           <div className={style.description}>          
             {!!server.mods?.length && (<div className={style.info}>
-              <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> {t('server.modsRequired')}: {server.mods?.length}
+              <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> {t('components.server.modsRequired')}: {server.mods?.length}
             </div>)}
             <div className={style.info}> 👥 {server.users} / {server.maxPlayers}</div>             
             <div className={style.info} title={`IP: ${server.proxy?.ip}`}>

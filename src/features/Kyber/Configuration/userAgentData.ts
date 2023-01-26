@@ -24,7 +24,7 @@ export function getUserAgentData(): UserAgentData {
 
   const webkitUserAgentData: NavigatorUAData = getWebkitUserAgentData()
 
-  if (webkitUserAgentData) {   
+  if (webkitUserAgentData && webkitUserAgentData.brands?.length > 0) {   
     const brand = webkitUserAgentData.brands.find(x => !x.brand.includes('Not') && x.brand !== 'Chromium' ) 
     userAgentData.browser = `${brand?.brand} ${brand?.version}`
     userAgentData.mobile = webkitUserAgentData.mobile

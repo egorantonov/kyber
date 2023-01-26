@@ -10,13 +10,17 @@ export const Theme = () => {
   const [theme, setTheme] = useState(initialTheme)
   const localStorageDisabled = !window?.localStorage
 
+  function tx(localKey: string): string {
+    return t(`components.theme.${localKey}`)
+  }
+
   useEffect(() => {
     changeTheme(theme)
   })
 
   return (
     <div>
-      <p>{t('theme.title')}</p>
+      <p>{tx('title')}</p>
       <div className="radio-wrapper x3 filter-switch">    
         {SWITCHES.map((x) => (
           <div className="filter-switch-item" key={x}>
@@ -30,7 +34,7 @@ export const Theme = () => {
               disabled={localStorageDisabled}
               onChange={(e) => setTheme(e.target.value)} 
             />
-            <label htmlFor={x}>{t(`theme.${x}`).toLocaleUpperCase()}</label>
+            <label htmlFor={x}>{tx(x).toLocaleUpperCase()}</label>
           </div>
         ))}
       </div>

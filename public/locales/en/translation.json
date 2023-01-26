@@ -136,24 +136,40 @@
   "messages": {
     "localStorageDisabled": "Local Storage is disabled in your browser"
   },
-  "theme": {
-    "title": "Theme: ",
-    "dark": "🌘 dark",
-    "light": "🔆 light",
-    "system": "💻 system"
-  },
-  "header": {
-    "offline": "is offline"
-  },
-  "nav": {
-    "servers": "servers",
-    "download": "download",
-    "host": "host",
-    "about": "about",
-    "settings": "settings"
-  },
-  "server": {
-    "modsRequired": "MODS REQUIRED"
+  "components": {
+    "server": {
+      "modsRequired": "MODS REQUIRED"
+    },
+    "theme": {
+      "title": "Theme: ",
+      "dark": "🌘 dark",
+      "light": "🔆 light",
+      "system": "💻 system"
+    },
+    "header": {
+      "offline": "is ofﬂine"
+    },
+    "nav": {
+      "servers": "servers",
+      "download": "download",
+      "host": "host",
+      "about": "about",
+      "settings": "settings"
+    },
+    "modal": {
+      "join": "Are you sure you want to join this server?",
+      "faction": "Preferred team",
+      "password": "Password",
+      "password_placeholder": "Required",
+      "description": "Description",
+      "mods_warning": "⚠ Warning: This server requires the following {{length}} Frosty mods. Please download and apply them in this exact load order before joining this server. 👆🏻 Click on mod to search on NexusMods.",
+      "no_mods_warning": "🥳 This server does not require any Frosty mods.",
+      "Success, start your game to join this server!": "Success, start your game to join this server!",
+      "Server not found.": "Server not found.",
+      "Invalid password.": "Invalid password.",
+      "button_join": "Join",
+      "button_close": "Close"
+    }
   },
   "modes": {
     "Heroes Versus Villains": "Heroes vs. Villains",
