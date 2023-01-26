@@ -184,6 +184,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
   {
     id: 'df67d4eee55f8e9e4933a6f0c8cb7f1e',
     name: '1234',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     map: 'S1/Levels/Crait_01/Crait_01',
     mode: 'PlanetaryBattles',
     mods: [
@@ -211,6 +212,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
   {
     id: 'a53f74f2757d5cb44d38c482539d2fae',
     name: 'yeye',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et tempor magna. Sed vulputate, lorem vitae vehicula semper, neque lacus suscipit magna, et aliquet leo lacus eu dui.',
     map: 'Levels/MP/Naboo_02/Naboo_02',
     mode: 'HeroesVersusVillains',
     mods: [
@@ -229,7 +231,7 @@ export const FAKE_RESPONSE: KyberServer[] = [
     users: 1,
     host: 'Dave-Swampwalker',
     maxPlayers: 3,
-    autoBalanceTeams: true,
+    autoBalanceTeams: false,
     startedAt: 1643783114522,
     startedAtPretty: '8m ago',
     requiresPassword: true,

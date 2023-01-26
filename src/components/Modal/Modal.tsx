@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { KYBER_API } from '../../api/endpoints'
 import { KyberServer, MessageResponse } from '../../api/models'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
@@ -79,91 +79,102 @@ export function Modal({ modalServer }: ModalProps) {
 
   return (
     <div id="modal" className={style.modal_wrapper}>
-      <div className={`r ${style.modal}`}>
+      <div style={{margin: '0 25px'}}>
+        <div className={`r ${style.modal}`}>
 
-        {/* TODO: temp */}
-        <ImageContainer map={modalServer?.map as string} mode={modalServer?.mode as string} />
+          {/* TODO: temp */}
+          <ImageContainer map={modalServer?.map as string} mode={modalServer?.mode as string} />
 
-        <div className={`c l12 m12 s12 ${style.form_container}`}>
-
-          {/* CLOSE BUTTON */}
-          <div className={`${style.modal_header} flex flex-content-space-between`}>
-            <div>{modalServer?.name}</div>
-            <div onClick={() => closeModal()} style={{ cursor: 'pointer' }}>✕</div>
-          </div>
-
-          {/* BODY */}
-          <div className='modal-body'>
-            <div>{modalServer?.description}</div>
-            <div>{tx('join')}</div>
-
-
-            <div className="">
-              <span>{tx('faction')}</span>
-              {!modalServer?.autoBalanceTeams && (
-                <div className="radio-wrapper x2 filter-switch">
-                  {sides.map((x) => (
-                    <div className="filter-switch-item" key={x}>
-                      <input
-                        className="radio"
-                        type="radio"
-                        name="faction"
-                        id={Side[x]}
-                        value={x}
-                        checked={faction === x}
-                        onChange={(e) => setFaction(+e.target.value)}
-                      />
-                      <label htmlFor={Side[x]}>{t(`common.side.${Side[x]}`).toLocaleUpperCase()}</label>
+          <div className='flex c l12 m12 s12'>
+            <div className={`${style.form_container} flex flex-column flex-content-space-between`}>
+              {/* HEADER */}
+              <div className={`${style.modal_header} flex flex-content-space-between`}>
+                <div>{modalServer?.name}</div>
+                <div onClick={() => closeModal()} style={{ cursor: 'pointer' }}>✕</div>
+              </div>
+          
+              {/* BODY */}
+              <div className='modal-body'>
+            
+                {modalServer?.description && (
+                  <div id='modal-description' className={`${style.line} ${style.description}`}>
+                    {tx('description')}: {modalServer?.description}
+                  </div>
+                )}
+                <div id='modal-join_message' className={style.line}>
+                  {tx('join')}
+                </div>
+                {!modalServer?.autoBalanceTeams && (
+                  <div id='modal-side' className={`r ${style.line} ${style.input} flex-content-start`}>
+                    <span className='c s10 m6 l6'>{tx('faction')}: </span>
+                    <div className='c s12 m6 l6 radio-wrapper x2 filter-switch'>
+                      {sides.map((x) => (
+                        <div className="filter-switch-item" key={x}>
+                          <input
+                            className="radio"
+                            type="radio"
+                            name="faction"
+                            id={Side[x]}
+                            value={x}
+                            checked={faction === x}
+                            onChange={(e) => setFaction(+e.target.value)}
+                          />
+                          <label htmlFor={Side[x]}>{t(`common.side.${Side[x]}`).toLocaleUpperCase()}</label>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
-              {modalServer?.requiresPassword && (
-                <div>
-                  <span>{tx('password')}</span>
-                  <input className="" id="password" required
-                    name="password" type="password" placeholder={tx('password_placeholder')}
-                    onChange={(e) => setPassword(e.target.value)} />
-                </div>
-              )}
-            </div>
+                  </div>
+                )}
+                {modalServer?.requiresPassword && (
+                  <div id='modal-password' className={`r ${style.line} ${style.input} flex-content-start`}>
+                    <span className='c s10 m6 l6'>{tx('password')}: </span>
+                    <input className='c s12 m6 l6' id="password" required
+                      name="password" type="password" placeholder={tx('password_placeholder')}
+                      onChange={(e) => setPassword(e.target.value)} />
+                  </div>
+                )}           
 
-            <div>
-              <div className="server-info-server-mods" style={{ maxWidth: '500px' }}>
-                <span>
-                  {modalServer?.mods?.length === 0
-                    ? (<div style={{ color: 'var(--highlight)' }}>{tx('no_mods_warning')}</div>)
-                    : (<>
-                      <div style={{ color: 'var(--highlight)' }}>{tx('mods_warning')}</div>
-                      <div className={style.mods_details_content}>
-                        {modalServer?.mods?.map((mod, index) => (
-                          <div key={`${index}_${mod}`}>
-                            <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
-                              <img src={MODS_ICON} loading="lazy" />
-                              {mod}
-                            </a>
-                          </div>
-                        ))}
-                      </div>
-                    </>
-                    )}
-                </span>
+                {modalServer?.mods?.length === 0
+                  ? (<div style={{ color: 'var(--highlight)' }}>{tx('no_mods_warning')}</div>)
+                  : (<>
+                    <div style={{ color: 'var(--highlight)' }}>
+                      <p>
+                        <Trans i18nKey='components.modal.mods_warning'>
+                            Warning: This server requires Frosty mods {{ length: modalServer?.mods?.length }}.
+                            Please download and apply them in this exact load order before joining this server.
+                            Click on mod to search on NexusMods.
+                        </Trans>
+                      </p>
+                      {/* {tx('mods_warning')} */}
+                    </div>
+                    <div className={style.mods_details_content}>
+                      {modalServer?.mods?.map((mod, index) => (
+                        <div key={`${index}_${mod}`}>
+                          <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
+                            <img src={MODS_ICON} loading="lazy" />
+                            {mod}
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                  )}
+              </div>
+
+              {/* BUTTONS */}
+              <div className='modal-buttons flex flex-content-center'>
+                <button className="submit-button bd-filter-blur-5" disabled={!!modalServer && !!modalServer.requiresPassword && isNullOrWhiteSpace(password)}
+                  onClick={() => !!modalServer && joinServer(modalServer.id, faction, password)}>
+              ✅ {tx('button_join')}
+                </button>
+                <button className="submit-button bd-filter-blur-5" onClick={() => closeModal()}>
+              ❌ {tx('button_close')}
+                </button>
               </div>
             </div>
           </div>
 
-          {/* BUTTONS */}
-          <div className='modal-buttons flex flex-content-center'>
-            <button className="submit-button bd-filter-blur-5" disabled={!!modalServer && !!modalServer.requiresPassword && isNullOrWhiteSpace(password)}
-              onClick={() => !!modalServer && joinServer(modalServer.id, faction, password)}>
-              ✅ {tx('button_join')}
-            </button>
-            <button className="submit-button bd-filter-blur-5" onClick={() => closeModal()}>
-              ❌ {tx('button_close')}
-            </button>
-          </div>
         </div>
-
       </div>
     </div>
   )
