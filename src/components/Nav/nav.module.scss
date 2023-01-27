@@ -15,14 +15,11 @@ nav {
 
 @media only screen and (max-width: 600px) {
   .nav {   
-    //top: calc(100dvh - $nav_height_mobile);
     top: unset;
     bottom: 0;
     height: $nav_height_mobile;
     justify-content: space-evenly;
-    // background: linear-gradient(var(--bg-color-substrate), var(--bg-color-alpha));
     background: linear-gradient(var(--bg-color-substrate), var(--bg-color-alpha), var(--bg-color));
-    //background: var(--bg-color);
   }
 }
 
@@ -44,6 +41,13 @@ nav {
   &:hover, &:focus {    
     text-shadow: 0 0 10px var(--highlight-alpha);
     border-bottom: 2px solid var(--highlight-hover);
+
+    svg {
+      path {        
+        fill: var(--highlight-hover);
+        transition: all 250ms;
+      }
+    }
   }
 }
 
@@ -56,18 +60,27 @@ nav {
 
 @media only screen and (max-width: 600px) {
   .link {
-    padding-left: 6px;
-    padding-right: 6px;
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    
-    &::before {      
-      content: attr(data-content);
-      font-size: 20px;
-      margin: 5px 0;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+
+    svg {
+      margin-top: 5px;
+      path {
+        transition: all 250ms;
+        fill: var(--color-tarnished);
+      }
     }
+    
+    // /* UTF-8 (emojis) instead of svg */
+    // &::before {      
+    //   content: attr(data-content);
+    //   font-size: 20px;
+    //   margin: 5px 0;
+    // }
     
   }
 }
@@ -75,4 +88,10 @@ nav {
 .active {
   color: var(--highlight-active);
   border-bottom: 2px solid var(--highlight-active);
+
+  svg {
+    path {
+      fill: var(--highlight-active);
+    }
+  }
 }
