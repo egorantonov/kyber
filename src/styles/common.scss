@@ -53,7 +53,9 @@ main {
 button {
   font-family: 'Univers';
   font-weight: 700;
-  width: 100px;
+  min-width: 100px;
+  width: fit-content;
+  max-width: 150px;
   padding: 5px;
   margin: 5px;
   color: var(--color);

@@ -1,7 +1,9 @@
 .infoblock {
   display: flex;
   width: 480px;
-  height: 320px;
+  min-height: 320px;
+  height: fit-content;
+  max-height: 640px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px #00000033;
@@ -46,7 +48,7 @@
     &:hover {
       cursor: pointer;
       color: var(--color);
-      backdrop-filter: var(--blur5);
+      backdrop-filter: var(--blur10);
       transition: all .25s ease-in-out;
     }
   }
@@ -71,10 +73,12 @@
   }
 }
 
-@media only screen and (max-width: 1270px) {
+@media only screen and (max-width: 1080px) {
   .infoblock {
     width: 360px;
-    height: 280px;
+    min-height: 280px;
+    height: fit-content;
+    max-height: 560px;
 
     p {
       font-size: 28px;
@@ -85,9 +89,17 @@
 @media only screen and (max-width: 600px) {
   .infoblock {
     width: 100%;
-    height: 240px;
+    min-height: 200px;
+    height: fit-content;
+    max-height: 560px;
+
+    h4 {
+      margin-block-start: 0;
+      margin-block-end: 5px;
+    }
 
     p {
+      margin-block: 0;
       font-size: 24px;
     }
   }

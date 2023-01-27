@@ -26,26 +26,6 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    // resources: {
-    //   en: {
-    //     translation: {
-    //       theme: {
-    //         dark: 'dark',
-    //         light: 'light',
-    //         system: 'system'
-    //       }
-    //     }
-    //   },
-    //   ru: {
-    //     translation: {
-    //       theme: {
-    //         dark: 'тёмная',
-    //         light: 'светлая',
-    //         system: 'как в системе'
-    //       }
-    //     }
-    //   }
-    // }
   })
 
 
