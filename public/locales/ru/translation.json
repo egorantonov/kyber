@@ -169,6 +169,9 @@
       "Invalid password.": "Неверный пароль.",
       "button_join": "Играть",
       "button_close": "Закрыть"
+    },
+    "debug": {
+      "title": "Режим отладки"
     }
   },
   "modes": {

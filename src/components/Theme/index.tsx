@@ -20,7 +20,7 @@ export const Theme = () => {
 
   return (
     <div>
-      <p>{tx('title')}</p>
+      <p className='uppercase'>{tx('title')}</p>
       <div className="radio-wrapper x3 filter-switch">    
         {SWITCHES.map((x) => (
           <div className="filter-switch-item" key={x}>

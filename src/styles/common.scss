@@ -94,6 +94,21 @@ ul {
   list-style-type: none;
 }
 
+td,th {
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: $breakpoint_mobile) {
+  td,th {
+    font-size: 14px;
+    padding: 1px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+}
+
 .bd-filter-blur-5 {
   backdrop-filter: var(--blur5);
 }
@@ -142,6 +157,12 @@ ul {
 @media screen and (max-width: $breakpoint_mobile) {
   .radio-wrapper {
     width: calc(100% + 10px);
+
+    // TODO: rewrite whole radio-wrapper styles to match ALL inputs on all app
+    &.x3 {
+      width: calc(3 * $toggle_default_width);
+      max-width: 100%;
+    }
   }
 }
 
@@ -175,6 +196,15 @@ ul {
     // color: #fffc;
     // --bg-opacity: 0;
     // box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: $breakpoint_mobile) {
+  .filter-switch-item {
+    
+    label {
+      font-size: 12px;
+    }
   }
 }
 
