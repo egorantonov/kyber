@@ -20,7 +20,7 @@
   
     &.open {
         opacity: 1;
-        backdrop-filter: blur(25px);
+        backdrop-filter: var(--blur25);
         pointer-events: auto;
         overflow: hidden;
     }
@@ -34,7 +34,7 @@
   
 @media only screen and (max-width: 600px) {
     .modal {
-      font-size: 12px;  
+      font-size: 12px;
     }
   }
 

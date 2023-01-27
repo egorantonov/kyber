@@ -1,10 +1,10 @@
 * {  
   --highlight: #2749c9;
-  --blockbg: #fffa;  
+  --blockbg: #fffa;
   --blockborder: #000a;
   --blocktext: #000c;
   --backdropbrightness: 1;
-  --serverbg: #fff8;  
+  --serverbg: #fff8;
   --serverbghover: #fffa;
 }
 
@@ -40,7 +40,7 @@
   }
 
   &.search-input-block {
-    backdrop-filter: blur(10px) brightness(var(--backdropbrightness));
+    backdrop-filter: var(--blur10) brightness(var(--backdropbrightness));
   }
 
   .info-plate {
@@ -53,7 +53,7 @@
 
 @media (min-width: 601px) {
   .server {   
-    backdrop-filter: saturate(180%) blur(10px) brightness(var(--backdropbrightness)) !important;
+    backdrop-filter: saturate(180%) var(--blur10) brightness(var(--backdropbrightness)) !important;
     background: var(--serverbg) !important;
     // background: -moz-linear-gradient(#000000c0, #000000b0, #000000c0) !important;
 
@@ -143,8 +143,8 @@
     width: 102px;
     min-height: 102px;
     min-width: 102px;
-    margin: 2px; 
-    display: block;   
+    margin: 2px;
+    display: block;
   }
 }
 
@@ -159,8 +159,8 @@
   transition-duration: 0.25s;
   text-align: center;
   /* will-change: transform; */
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 

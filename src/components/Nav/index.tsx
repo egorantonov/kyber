@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { NavLinkPersist } from '../../supports/Persistence'
+import { SimpleIcon } from '../SimpleIcon'
+import { SimpleIcons20x20, SimpleIcons24x24 } from './constants'
 import style from './nav.module.scss'
 
 export function Nav() {
@@ -15,13 +17,37 @@ export function Nav() {
   }
 
   return (
-    // TODO: add rows/columns style
     <nav className={style.nav}> 
-      <NavLinkPersist className={className} to='/'>{tx('servers')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/download'>{tx('download')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/host'>{tx('host')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/about'>{tx('about')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/settings'>{tx('settings')}</NavLinkPersist>
+      <NavLinkPersist className={className} to='/' data-content='💻'>
+        <SimpleIcon height={24} width={24} path={SimpleIcons24x24.servers} />
+        <span>
+          {tx('servers')}
+        </span>        
+      </NavLinkPersist>
+      <NavLinkPersist className={className} to='/download' data-content='⏬'>
+        <SimpleIcon height={24} width={24} path={SimpleIcons24x24.download} />
+        <span>
+          {tx('download')}
+        </span>        
+      </NavLinkPersist>
+      <NavLinkPersist className={className} to='/host' data-content='➕'>
+        <SimpleIcon height={24} width={24} path={SimpleIcons24x24.host} />
+        <span>
+          {tx('host')}
+        </span>        
+      </NavLinkPersist>
+      <NavLinkPersist className={className} to='/about' data-content='⚠️'>
+        <SimpleIcon height={24} width={24} fill='var(--color)' path={SimpleIcons24x24.about} />
+        <span>
+          {tx('about')}
+        </span>        
+      </NavLinkPersist>
+      <NavLinkPersist className={className} to='/settings' data-content='⚙️'>
+        <SimpleIcon height={24} width={24} fill='var(--color)' path={SimpleIcons24x24.settings} />
+        <span>
+          {tx('settings')}
+        </span>        
+      </NavLinkPersist>
     </nav>
   )
 }

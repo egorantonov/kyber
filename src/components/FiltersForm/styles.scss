@@ -1,6 +1,6 @@
 * {  
     --highlight: #2749c9;
-    --blockbg: #fffa;  
+    --blockbg: #fffa;
     --blockborder: #000a;
     --blocktext: #000c;
     --backdropbrightness: 1;
@@ -19,7 +19,7 @@
 }
 
 .filters {
-    backdrop-filter: blur(10px) brightness(var(--backdropbrightness));
+    backdrop-filter: var(--blur10) brightness(var(--backdropbrightness));
     // background: -moz-linear-gradient(#000000d0, #000000b0, #000000d0);
     background: var(--filtersformbg);
     display: flex;
@@ -88,7 +88,7 @@
         }
 
         @media only screen and (min-width: 601px) {
-            text-align: center;   
+            text-align: center;
         }
     }
 
@@ -97,7 +97,7 @@
     }
 
     @media only screen and (min-width: 601px) {
-        margin-top: auto; 
+        margin-top: auto;
 
         .filters {
             margin: auto;
@@ -133,7 +133,7 @@
     border-radius: 15px;
 
     @media only screen and (min-width: 601px) {
-        width: 100%;    
+        width: 100%;
     }
 
     &::placeholder { /* Most modern browsers support this now. */

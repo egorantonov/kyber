@@ -5,10 +5,10 @@
   margin: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px #00000033;
-  backdrop-filter: blur(10px);  
+  backdrop-filter: var(--blur10);
   text-shadow: var(--bg-color) 0px 0px 5px, var(--bg-color) 0px 0px 3px, var(--bg-color) 0px 0px 1px;
   
-  transition: all .25s ease-in-out; 
+  transition: all .25s ease-in-out;
 
   span {
     color: var(--highlight)
@@ -41,13 +41,13 @@
     text-decoration: none;
     color: var(--color);
     border-radius: 10px;
-    transition: all .25s ease-in-out; 
+    transition: all .25s ease-in-out;
 
     &:hover {
       cursor: pointer;
       color: var(--color);
-      backdrop-filter: blur(5px);
-      transition: all .25s ease-in-out; 
+      backdrop-filter: var(--blur5);
+      transition: all .25s ease-in-out;
     }
   }
 

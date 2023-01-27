@@ -66,8 +66,9 @@ const serversSlice = createSlice({
     clear: (state) => {
       state.servers = []
     },
-    toggleDebug: (state) => {
-      state.debug = !state.debug
+    toggleDebug: (state, action) => {
+      //state.debug = !state.debug
+      state.debug = action.payload
     },
     toggleAutoUpdate: (state, action) => {
       //state.liveUpdate = !state.liveUpdate

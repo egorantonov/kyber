@@ -20,6 +20,9 @@
   --highlight: #fbb10a;
   --highlight-hover: #dc9a00;
   --highlight-active: #f2a900;
+  --blur5: blur(5px); 
+  --blur10: blur(10px); 
+  --blur25: blur(25px); 
 }
 
 :root[data-theme=dark] {
@@ -75,4 +78,26 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#nojs {
+  background-image: url("./assets/bg-desktop-dark.webp");
+  position: fixed; 
+  color: #ddd; 
+  font-family: 'Roboto Condensed', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+}
+
+#nojs_text {
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  padding: 50px;
+  text-transform: uppercase;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.753), rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0.753));
+  backdrop-filter: blur(5px);
 }

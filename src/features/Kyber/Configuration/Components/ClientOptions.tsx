@@ -53,19 +53,19 @@ export function ClientOptions({clientOptions, proxies}: ClientOptionsProps) {
         </td>
       </tr>
       <tr>
-        <td><b>{tx('serverIp')}</b></td>
-        <td> {serverIp}</td>
-      </tr>
-      <tr>
         <td><b>{tx('serverLocation')}</b></td>
         <td> 
           <img className={style.image_proxy_flag} loading="lazy" alt="location flag" 
-            src={proxy?.flag} /> {proxy?.name}            
+            src={proxy?.flag} /> {t(`locations.${proxy?.name}`)}            
         </td>
       </tr>
       <tr>
         <td><b>{tx('proxied')}</b></td>
         <td> {proxied}</td>
+      </tr>
+      <tr>
+        <td><b>{tx('serverIp')}</b></td>
+        <td> {serverIp}</td>
       </tr>
     </Fragment>
   )
