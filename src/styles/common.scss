@@ -1,5 +1,6 @@
 $header_height: 32px;
 $nav_height: 32px;
+$nav_height_mobile: 60px;
 $main_shift: calc($header_height + $nav_height);
 $toggle_default_width: 120px;
 $input_default_height: 28px;
@@ -24,13 +25,10 @@ header {
   position: fixed;
   top: 0px;
   width: 100%;
-  backdrop-filter: blur(10px);
   z-index: 10;
 }
 
 main {
-
-  // shift for <header
   &::before {
     display: inline-block;
     height: $main_shift;
@@ -38,12 +36,16 @@ main {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: $breakpoint_mobile) {
   main {
-
-    // shift for <header
     &::before {
-      height: calc($header_height + 60px);
+      height: $header_height;
+    }
+
+    &::after {
+      display: inline-block;
+      height: $nav_height_mobile;
+      content: "";
     }
   }
 }
@@ -56,26 +58,26 @@ button {
   margin: 5px;
   color: var(--color);
   background-color: var(--bg-color-substrate);
-  backdrop-filter: blur(5px);
+  backdrop-filter: var(--blur5);
   border: 2px solid var(--color);
   border-radius: 5px;
   text-transform: uppercase;
-  transition: all .25s ease-in-out; 
+  transition: all .25s ease-in-out;
 
   &:hover {
-    color: var(--highlight-hover);  
+    color: var(--highlight-hover);
     border: 2px solid var(--highlight-hover);
     box-shadow: 1px 1px 2px #0003;
     transform: translate(-1px, -1px);
-    transition: all .25s ease-in-out; 
+    transition: all .25s ease-in-out;
   }
 
   &:active {
-    color: var(--highlight-active);  
-    border: 2px solid var(--highlight-active);    
+    color: var(--highlight-active);
+    border: 2px solid var(--highlight-active);
     box-shadow: none;
     transform: translate(0px, 0px);
-    transition: all .1s ease-in-out; 
+    transition: all .1s ease-in-out;
   }
 
   &:disabled {
@@ -83,7 +85,7 @@ button {
     border: 2px solid #7777;
     box-shadow: none;
     transform: translate(0px, 0px);
-    transition: all .1s ease-in-out; 
+    transition: all .1s ease-in-out;
     cursor: not-allowed;
   }
 }
@@ -93,11 +95,11 @@ ul {
 }
 
 .bd-filter-blur-5 {
-  backdrop-filter: blur(5px);
+  backdrop-filter: var(--blur5);
 }
 
 .bd-filter-blur-10 {
-  backdrop-filter: blur(10px);
+  backdrop-filter: var(--blur10);
 }
 
 .block-blur {
@@ -116,14 +118,14 @@ ul {
 
 @media only screen and (max-width: $breakpoint_mobile) {
   .text {
-    font-size: 12px;  
+    font-size: 12px;
   }
 }
 
 .radio-wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   border-radius: 5px;
   background-color: var(--bg-color-alpha);
   height: $input_default_height;
@@ -157,7 +159,7 @@ ul {
     text-align: center;
     text-transform: uppercase;
     
-    transition: all .2s ease-in-out; 
+    transition: all .2s ease-in-out;
   }
 
   input {

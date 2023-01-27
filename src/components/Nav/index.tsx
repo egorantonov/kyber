@@ -15,7 +15,6 @@ export function Nav() {
   }
 
   return (
-    // TODO: add rows/columns style
     <nav className={style.nav}> 
       <NavLinkPersist className={className} to='/' data-content='💻'>{tx('servers')}</NavLinkPersist>
       <NavLinkPersist className={className} to='/download' data-content='⏬'>{tx('download')}</NavLinkPersist>

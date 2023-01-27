@@ -5,8 +5,8 @@
   margin: 0px;
   padding: 0px;
   height: $header_height;
-  background-color: var(--bg-color-alpha);
-  // backdrop-filter: saturate(180%) blur(15px);
+  background: linear-gradient(var(--bg-color), var(--bg-color-alpha));
+  backdrop-filter: var(--blur10);
   display: flex;
   align-items: center;
   justify-content: space-between;

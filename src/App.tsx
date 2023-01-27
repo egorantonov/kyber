@@ -32,8 +32,8 @@ function App() {
       <header>
         <Header />
         <KyberStatus />
-        <Nav />        
-      </header>
+      </header>      
+      <Nav />
       <main>
         <Routes>
           <Route path='/' element={<ServersPage />} />
@@ -43,9 +43,16 @@ function App() {
           <Route path='/settings' element={<SettingsPage />}/>
         </Routes>
       </main>
-      <footer>
-
-      </footer>
+      {/* <footer style={{
+        position: 'fixed', 
+        bottom: 0, 
+        width: '100%',
+        height: 30, 
+        zIndex: 99, 
+        color: 'red', 
+        backgroundColor: 'yellow'}}>
+        TEST
+      </footer> */}
     </div>
   )
 }

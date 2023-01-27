@@ -18,32 +18,10 @@
   </head>
   <body>
     <noscript>
-      <div id="nojs" style="position: fixed; 
-        color: #ddd; 
-        font-family: 'Roboto Condensed', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        display: grid;
-        justify-content: center;
-        align-items: center;
-        inset: 0;
-        ">
-        <span style="border: 2px solid #ddd;
-          border-radius: 5px;
-          padding: 50px;
-          text-transform: uppercase;
-          background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.753), rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0.753));
-          backdrop-filter: blur(5px);
-          ">Padawan, you need to enable JavaScript to run this app.</span>
+      <div id="nojs">
+        <span id="nojs_text">Padawan, you need to enable JavaScript to run this app.</span>
       </div>
     </noscript>
     <div id="root"></div>
-    <script>
-      let isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      console.log(isDark)
-      isDark
-        ? (document.body.className = document.body.className.replace(/light$/, ''))
-        : (document.body.className += 'light')
-    </script>
   </body>
 </html>

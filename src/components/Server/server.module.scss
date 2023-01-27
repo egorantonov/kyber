@@ -16,7 +16,7 @@ $breakpoint_tablet: 900px;
     background: linear-gradient(90deg, var(--bg-color), var(--bg-color)) !important;
     box-shadow: 4px 4px 5px #0003;
     transform: translate(-2px, -2px);
-    transition: all .25s ease-in-out; 
+    transition: all .25s ease-in-out;
 
     
     .image_svg_container {
@@ -78,7 +78,7 @@ $breakpoint_tablet: 900px;
 .image_play { 
   width: 48px;
   height: 48px;
-  fill: #fff;  
+  fill: #fff;
   margin: 0 auto;
 }
 
@@ -130,7 +130,7 @@ $breakpoint_tablet: 900px;
 
 .info {
   background-color: var(--bg-color-alpha);
-  backdrop-filter: blur(5px);
+  backdrop-filter: var(--blur5);
   border-radius: 10px;
   padding: 5px;
   margin: 2px;

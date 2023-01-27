@@ -9,7 +9,7 @@ h2 {
 
 .host {
   max-width: 1150px;
-  //margin: 10px 150px; 
+  //margin: 10px 150px;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 2px 2px 5px #0003;
@@ -76,7 +76,7 @@ select {
 
   option {
     background-color: var(--bg-color);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--blur10);
     color: var(--color);
     //padding: 30px;
 
@@ -119,7 +119,7 @@ input[type="range"] {
     height: 16px;
     width: 16px;
     border-radius: 3px;
-    background: var(--highlight);    
+    background: var(--highlight);
     box-shadow: -250px 0 0 250px var(--highlight);
     cursor: pointer;
   }
@@ -129,8 +129,8 @@ input[type="range"] {
     border: 0px solid transparent;
     height: 16px;
     width: 16px;
-    border-radius: 3px;    
-    background: var(--highlight);    
+    border-radius: 3px;
+    background: var(--highlight);
     box-shadow: -250px 0 0 250px var(--highlight);
     cursor: pointer;
   }
@@ -189,7 +189,7 @@ input[type="range"] {
 .info {
   height: 24px;
   background-color: var(--bg-color-alpha);
-  backdrop-filter: blur(5px);
+  backdrop-filter: var(--blur5);
   border-radius: 10px;
   padding: 5px;
   margin: 2px;

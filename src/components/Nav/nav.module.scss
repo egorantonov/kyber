@@ -5,13 +5,24 @@ nav {
 }
 
 .nav {
-  //height: $nav_height;
   display: flex;
+  position: fixed;
+  top: $header_height;
+  width: 100%;
+  backdrop-filter: var(--blur10);
+  z-index: 10;
 }
 
 @media only screen and (max-width: 600px) {
-  .nav {
+  .nav {   
+    //top: calc(100dvh - $nav_height_mobile);
+    top: unset;
+    bottom: 0;
+    height: $nav_height_mobile;
     justify-content: space-evenly;
+    // background: linear-gradient(var(--bg-color-substrate), var(--bg-color-alpha));
+    background: linear-gradient(var(--bg-color-substrate), var(--bg-color-alpha), var(--bg-color));
+    //background: var(--bg-color);
   }
 }
 
@@ -20,7 +31,7 @@ nav {
   font-size: 24px;
   text-transform: uppercase;
   text-decoration: none;
-  text-align: center;  
+  text-align: center;
   width: 175px;
   outline: none;
   border: 2px solid transparent;
@@ -38,7 +49,7 @@ nav {
 
 @media only screen and (max-width: 1270px) {
   .link {
-    font-size: 18px;    
+    font-size: 18px;
     width: 125px;
   }
 }
@@ -53,9 +64,9 @@ nav {
     justify-content: flex-end;
     
     &::before {      
-      content: attr(data-content); 
+      content: attr(data-content);
       font-size: 20px;
-      margin: 5px 0; 
+      margin: 5px 0;
     }
     
   }
