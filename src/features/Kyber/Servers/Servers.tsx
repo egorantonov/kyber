@@ -36,20 +36,10 @@ export function KyberServers() {
   }, [liveUpdate])
 
   return (
-    <div style={{ marginTop: 25 }}>
+    <div>
       <div>
         <Modal modalServer={modalServer} />
       </div>
-      {/* <div>
-        <input
-          type="checkbox"
-          name="liveUpdate"
-          id="liveUpdate"
-          checked={liveUpdate}
-          onChange={() => dispatch(toggleAutoUpdate())}
-        />
-        <label htmlFor="liveUpdate">Live Update</label>
-      </div>       */}
       <div id='servers-buttons' className='flex flex-items-center' style={{marginLeft: 10}}>
         {t('features.servers.liveUpdate')}:&nbsp;
         <div className='radio-wrapper x2 filter-switch' style={{margin: 7, width: 125}}>

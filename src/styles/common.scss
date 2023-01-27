@@ -38,6 +38,16 @@ main {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  main {
+
+    // shift for <header
+    &::before {
+      height: calc($header_height + 60px);
+    }
+  }
+}
+
 button {
   font-family: 'Univers';
   font-weight: 700;

@@ -48,6 +48,16 @@ nav {
     padding-left: 6px;
     padding-right: 6px;
     font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    &::before {      
+      content: attr(data-content); 
+      font-size: 20px;
+      margin: 5px 0; 
+    }
+    
   }
 }
 

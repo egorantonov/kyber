@@ -17,11 +17,11 @@ export function Nav() {
   return (
     // TODO: add rows/columns style
     <nav className={style.nav}> 
-      <NavLinkPersist className={className} to='/'>{tx('servers')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/download'>{tx('download')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/host'>{tx('host')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/about'>{tx('about')}</NavLinkPersist>
-      <NavLinkPersist className={className} to='/settings'>{tx('settings')}</NavLinkPersist>
+      <NavLinkPersist className={className} to='/' data-content='💻'>{tx('servers')}</NavLinkPersist>
+      <NavLinkPersist className={className} to='/download' data-content='⏬'>{tx('download')}</NavLinkPersist>
+      <NavLinkPersist className={className} to='/host' data-content='➕'>{tx('host')}</NavLinkPersist>
+      <NavLinkPersist className={className} to='/about' data-content='⚠️'>{tx('about')}</NavLinkPersist>
+      <NavLinkPersist className={className} to='/settings' data-content='⚙️'>{tx('settings')}</NavLinkPersist>
     </nav>
   )
 }
