@@ -38,6 +38,11 @@ nav {
   cursor: pointer;
   transition: all 250ms;
 
+  svg {
+    height: 0;
+    width: 0;
+  }
+
   &:hover, &:focus {    
     text-shadow: 0 0 10px var(--highlight-alpha);
     border-bottom: 2px solid var(--highlight-hover);
@@ -68,6 +73,8 @@ nav {
     text-transform: capitalize;
 
     svg {
+      width: auto;
+      height: auto;
       margin-top: 5px;
       path {
         transition: all 250ms;
@@ -80,8 +87,7 @@ nav {
     //   content: attr(data-content);
     //   font-size: 20px;
     //   margin: 5px 0;
-    // }
-    
+    // }    
   }
 }
 
