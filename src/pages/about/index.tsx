@@ -2,7 +2,7 @@ import logo from '../../logo.svg'
 import { Counter } from '../../features/counter/Counter'
 import { Trans, useTranslation } from 'react-i18next'
 import { InfoBlock } from '../../components/InfoBlock'
-import { about, whatAboutKyber, getInvolved, aboutAuthor, otherProjects } from './data'
+import { about, whatAboutKyber, copyright, getInvolved, aboutAuthor, otherProjects } from './data'
 import ExternalLink from '../../components/ExternalLink'
 
 export function AboutPage() {
@@ -18,6 +18,13 @@ export function AboutPage() {
         <InfoBlock {...whatAboutKyber}>
           <p style={{fontSize: 18, textTransform: 'none'}}>
             {t(`${whatAboutKyber.id}.body`)}
+          </p>
+        </InfoBlock>
+        <InfoBlock {...copyright}>
+          <p style={{fontSize: 18, textTransform: 'none'}}>
+            <Trans i18nKey={`${copyright.id}.body`}>
+            All external entities are copyright to their respective owners and are protected under international copyright laws. This site doesn&apos;t collect any personal data neither use cookies. Kyber API © <span>BattleDash</span>
+            </Trans>
           </p>
         </InfoBlock>
         <InfoBlock {...getInvolved}>

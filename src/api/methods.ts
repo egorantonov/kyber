@@ -36,7 +36,16 @@ export const fetchServers = async (): Promise<{data: KyberServer[]}> => {
     }
   }
 
-  return new Promise<{data: KyberServer[]}>((resolve) => resolve({data: servers}))
+  const uniqueServers: KyberServer[] = []
+  const map = new Map()
+  for (const server of servers) {
+    if (!map.has(server.id)) {
+      map.set(server.id, true)
+      uniqueServers.push(server)
+    }
+  }
+
+  return new Promise<{data: KyberServer[]}>((resolve) => resolve({data: uniqueServers}))
 }
 
 // FETCH PROXIES

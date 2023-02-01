@@ -33,7 +33,8 @@ $breakpoint_tablet: 900px;
 
 @media (max-width: 650px) {
   .server {
-    height: 160px;
+    min-height: 160px;
+    height: fit-content;
   }
 }
 

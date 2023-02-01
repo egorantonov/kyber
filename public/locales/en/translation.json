@@ -21,7 +21,7 @@
       },
       "visitKyber": {
         "title": "Learn More",
-        "body": "Visit <1>the official site</1><br/>to download from it"
+        "body": "Visit <1>the ofﬁcial site</1><br/>to download from it"
       }
     },
     "host": {
@@ -31,7 +31,7 @@
       "title": "About",
       "about": {
         "title": "About this site",
-        "body": "This is a custom `Kyber API` implementation with an additional functionality such as live updates and conﬁguration tab. Advanced search and ﬁltering will be implemented later after the ﬁrst release. Dark theme included to bring the force balance."
+        "body": "This is a custom Kyber API implementation with an additional functionality such as live updates and conﬁguration tab. Advanced search and ﬁltering will be implemented later after the ﬁrst release. Dark theme included to bring the force balance."
       },
       "whatAboutKyber": {
         "title": "About kyber",
@@ -40,6 +40,10 @@
       "getInvolved": {
         "title": "Get involved",
         "body": "Have any suggestions? Found a bug?<br/> Create a new issue on <1>Github</1>"
+      },
+      "copyright": {
+        "title": "Copyright & privacy",
+        "body": "All external entities are copyright to their respective owners and are protected under international copyright laws.<br/> This site doesn't collect any personal data neither use cookies.<br/> Kyber API © <1>BattleDash</1>"
       },
       "aboutAuthor": {
         "title": "About author",
@@ -130,7 +134,7 @@
       "found_other": "Found {{count}} Kyber servers"
     },
     "status": {
-      "message": "Hmmm... Kyber API seems to be down. Try open <1>Kyber official site</1> or check status on <3>Discord server</3>"
+      "message": "Hmmm... Kyber API seems to be down. Try open <1>Kyber ofﬁcial site</1> or check status on <3>Discord server</3>"
     }
   },
   "messages": {
@@ -185,8 +189,8 @@
     "Blast": "Blast",
     "Ewok Hunt": "Ewok Hunt",
     "Jetpack Cargo": "Jetpack Cargo",
-    "Starfighter Assault": "Starfighter Assault",
-    "Hero Starfighters": "Hero Starfighters",
+    "Starfighter Assault": "Starﬁghter Assault",
+    "Hero Starfighters": "Hero Starﬁghters",
     "Hero Showdown": "Hero Showdown"
   },
   "maps": {

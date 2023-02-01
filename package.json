@@ -1,6 +1,6 @@
 {
   "name": "kyber",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",

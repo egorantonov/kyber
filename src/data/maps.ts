@@ -202,3 +202,16 @@ export const MAPS: BattlefrontMap[] = [
     name: BattlefrontMapName.ResurgentStarDestroyer,
   },
 ]
+
+export const UniqueMaps = (): string[] => {
+  const uniqueMaps: string[] = []
+  const map = new Map()
+  for (const bfMap of MAPS) {
+    if (!map.has(bfMap.map)) {
+      map.set(bfMap.map, true)
+      uniqueMaps.push(bfMap.map)
+    }
+  }
+
+  return uniqueMaps
+}

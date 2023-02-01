@@ -17,9 +17,10 @@ $breakpoint_mobile: 600px;
 }
 
 .modal {
+  min-width: 800px;
   width: 100%;
   max-width: 1150px;
-  min-height: 360px;
+  min-height: 480px;
   margin: 0 auto;
   border-radius: 10px;
   box-shadow: 2px 2px 5px #0003;
@@ -35,6 +36,7 @@ $breakpoint_mobile: 600px;
 
 @media screen and (max-width: $breakpoint_tablet) {
   .modal {
+    min-width: unset;
     flex-direction: column;
     font-size: 18px;
     min-height: unset;
@@ -43,6 +45,7 @@ $breakpoint_mobile: 600px;
 
 @media screen and (max-width: $breakpoint_mobile) {
   .modal {
+    min-width: unset;
     flex-direction: row;
     font-size: 14px;
     min-height: unset;
@@ -112,11 +115,30 @@ $breakpoint_mobile: 600px;
   overflow-y: scroll;
   max-height: 19ex;
   height: min-content;
+
+  a {
+    font-family: 'Oswald', sans-serif; 
+    font-size: 16px;
+    font-variation-settings: "wght" 500;
+  }
 }
 
 @media only screen and (max-width: $breakpoint_tablet) {
   .mods_details_content {
     max-height: 11.5ex;
+
+    a {
+      font-size: 14px;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint_mobile) {
+  .mods_details_content {
+
+    a {
+      font-size: 12px;
+    }
   }
 }
 

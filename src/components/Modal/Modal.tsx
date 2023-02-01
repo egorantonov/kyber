@@ -82,7 +82,6 @@ export function Modal({ modalServer }: ModalProps) {
       <div style={{margin: '0 25px'}}>
         <div className={`r ${style.modal}`}>
 
-          {/* TODO: temp */}
           <ImageContainer map={modalServer?.map as string} mode={modalServer?.mode as string} />
 
           <div className='flex c l12 m12 s12'>
@@ -152,7 +151,7 @@ export function Modal({ modalServer }: ModalProps) {
                         <div key={`${index}_${mod}`}>
                           <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
                             <img src={MODS_ICON} loading="lazy" />
-                            {mod}
+                            <span>&nbsp;{mod}</span>
                           </a>
                         </div>
                       ))}
