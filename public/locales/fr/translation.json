@@ -1,0 +1,242 @@
+{
+  "common": {
+    "side": {      
+      "Light": "Côté Lumineux",
+      "Dark": "Côté Obscur"
+    },
+    "switch": {
+      "on": "On",
+      "off": "Off"
+    }
+  },
+  "pages": {
+    "servers": {
+      "title": "Serveurs"
+    },
+    "download": {
+      "title": "Téléchargement",
+      "directDownload": {
+        "title": "Pour commencer",
+        "body": "Téléchargez le client Kyber<br/> via <1>direct link</1>"
+      },
+      "visitKyber": {
+        "title": "Plus d'informations",
+        "body": "Rendez-vous sur <1>the ofﬁcial site</1><br/>pour le téléchargement"
+      }
+    },
+    "host": {
+      "title": "Héberger le jeu"
+    },
+    "about": {
+      "title": "A propos",
+      "about": {
+        "title": "About this site",
+        "body": "Ceci est une modiﬁcation de l'API Kyber qui y ajoute des fonctionnalités comme la mise à jour en direct et un onglet de conﬁguration. La recherche avancée et le ﬁltrage seront ajoutés après la première publication. Un thème sombre est inclu pour apporter l'équilibre à la Force"
+      },
+      "whatAboutKyber": {
+        "title": "A propos de kyber",
+        "body": "Ce projet est basé sur l'API ouverte Kyber. Chaque point final de l'API a été étudié, documenté et mis en œuvre. Ce projet n'a pas pour but de concurrencer le site original mais d'exercer mes compétences en programmation"
+      },
+      "getInvolved": {
+        "title": "Participez",
+        "body": "Avez-vous des suggestions? Avez-vous trouvé un bug?<br/> Créez un post sur <1>Github</1>"
+      },
+      "copyright": {
+        "title": "Droit d'auteur & conﬁdentialité",
+        "body": "Toutes les entités externes sont la propriété de leurs propriétaires respectifs et sont protégées par les lois internationales sur le droit d'auteur.<br/> Ce site ne collecte aucune information personnelle et n'utilise pas les cookies.<br/> Kyber API © <1>BattleDash</1>"
+      },
+      "aboutAuthor": {
+        "title": "A propos de l'auteur",
+        "body": "Crée par<1>EYEMVX</1> en 2023. Souscrivez ou envoyez une demande d'ami: cherchez @EYEMVX sur Origin, Discord, Twitch et Youtube. Vous avez un compte Github ? Ajoutez des étoiles à<3>this project</3> 💫"
+      },
+      "otherProjects": {
+        "title": "Autres projets",
+        "body": "Vous aimez l'EDM?<br/>Inscrivez vous à mon podcast EDM <1>PHASE FLOW</1>"
+      }
+    },
+    "settings": {
+      "title": "Réglages"
+    }
+  },
+  "features": {
+    "config": {
+      "title": "Conﬁguration actuelle",
+      "key": "Paramètre",
+      "value": "Valeur",
+      "clientIp": "Votre adresse IP",
+      "clientIp_unavailable": "Impossible d'obtenir les données du client. Veriﬁez votre connexion internet ou les réglages de votre bloqueur de publicités",
+      "location": "Localistaion",
+      "userAgent": "Système",
+      "gpu": "Carte graphique",
+      "gpu_unavailable": "Les données de la carte graphique ne sont pas disponibles pour ce système",
+      "status": "Statut",
+      "Config not found.": "Conﬁguration non trouvée",
+      "CLIENT": "CLIENT",
+      "SERVER": "SERVEUR",
+      "clientOptions": "OPTIONS DU CLIENT",
+      "id": "ID",
+      "name": "Nom",
+      "password": "Mot de passe",
+      "faction": "Faction",
+      "serverIp": "IP du serveur",
+      "serverLocation": "Localisation du serveur",
+      "proxied": "Utilisation d'un Proxy",
+      "serverOptions": "OPTIONS DU SERVEUR",
+      "description": "Description",
+      "balanced": "Equilibré",
+      "map": "Map",
+      "maxPlayers": "Nombre de joueurs max.",
+      "mode": "Mode",
+      "port": "Port",
+      "proxyAddress": "Addresse du Proxy",
+      "proxyPort": "Port du Proxy"
+    },
+    "host": {
+      "title": "Hôte",
+      "form": {
+        "optional": "Optionnel",
+        "required": "Requis",
+        "settings": "Réglages",
+        "map": "Map",
+        "mode": "Mode",
+        "name": "Nom",
+        "password": "Mot de passe",
+        "advanced": "Avancé",
+        "description": "description",
+        "balance": "Equilibrage automatique des équipes",
+        "faction": "Faction de l'hôte du serveur",
+        "kyberProxy": "Site de Ping",
+        "maxPlayers": "Nombre de joueurs max.",
+        "host": "Héberger",
+        "reset": "Remettre à zéro",
+        "validation_tooltip": "Le champ «Name» est requis!",
+        "ready": "Cliquez pour héberger le jeu"
+      },
+      "messages": {
+        "success": "Réussi, démarrez votre jeu pour héberger le serveur!",
+        "badRequestValidationFailed": "Mauvaise requête: la validation a échoué!"
+      },
+      "validation": {
+        "property": "Propriété",
+        "does not meet minimum length of 1": "doit être d'une longueur minimale de 1",
+        "is not one of enum values": "n'est pas l'une des valeurs énumérées:"
+      }
+    },
+    "servers": {
+      "liveUpdate": "Mise à jour en direct",
+      "debugClear": "Nettoyage",
+      "update": "Mise à jour",
+      "found_zero": "Aucun serveur Kyber trouvé", 
+      "found_one": "{{count}}serveur Kyber trouvé",
+      "found_two": "{{count}} serveur Kyber trouvés",
+      "found_few": "{{count}} serveur Kyber trouvés",
+      "found_many": " {{count}} serveur Kyber trouvés",
+      "found_other": "{{count}} serveur Kyber trouvés"
+    },
+    "status": {
+      "message": "Hmmm... L'API Kyber semble être indisponible. Essayez de consulter<1>Kyber ofﬁcial site</1> ou vériﬁez l'état sur<3>Discord server</3>"
+    }
+  },
+  "messages": {
+    "localStorageDisabled": "Le stockage local est désactivé sur votre système"
+  },
+  "components": {
+    "server": {
+      "modsRequired": "MODS REQUIS"
+    },
+    "theme": {
+      "title": "Theme: ",
+      "dark": "🌘 sombre",
+      "light": "🔆 lumineux",
+      "system": "💻 système"
+    },
+    "header": {
+      "offline": "est hors ligne"
+    },
+    "nav": {
+      "servers": "serveurs",
+      "download": "téléchargement",
+      "host": "héberger",
+      "about": "à propos",
+      "settings": "réglages"
+    },
+    "modal": {
+      "join": "Etes vous sûr de vouloir rejoindre ce serveur?",
+      "faction": "Choix de l'équipe",
+      "password": "Mot de passe",
+      "password_placeholder": "Requis",
+      "description": "Description",
+      "mods_warning": "⚠ Avertissement: Ce serveur nécessite d'avoir les mods Frosty suivants{{length}}. Veuillez les télécharger et les aplliquer dans le même ordre avant de rejoindre le serveur. 👆🏻 Cliquez sur un mod pour le rechercher sur NexusMods.",
+      "no_mods_warning": "🥳 Ce serveur ne nécessite aucun mod Frosty.",
+      "Success, start your game to join this server!": "Réussi, démarrez votre jeu pour rejoindre le serveur!",
+      "Server not found.": "Serveur introuvable.",
+      "Invalid password.": "Mot de passe incorrect.",
+      "button_join": "Rejoindre",
+      "button_close": "Fermer"
+    },
+    "debug": {
+      "title": "Debug switch"
+    }
+  },
+  "modes": {
+    "Heroes Versus Villains": "Affrontement Héroïque",
+    "Galactic Assault": "Assaut Galactique",
+    "Supremacy": "Suprematie",
+    "CO-OP Attack": "CO-OP Attack",
+    "CO-OP Defend": "CO-OP Defend",
+    "Strike": "Frappe",
+    "Extraction": "Extraction",
+    "Blast": "Escarmouche",
+    "Ewok Hunt": "Chasse Ewok",
+    "Jetpack Cargo": "Jetpack Cargo",
+    "Starfighter Assault": "Starﬁghter Assault",
+    "Hero Starfighters": "Confrontation de Chasseurs",
+    "Hero Showdown": "Confrontation de Héros"
+  },
+  "maps": {
+    "Geonosis": "Geonosis",
+    "Kamino": "Kamino",
+    "Naboo": "Naboo",
+    "Naboo - Theed Palace": "Naboo - Theed",
+    "Naboo - Palace Hangar": "Naboo - Hangar du Palais",
+    "Kashyyyk": "Kashyyyk",
+    "Felucia": "Felucia",
+    "Kessel": "Kessel",
+    "Scarif": "Scarif",
+    "Tatooine": "Tatooine",
+    "Tatooine - Mos Eisley": "Tatooine - Mos Eisley",
+    "Tatooine - Jabba's Palace": "Tatooine - Palais de Jabba",
+    "Yavin": "Yavin",
+    "Hoth": "Hoth",
+    "Bespin": "Bespin",
+    "Endor": "Endor",
+    "Endor - Ewok Village": "Endor - Village Ewok",
+    "Endor - Ewok Village (WIP)": "Endor - Village Ewok(WIP)",
+    "Endor - Research Station 9": "Endor - Station de recherche 9",
+    "Death Star II": "Etoile de la mort II",
+    "Jakku": "Jakku",
+    "Takodana": "Takodana",
+    "Starkiller Base": "Base Starkiller",
+    "Crait": "Crait",
+    "Crait (WIP)": "Crait (WIP)",
+    "Ajan Kloss": "Ajan Kloss",
+    "MC85 Star Cruiser": "Croiseur stellaire MC85",
+    "Republic Venator": "Croiseur de la République Venator",
+    "Separatist Dreadnought": "Cuirassé Separatist",
+    "Resurgent Star Destroyer": "Star Destroyer de classe Resurgent ",
+    "First Order Star Destroyer": "Star Destroyer du Premier Ordre",
+    "Ryloth": "Ryloth",
+    "Fondor": "Fondor",
+    "Unknown Regions": "Régions inconnues",
+    "D'Qar": "D'Qar"
+  },
+  "locations": {
+    "San Francisco - US": "San Francisco - USA",
+    "New York - US": "New York - USA",
+    "London - UK": "Londres - UK",
+    "Toronto - Canada": "Toronto - Canada",
+    "Frankfurt - Germany": "Francfort - Allemagne",
+    "Singapore - Asia": "Singapour - Asie",
+    "Sydney - Australia": "Sydney - Australie"
+  }
+}

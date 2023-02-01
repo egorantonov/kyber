@@ -1,0 +1,224 @@
+$header_height: 32px;
+$nav_height: 32px;
+$nav_height_mobile: 60px;
+$main_shift: calc($header_height + $nav_height);
+$toggle_default_width: 120px;
+$input_default_height: 28px;
+
+$breakpoint_mobile: 600px;
+
+a {
+  text-decoration: none;
+  color: var(--highlight);
+
+  &:hover {
+    color: var(--highlight-hover);
+  }
+
+  &:active {
+    color: var(--highlight-active)
+  }
+}
+
+
+header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 10;
+}
+
+main {
+  &::before {
+    display: inline-block;
+    height: $main_shift;
+    content: "";
+  }
+}
+
+@media only screen and (max-width: $breakpoint_mobile) {
+  main {
+    &::before {
+      height: $header_height;
+    }
+
+    &::after {
+      display: inline-block;
+      height: $nav_height_mobile;
+      content: "";
+    }
+  }
+}
+
+button {
+  font-family: 'Univers';
+  font-weight: 700;
+  min-width: 100px;
+  width: fit-content;
+  max-width: 150px;
+  padding: 5px;
+  margin: 5px;
+  color: var(--color);
+  background-color: var(--bg-color-substrate);
+  backdrop-filter: var(--blur5);
+  border: 2px solid var(--color);
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    color: var(--highlight-hover);
+    border: 2px solid var(--highlight-hover);
+    box-shadow: 1px 1px 2px #0003;
+    transform: translate(-1px, -1px);
+    transition: all .25s ease-in-out;
+  }
+
+  &:active {
+    color: var(--highlight-active);
+    border: 2px solid var(--highlight-active);
+    box-shadow: none;
+    transform: translate(0px, 0px);
+    transition: all .1s ease-in-out;
+  }
+
+  &:disabled {
+    color: #777;
+    border: 2px solid #7777;
+    box-shadow: none;
+    transform: translate(0px, 0px);
+    transition: all .1s ease-in-out;
+    cursor: not-allowed;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+td,th {
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: $breakpoint_mobile) {
+  td,th {
+    font-size: 14px;
+    padding: 1px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+  }
+}
+
+.bd-filter-blur-5 {
+  backdrop-filter: var(--blur5);
+}
+
+.bd-filter-blur-10 {
+  backdrop-filter: var(--blur10);
+}
+
+.block-blur {
+  margin: 10px;
+  padding: 10px;
+  background-color: var(--bg-color-substrate);
+  border: 1px solid var(--color-substrate);
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 1270px) {
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: $breakpoint_mobile) {
+  .text {
+    font-size: 12px;
+  }
+}
+
+.radio-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: var(--bg-color-alpha);
+  height: $input_default_height;
+
+  &.x2 {
+    max-width: calc(2 * $toggle_default_width + 10px);
+  }
+
+  &.x3 {
+    max-width: calc(3 * $toggle_default_width + 10px);
+  }
+}
+
+@media screen and (max-width: $breakpoint_mobile) {
+  .radio-wrapper {
+    width: calc(100% + 10px);
+
+    // TODO: rewrite whole radio-wrapper styles to match ALL inputs on all app
+    &.x3 {
+      width: calc(3 * $toggle_default_width);
+      max-width: 100%;
+    }
+  }
+}
+
+.filter-switch-item {
+  
+  min-width: fit-content;
+  width: 100%;
+  max-width: calc($toggle_default_width + 5px);
+
+  label {
+    height: $input_default_height;
+    font-size: 14px;
+    //box-shadow: #fff3 0px 1px 3px 0px;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    
+    transition: all .2s ease-in-out;
+  }
+
+  input {
+    display: none; // TODO: tabulation is broken if display: none
+  }
+
+  input:checked + label {
+    color: var(--color-inverted);
+    background-color: var(--highlight);
+  }
+
+  input:not(:checked) + label {
+    // color: #fffc;
+    // --bg-opacity: 0;
+    // box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: $breakpoint_mobile) {
+  .filter-switch-item {
+    
+    label {
+      font-size: 12px;
+    }
+  }
+}
+
+.filter-switch label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.filter-switch-item input:not(:checked) + label {
+  color: var(--labelnotcheckedcolor);
+  --bg-opacity: 0;
+  box-shadow: none;
+}

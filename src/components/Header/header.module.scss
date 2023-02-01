@@ -1,0 +1,54 @@
+@import '../../styles/common.scss';
+
+.header {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: $header_height;
+  background: linear-gradient(var(--bg-color), var(--bg-color-alpha));
+  backdrop-filter: var(--blur10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  height: calc($header_height/2);
+}
+
+@media only screen and (max-width: 1270px) {
+  .header {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    font-size: 12px;
+  }
+
+  .header__logo {
+    height: calc($header_height/3);
+  }
+}
+
+
+
+.status {
+  color: #b60101;
+  animation: blink 2s linear infinite;
+}
+
+.padleft {
+  padding-left: 15px;
+}
+
+.padright {
+  padding-right: 15px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

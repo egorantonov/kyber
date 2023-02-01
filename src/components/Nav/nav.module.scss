@@ -1,0 +1,105 @@
+@import '../../styles/common.scss';
+
+nav {
+  background-color: var(--bg-color-substrate);
+}
+
+.nav {
+  display: flex;
+  position: fixed;
+  top: $header_height;
+  width: 100%;
+  backdrop-filter: var(--blur10);
+  z-index: 10;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav {   
+    top: unset;
+    bottom: 0;
+    height: $nav_height_mobile;
+    justify-content: space-evenly;
+    background: linear-gradient(var(--bg-color-substrate), var(--bg-color-alpha), var(--bg-color));
+  }
+}
+
+.link {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  appearance: none;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  width: 175px;
+  outline: none;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  color: var(--color);
+  padding-bottom: 4px;
+  cursor: pointer;
+  transition: all 250ms;
+
+  svg {
+    height: 0;
+    width: 0;
+  }
+
+  &:hover, &:focus {    
+    text-shadow: 0 0 10px var(--highlight-alpha);
+    border-bottom: 2px solid var(--highlight-hover);
+
+    svg {
+      path {        
+        fill: var(--highlight-hover);
+        transition: all 250ms;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1270px) {
+  .link {
+    font-size: 18px;
+    width: 125px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .link {
+    font-size: 12px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+
+    svg {
+      width: auto;
+      height: auto;
+      margin-top: 5px;
+      path {
+        transition: all 250ms;
+        fill: var(--color-tarnished);
+      }
+    }
+    
+    // /* UTF-8 (emojis) instead of svg */
+    // &::before {      
+    //   content: attr(data-content);
+    //   font-size: 20px;
+    //   margin: 5px 0;
+    // }    
+  }
+}
+
+.active {
+  color: var(--highlight-active);
+  border-bottom: 2px solid var(--highlight-active);
+
+  svg {
+    path {
+      fill: var(--highlight-active);
+    }
+  }
+}

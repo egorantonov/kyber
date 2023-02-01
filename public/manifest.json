@@ -1,0 +1,26 @@
+{
+  "short_name": "Kyber",
+  "name": "Kyber",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "https://kyber.pages.dev",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000",  
+  "description": "Custom Kyber API implementation with search and filtering"
+}

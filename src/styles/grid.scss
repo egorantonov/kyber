@@ -1,0 +1,234 @@
+@use "sass:math";
+
+$w1: percentage(math.div(1, 12));
+$w2: percentage(math.div(2, 12));
+$w4: percentage(math.div(4, 12));
+$w5: percentage(math.div(5, 12));
+$w7: percentage(math.div(7, 12));
+$w8: percentage(math.div(8, 12));
+$w10: percentage(math.div(10, 12));
+$w11: percentage(math.div(11, 12));
+
+.r {
+    display: flex;
+    // flex-wrap: wrap;
+    justify-content: center;
+
+    &.start {
+        justify-content: flex-start;
+    }
+
+    &.end {
+        justify-content: flex-end;
+    }
+
+    .c {
+        float: left;
+
+        &.l1 {
+            width: $w1;
+        }
+
+        &.l2 {
+            width: $w2;
+        }
+
+        &.l3 {
+            width: 25%;
+        }
+
+        &.l4 {
+            width: $w4;
+        }
+
+        &.l5 {
+            width: $w5;
+        }
+
+        &.l6 {
+            width: 50%;
+        }
+
+        &.l7 {
+            width: $w7;
+        }
+
+        &.l8 {
+            width: $w8;
+        }
+
+        &.l9 {
+            width: 75%;
+        }
+
+        &.l10 {
+            width: $w10;
+        }
+
+        &.l11 {
+            width: $w11;
+        }
+
+        &.l12 {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    .r {
+        .c {
+            float: left;
+
+            &.m1 {
+                width: $w1;
+            }
+
+            &.m2 {
+                width: $w2;
+            }
+
+            &.m3 {
+                width: 25%;
+            }
+
+            &.m4 {
+                width: $w4;
+            }
+
+            &.m5 {
+                width: $w5;
+            }
+
+            &.m6 {
+                width: 50%;
+            }
+
+            &.m7 {
+                width: $w7;
+            }
+
+            &.m8 {
+                width: $w8;
+            }
+
+            &.m9 {
+                width: 75%;
+            }
+
+            &.m10 {
+                width: $w10;
+            }
+
+            &.m11 {
+                width: $w11;
+            }
+
+            &.m12 {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .r {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .c {
+            float: left;
+
+            &.s1 {
+                width: $w1;
+            }
+
+            &.s2 {
+                width: $w2;
+            }
+
+            &.s3 {
+                width: 25%;
+            }
+
+            &.s4 {
+                width: $w4;
+            }
+
+            &.s5 {
+                width: $w5;
+            }
+
+            &.s6 {
+                width: 50%;
+            }
+
+            &.s7 {
+                width: $w7;
+            }
+
+            &.s8 {
+                width: $w8;
+            }
+
+            &.s9 {
+                width: 75%;
+            }
+
+            &.s10 {
+                width: $w10;
+            }
+
+            &.s11 {
+                width: $w11;
+            }
+
+            &.s12 {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.flex {
+    display: flex;
+
+    &-wrap {
+        flex-wrap: wrap;
+    }
+
+    &-column {
+        flex-direction: column;
+    }
+
+    &-row {
+        flex-direction: row;
+    }
+
+    &-content {
+
+        &-start {
+            justify-content: flex-start;
+        }
+
+        &-center {
+            justify-content: center;
+        }
+
+        &-end {
+            justify-content: flex-end;
+        }
+
+        &-space-between {
+            justify-content: space-between;
+        }
+    }
+
+    &-items {
+
+        &-center { 
+            align-items: center;
+        }
+    }
+}

@@ -1,0 +1,157 @@
+* {  
+  // --textcolor: #000;
+  // --bgcolor: #fff;
+  --highlight: #fbb10a;
+  --labelnotcheckedcolor: #121212cc
+}
+
+@media (prefers-color-scheme: dark) {
+  * {
+    // --textcolor: #fff;
+    // --bgcolor: #141414;
+    --highlight: #3182ce;
+    --labelnotcheckedcolor: #fffc
+  }
+}
+
+form {
+  max-height: 100vh;
+}
+
+.submitButtonWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+button, input[type=submit] {
+    background-color: #0006;
+    backdrop-filter: var(--blur5);
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.submit-button {
+  margin: 10px;
+  /* font-family: 'Univers', sans-serif; */
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .25s;
+  border: 3px solid;
+  border-color: #e5e5e5;
+  border-radius: 5px;
+  padding: 7px 15px;
+  background-color: #0006;
+}
+
+.submit-button:hover {
+  color: #fbb10a;
+  text-shadow: #fbb10a 0 0 10px;
+  border-color: #fbb10a;
+}
+
+input[type=range] {
+  width: 120px;
+  cursor: pointer;
+}
+
+select {
+  border-radius: 15px;
+  padding: 10px;
+  display:table-row;
+  overflow: hidden;
+  background-color: inherit;
+  color: var(--textcolor);
+
+  option {
+    text-align: center;
+    // background-color: #282c34;
+    background-color: var(--bgcolor);
+    color: var(--textcolor);
+  }
+}
+
+option {
+  border-radius: 5px;
+  padding: 2px;
+  display:table-cell;
+}
+
+.radio-wrapper {
+  padding: 5px;
+  display: flex;
+  border-radius: 10px;
+  background-color: #fff3;
+}
+
+.filter-switch-item {
+  
+  label {
+    font-size: 14px;
+    box-shadow: #fff3 0px 1px 3px 0px;
+    margin: 2px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 7px;
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    color: var(--textcolor);
+    // background-color: #3182ce;
+    background-color: var(--highlight);
+  }
+
+  input:not(:checked) + label {
+    color: #fffc;
+    --bg-opacity: 0;
+    box-shadow: none;
+  }
+}
+
+.filter-switch label {
+  display: flex;
+  cursor: pointer;
+}
+
+
+.filter-switch-item input:not(:checked) + label {
+  color: var(--labelnotcheckedcolor);
+  --bg-opacity: 0;
+  box-shadow: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 auto;
+}
+
+label {
+  // font-size: 18px;
+  // color: var(--labelnotcheckedcolor);
+  text-transform: uppercase;
+} 
+
+hr {
+  width: 150px;
+  border: none;
+  border-top: 1px dotted #fff3;
+}
+
+details>summary {
+  cursor: pointer;
+}
+
+progress {
+  max-height: 10px;
+  width: 90%;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
