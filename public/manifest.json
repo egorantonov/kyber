@@ -4,23 +4,29 @@
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "48x48",
+      "sizes": "16x16 24x24 32x32 48x48 256x256",
       "type": "image/x-icon"
     },
     {
       "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
       "src": "logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "logo512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "any maskable"
     }
   ],
   "start_url": "https://kyber.pages.dev",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#000000",  
-  "description": "Custom Kyber API implementation with search and filtering"
+  "background_color": "#000000",
+  "description": "Custom Kyber API implementation"
 }
