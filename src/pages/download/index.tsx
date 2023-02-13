@@ -1,10 +1,18 @@
-import { Trans } from 'react-i18next'
+import { Helmet } from 'react-helmet'
+import { Trans, useTranslation } from 'react-i18next'
 import { InfoBlock } from '../../components/InfoBlock'
+import { HOST } from '../../constants'
 import { directDownload, visitKyber } from './data'
 
 export function DownloadPage() {
+  const { t } = useTranslation()
+  
   return (
-    <div id='page-download'>
+    <div id='page-download'>      
+      <Helmet>
+        <title>{t('pages.download.title')}</title>
+        <link rel="canonical" href={`${HOST}/download`} />
+      </Helmet>
       <div id='page-download-infoblocks' className='flex f-row flex-wrap'>
         <InfoBlock {...directDownload}>          
           <p>

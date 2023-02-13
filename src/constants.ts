@@ -1,0 +1,1 @@
+export const HOST = 'https://kyber.pages.dev'
