@@ -15,9 +15,7 @@ import { useEffect, useLayoutEffect } from 'react'
 import { useAppDispatch } from './app/hooks'
 import { fetchProxiesAsync } from './features/Kyber/Servers/serversSlice'
 import { KyberStatus } from './features/Status'
-import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
-import { HOST } from './constants'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -25,7 +23,7 @@ function App() {
 
   const replaceHtmlCanonical = () => {
     const links = document.head.querySelectorAll('link[rel="canonical"]')
-    if (links.length > 0 && (links[0] as HTMLElement)?.dataset?.reactHelmet !== 'true') {
+    if (links.length > 0 && (links[0] as HTMLElement)?.dataset?.rh !== 'true') {
       document.head.removeChild(links[0])
     }
   }
@@ -41,10 +39,6 @@ function App() {
 
   return (
     <div className="App">
-      <Helmet>
-        <title>{t('pages.servers.title')}</title>
-        <link rel="canonical" href={`${HOST}`} />
-      </Helmet>
       <header>
         <Header />
         <KyberStatus />

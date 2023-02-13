@@ -3,9 +3,9 @@ import { Debug } from '../../components/Debug'
 import { KyberConfig } from '../../features/Kyber/Configuration'
 import { useAppSelector } from '../../app/hooks'
 import { selectProxies } from '../../features/Kyber/Servers/serversSlice'
-import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 import { HOST } from '../../constants'
+import { HelmetWrapper } from '../../components/HelmetWrapper'
 
 export function SettingsPage() {
   const { t } = useTranslation()
@@ -13,10 +13,7 @@ export function SettingsPage() {
 
   return (
     <div id="page-settings">
-      <Helmet>
-        <title>{t('pages.settings.title')}</title>
-        <link rel="canonical" href={`${HOST}/settings`} />
-      </Helmet>
+      <HelmetWrapper path='/settings' title={t('pages.settings.title')} />
       <div className="bd-filter-blur-10 block-blur">
         <Theme />
       </div>
