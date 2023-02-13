@@ -1,7 +1,7 @@
-import { Helmet } from 'react-helmet'
+
 import { useTranslation } from 'react-i18next'
 import { useAppSelector } from '../../app/hooks'
-import { HOST } from '../../constants'
+import { HelmetWrapper } from '../../components/HelmetWrapper'
 import { Host } from '../../features/Kyber/Host'
 import { selectProxies } from '../../features/Kyber/Servers/serversSlice'
 import style from './hostpage.module.scss'
@@ -11,11 +11,8 @@ export function HostPage() {
   const proxies = useAppSelector(selectProxies)
 
   return (
-    <div id="page-host" className={style.host_page}>      
-      <Helmet>
-        <title>{t('pages.host.title')}</title>
-        <link rel="canonical" href={`${HOST}/host`} />
-      </Helmet>
+    <div id="page-host" className={style.host_page}>
+      <HelmetWrapper path='/host' title={t('pages.host.title')} />
       <Host proxies={proxies} />
     </div>
   )

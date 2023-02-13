@@ -4,17 +4,13 @@ import { Trans, useTranslation } from 'react-i18next'
 import { InfoBlock } from '../../components/InfoBlock'
 import { about, whatAboutKyber, copyright, getInvolved, aboutAuthor, otherProjects } from './data'
 import ExternalLink from '../../components/ExternalLink'
-import { Helmet } from 'react-helmet'
-import { HOST } from '../../constants'
+import { HelmetWrapper } from '../../components/HelmetWrapper'
 
 export function AboutPage() {
   const { t } = useTranslation('translation')
   return (
-    <div id="page-about">      
-      <Helmet>
-        <title>{t('pages.about.title')}</title>
-        <link rel="canonical" href={`${HOST}/about`} />
-      </Helmet>
+    <div id="page-about">
+      <HelmetWrapper path='/about' title={t('pages.about.title')} />
       <div id='page-about-infoblocks' className='flex f-row flex-wrap'>
         <InfoBlock {...about}>
           <p style={{fontSize: 18, textTransform: 'none'}}>
