@@ -15,12 +15,24 @@ import { useEffect, useLayoutEffect } from 'react'
 import { useAppDispatch } from './app/hooks'
 import { fetchProxiesAsync } from './features/Kyber/Servers/serversSlice'
 import { KyberStatus } from './features/Status'
+import { Helmet } from 'react-helmet'
+import { useTranslation } from 'react-i18next'
+import { HOST } from './constants'
 
 function App() {
   const dispatch = useAppDispatch()
+  const { t } = useTranslation()
+
+  const replaceHtmlCanonical = () => {
+    const links = document.head.querySelectorAll('link[rel="canonical"]')
+    if (links.length > 0 && (links[0] as HTMLElement)?.dataset?.reactHelmet !== 'true') {
+      document.head.removeChild(links[0])
+    }
+  }
 
   useLayoutEffect(() => {
-    initializeTheme()    
+    initializeTheme()
+    replaceHtmlCanonical()
   })
 
   useEffect(() => {
@@ -29,30 +41,24 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>{t('pages.servers.title')}</title>
+        <link rel="canonical" href={`${HOST}`} />
+      </Helmet>
       <header>
         <Header />
         <KyberStatus />
-      </header>      
+      </header>
       <Nav />
       <main>
         <Routes>
           <Route path='/' element={<ServersPage />} />
           <Route path='/download' element={<DownloadPage />} />
-          <Route path='/host' element={<HostPage />}/>
-          <Route path='/about' element={<AboutPage />}/>
-          <Route path='/settings' element={<SettingsPage />}/>
+          <Route path='/host' element={<HostPage />} />
+          <Route path='/about' element={<AboutPage />} />
+          <Route path='/settings' element={<SettingsPage />} />
         </Routes>
       </main>
-      {/* <footer style={{
-        position: 'fixed', 
-        bottom: 0, 
-        width: '100%',
-        height: 30, 
-        zIndex: 99, 
-        color: 'red', 
-        backgroundColor: 'yellow'}}>
-        TEST
-      </footer> */}
     </div>
   )
 }
