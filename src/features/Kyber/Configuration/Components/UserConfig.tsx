@@ -88,7 +88,7 @@ export function UserConfig({config}: UserConfigProps) {
       <tr>
         <td><b>{tx('status')}</b></td>
         {/* "Config not found." | "CLIENT" | "SERVER" */}
-        <td> {tx(`${config.message || config.KYBER_MODE}`)}</td> 
+        <td> {tx(`${config.message || config.KYBER_MODE || 'Config not found.'}`)}</td> 
       </tr>     
     </Fragment>
   )

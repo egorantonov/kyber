@@ -176,6 +176,9 @@
     },
     "debug": {
       "title": "Debug"
+    },
+    "blur": {
+      "title": "Sfocatura"
     }
   },
   "modes": {

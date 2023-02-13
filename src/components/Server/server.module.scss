@@ -17,7 +17,6 @@ $breakpoint_tablet: 900px;
     box-shadow: 4px 4px 5px #0003;
     transform: translate(-2px, -2px);
     transition: all .25s ease-in-out;
-
     
     .image_svg_container {
       opacity: 1;
@@ -131,7 +130,6 @@ $breakpoint_tablet: 900px;
 
 .info {
   background-color: var(--bg-color-alpha);
-  backdrop-filter: var(--blur5);
   border-radius: 10px;
   padding: 5px;
   margin: 2px;

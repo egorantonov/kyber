@@ -20,6 +20,7 @@ export interface KyberState {
   modalOpen: boolean
   
   debug: boolean,
+  blur: boolean,
 }
 
 const initialState: KyberState = {
@@ -30,7 +31,8 @@ const initialState: KyberState = {
   liveUpdate: true,
   modalOpen: false,
 
-  debug: false // TODO: add to localStorage
+  debug: false, // TODO: add to localStorage
+  blur: true
 }
 
 export const fetchServersAsync = createAsyncThunk(
@@ -69,6 +71,9 @@ const serversSlice = createSlice({
     toggleDebug: (state, action) => {
       //state.debug = !state.debug
       state.debug = action.payload
+    },
+    toggleBlur: (state, action) => {      
+      state.blur = action.payload
     },
     toggleAutoUpdate: (state, action) => {
       //state.liveUpdate = !state.liveUpdate
@@ -118,7 +123,8 @@ export const isLiveUpdate = (state: RootState) => state.servers.liveUpdate
 export const isModalOpen = (state: RootState) => state.servers.modalOpen
 
 export const isDebug = (state: RootState) => state.servers.debug
+export const isBlur = (state: RootState) => state.servers.blur
 
-export const { clear, toggleDebug, toggleAutoUpdate, toggleModal, setModalServer } = serversSlice.actions
+export const { clear, toggleDebug, toggleBlur, toggleAutoUpdate, toggleModal, setModalServer } = serversSlice.actions
 
 export default serversSlice.reducer

@@ -1,10 +1,7 @@
-import { KYBER_API } from '../api/endpoints'
+import { IMG_URL_POSTFIX, IMG_URL_PREFIX } from '../constants'
 import { MAPS } from '../data/maps'
 import { BattlefrontMap, BattlefrontMode } from '../data/models'
 import { MODES } from '../data/modes'
-
-const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
-const IMG_URL_POSTFIX = '.jpg'
 
 export function mapImage(value?: string): string {
   return IMG_URL_PREFIX + value?.replaceAll('/', '-') + IMG_URL_POSTFIX
