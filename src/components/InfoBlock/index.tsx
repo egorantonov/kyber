@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import style from './infoblock.module.scss'
 import './infoblock.module.scss'
 import { isNullOrWhiteSpace } from '../../extensions/string'
+import { blurOrBackground } from '../../utils/ui'
 
 export interface InfoBlockProps {
   id: string,
@@ -12,12 +13,12 @@ export interface InfoBlockProps {
 } 
 
 export function InfoBlock(props: InfoBlockProps) {
-
+  const bgClass = blurOrBackground(10)
   const { t } = useTranslation('translation')
 
   const background = `${props.background} center center / cover`
   return (
-    <div className={`${style.infoblock} ${props.className}`} 
+    <div data-ui={bgClass} className={`${style.infoblock} ${props.className}`} 
       style={{background: background}} >
       {
         isNullOrWhiteSpace(props.href) 

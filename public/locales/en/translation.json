@@ -176,6 +176,9 @@
     },
     "debug": {
       "title": "Debug switch"
+    },
+    "blur": {
+      "title": "Blur"
     }
   },
   "modes": {

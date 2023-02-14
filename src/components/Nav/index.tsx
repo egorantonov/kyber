@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { NavLinkPersist } from '../../supports/Persistence'
+import { blurOrBackground } from '../../utils/ui'
 import { SimpleIcon } from '../SimpleIcon'
 import { SimpleIcons20x20, SimpleIcons24x24 } from './constants'
 import style from './nav.module.scss'
@@ -17,7 +18,7 @@ export function Nav() {
   }
 
   return (
-    <nav className={style.nav}> 
+    <nav className={`${style.nav} ${blurOrBackground(10, false)}`}> 
       <NavLinkPersist className={className} to='/' data-content='💻'>
         <SimpleIcon height={24} width={24} path={SimpleIcons24x24.servers} />
         <span>

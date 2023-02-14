@@ -10,6 +10,7 @@ export function HelmetWrapper({path, title}: HelmetWrapperProps) {
   const url = `${HOST}${path}`
   const structuredDataJson = {
     '@context': 'http://schema.org/',
+    '@type': 'VideoGame',
     'name': title,
     'url': url
     // 'description': description // TODO: pass description?

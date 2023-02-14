@@ -4,6 +4,7 @@ import { KyberConfigResponse } from '../models'
 import { getText } from '../../../../extensions/fetch'
 import { getGPU, NOT_AVAILABLE } from '../gpu'
 import { getUserAgentData, UserAgentData } from '../userAgentData'
+import { CLOUDFLARE_TRACE } from '../../../../constants'
 
 interface CloudflareTrace {
   h: string,
@@ -47,7 +48,7 @@ export function UserConfig({config}: UserConfigProps) {
     setRenderer(getGPU())
     console.log(renderer)
 
-    getText('https://www.cloudflare.com/cdn-cgi/trace')
+    getText(CLOUDFLARE_TRACE)
       .then(
         data => {
           const cl = parseCloudflareTrace(data)
@@ -88,7 +89,7 @@ export function UserConfig({config}: UserConfigProps) {
       <tr>
         <td><b>{tx('status')}</b></td>
         {/* "Config not found." | "CLIENT" | "SERVER" */}
-        <td> {tx(`${config.message || config.KYBER_MODE}`)}</td> 
+        <td> {tx(`${config.message || config.KYBER_MODE || 'Config not found.'}`)}</td> 
       </tr>     
     </Fragment>
   )

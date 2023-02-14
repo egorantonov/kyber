@@ -1,5 +1,6 @@
 import { KYBER_API } from '../../../api/endpoints'
 import { InfoBlockProps } from '../../../components/InfoBlock'
+import { GITHUB_EYEMVX } from '../../../constants'
 import { UniqueMaps } from '../../../data/maps'
 
 const UNIQUE_MAPS = UniqueMaps()
@@ -52,7 +53,7 @@ export const copyright: InfoBlockProps = {
 
 export const getInvolved: InfoBlockProps = {
   id: 'pages.about.getInvolved',
-  href: 'https://github.com/egorantonov/kyber/issues',
+  href: `${GITHUB_EYEMVX}/kyber/issues`,
   className: '',
   // background: `linear-gradient(135deg, var(--bg-color), var(--bg-color-alpha), #fff0), url(${KYBER_API.hostName}/static/images/maps/Levels-MP-DeathStar02_01-DeathStar02_01.jpg)`
   background: `linear-gradient(135deg, var(--bg-color), var(--bg-color-alpha), #fff0), url(${KYBER_API.hostName}/static/images/maps/${PICS[3]}.jpg)`
