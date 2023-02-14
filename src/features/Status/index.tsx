@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Trans } from 'react-i18next'
 import ExternalLink from '../../components/ExternalLink'
 import { KYBER_API } from '../../api/endpoints'
+import { DISCORD_KYBER } from '../../constants'
 
 export function KyberStatus() {
   const [visible, setVisible] = useState(true)
@@ -42,7 +43,7 @@ export function KyberStatus() {
               Hmmm... Kyber API seems to be down. Try open 
               <ExternalLink href={KYBER_API.hostName}>Kyber official site</ExternalLink>
               or check status on 
-              <ExternalLink href="https://discord.com/channels/305338604316655616/922585403180089344">
+              <ExternalLink href={DISCORD_KYBER}>
                 Discord server
               </ExternalLink>
             </Trans>

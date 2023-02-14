@@ -2,17 +2,17 @@ import { Theme } from '../../components/Theme'
 import { Debug } from '../../components/Debug'
 import { KyberConfig } from '../../features/Kyber/Configuration'
 import { useAppSelector } from '../../app/hooks'
-import { isBlur, selectProxies } from '../../features/Kyber/Servers/serversSlice'
+import { selectProxies } from '../../features/Kyber/Servers/serversSlice'
 import { useTranslation } from 'react-i18next'
 import { HOST_PRODUCTION } from '../../constants'
 import { HelmetWrapper } from '../../components/HelmetWrapper'
 import { Blur } from '../../components/Blur'
+import { blurOrBackground } from '../../utils/ui'
 
 export function SettingsPage() {
   const { t } = useTranslation()
   const proxies = useAppSelector(selectProxies)
-  const blur = useAppSelector(isBlur)
-  const className = `block-rounded ${blur && 'bd-filter-blur-10'}`
+  const className = `block-rounded ${blurOrBackground(10)}`
 
   return (
     <div id="page-settings">

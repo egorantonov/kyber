@@ -4,6 +4,7 @@ import { KyberConfigResponse } from '../models'
 import { getText } from '../../../../extensions/fetch'
 import { getGPU, NOT_AVAILABLE } from '../gpu'
 import { getUserAgentData, UserAgentData } from '../userAgentData'
+import { CLOUDFLARE_TRACE } from '../../../../constants'
 
 interface CloudflareTrace {
   h: string,
@@ -47,7 +48,7 @@ export function UserConfig({config}: UserConfigProps) {
     setRenderer(getGPU())
     console.log(renderer)
 
-    getText('https://www.cloudflare.com/cdn-cgi/trace')
+    getText(CLOUDFLARE_TRACE)
       .then(
         data => {
           const cl = parseCloudflareTrace(data)

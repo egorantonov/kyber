@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { hostServer } from '../../../api/methods'
 import { ApiResponse, HostKyberServerRequest, HostKyberServerResponse, KyberProxy } from '../../../api/models'
 import { MAPS } from '../../../data/maps'
@@ -18,6 +18,9 @@ import style from './host.module.scss'
 import { Buttons } from './Components/Buttons'
 import { isNullOrEmpty, isNullOrWhiteSpace } from '../../../extensions/string'
 import { ImageContainer } from './Components/ImageContainer'
+import ExternalLink from '../../../components/ExternalLink'
+import { KYBER_API } from '../../../api/endpoints'
+import { DISCORD_KYBER } from '../../../constants'
 
 function processResponse(apiResponse: ApiResponse<HostKyberServerResponse>, t: any) {
   
@@ -134,7 +137,19 @@ export function Host({proxies}: HostProps) {
           <Proxies proxies={proxies} proxyIp={proxyIp} setProxyIp={setProxyIp} />
           <MaxPlayers maxPlayers={maxPlayers} setMaxPlayers={setMaxPlayers} />
           <div style={{color: 'var(--highlight)'}}>{validationFailed ? tx('validation_tooltip') : ' '}</div>
-          <Buttons tx={tx} handleReset={handleReset} handleSubmit={handleSubmit} name={name} />
+          {proxies.length 
+            ? <Buttons tx={tx} handleReset={handleReset} handleSubmit={handleSubmit} name={name} />
+            : (
+              <Trans i18nKey="features.status.message">
+                Hmmm... Kyber API seems to be down. Try open 
+                <ExternalLink href={KYBER_API.hostName}>Kyber official site</ExternalLink>
+                or check status on 
+                <ExternalLink href={DISCORD_KYBER}>
+                Discord server
+                </ExternalLink>
+              </Trans>
+            )
+          }
         </form>
       </div>
       <ImageContainer map={map} mode={mode} />

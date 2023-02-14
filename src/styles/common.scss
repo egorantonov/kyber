@@ -119,6 +119,18 @@ td,th {
   backdrop-filter: var(--blur10);
 }
 
+.bd-filter-blur-25 {
+  backdrop-filter: var(--blur25);
+}
+
+.bd-filter-blur-disabled-alpha {
+  background-color: var(--bg-color-alpha) !important;
+}
+
+.bd-filter-blur-disabled {
+  background-color: var(--bg-color) !important;
+}
+
 .block-rounded {
   margin: 10px;
   padding: 10px;

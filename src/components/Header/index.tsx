@@ -9,6 +9,8 @@ import '../../styles/grid.scss'
 import logo from '../../logo.svg'
 import { KYBER_API } from '../../api/endpoints'
 import { getTimeHHmm } from '../../extensions/date'
+import { blurOrBackground } from '../../utils/ui'
+import { GITHUB_EYEMVX } from '../../constants'
 
 function Clock() {
 
@@ -40,7 +42,7 @@ export function Header() {
 
   return (
     <>
-      <ul id="header" className={`r ${style.header}`}>
+      <ul id="header" className={`r ${style.header} ${blurOrBackground(10)}`}>
         <li className="c s4 m4 l4 text-start">          
           <a href={`${KYBER_API.hostName}/servers`} target="_blank" rel="noreferrer" className={style.padleft}>
             <img src={logo} alt="logo" className={style.header__logo} />
@@ -51,7 +53,7 @@ export function Header() {
           <Clock />
         </li>
         <li className="c s4 m4 l4 text-end">
-          <a href="https://github.com/egorantonov" target="_blank" rel="noreferrer" className={style.padright}>EYEMVX</a>
+          <a href={GITHUB_EYEMVX} target="_blank" rel="noreferrer" className={style.padright}>EYEMVX</a>
         </li>
       </ul>
     </>

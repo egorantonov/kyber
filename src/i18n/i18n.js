@@ -36,7 +36,7 @@ i18n
       backendOptions: [{
         prefix: 'i18next_res_',
         store: typeof window !== 'undefined' ? window.localStorage : null,
-        expirationTime: 7 * 24 * 60 * 60 * 1000 // 7 days
+        expirationTime: 1 * 24 * 60 * 60 * 1000 // 7 days
       }, {
         loadPath: '/locales/{{lng}}/{{ns}}.json'
       }]

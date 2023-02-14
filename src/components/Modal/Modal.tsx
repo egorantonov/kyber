@@ -11,9 +11,8 @@ import { isModalOpen, toggleModal } from '../../features/Kyber/Servers/serversSl
 
 //import './styles.scss'
 import style from './modal.module.scss'
+import { IMG_NEXUS_MOD, MODS_SEARCH } from '../../constants'
 
-const MODS_SEARCH = 'https://www.nexusmods.com/starwarsbattlefront22017/search/?gsearchtype=mods&gsearch='
-const MODS_ICON = 'https://images.nexusmods.com/favicons/ReskinOrange/favicon-16x16.png'
 const sides = [Side.Light, Side.Dark]
 
 function RemoveVersion(modName: string): string {
@@ -78,7 +77,7 @@ export function Modal({ modalServer }: ModalProps) {
   }
 
   return (
-    <div id="modal" className={style.modal_wrapper}>
+    <div id="modal" className={`${style.modal_wrapper} `}>
       <div style={{margin: '0 25px'}}>
         <div className={`r ${style.modal}`}>
 
@@ -150,7 +149,7 @@ export function Modal({ modalServer }: ModalProps) {
                       {modalServer?.mods?.map((mod, index) => (
                         <div key={`${index}_${mod}`}>
                           <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
-                            <img src={MODS_ICON} loading="lazy" />
+                            <img src={IMG_NEXUS_MOD} loading="lazy" />
                             <span>&nbsp;{mod}</span>
                           </a>
                         </div>

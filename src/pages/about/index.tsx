@@ -5,6 +5,7 @@ import { InfoBlock } from '../../components/InfoBlock'
 import { about, whatAboutKyber, copyright, getInvolved, aboutAuthor, otherProjects } from './data'
 import ExternalLink from '../../components/ExternalLink'
 import { HelmetWrapper } from '../../components/HelmetWrapper'
+import { GITHUB_EYEMVX } from '../../constants'
 
 export function AboutPage() {
   const { t } = useTranslation('translation')
@@ -39,7 +40,7 @@ export function AboutPage() {
         <InfoBlock {...aboutAuthor}>
           <p style={{fontSize: 20, textTransform: 'none'}}>
             <Trans i18nKey={`${aboutAuthor.id}.body`}>
-            Created by <ExternalLink href='https://github.com/egorantonov' title='Github'>EYEMVX</ExternalLink> in 2023. Subscribe or send a friend request: search for @EYEMVX on Origin, Discord, Twitch and Youtube. Have a Github account? Make sure you starred <ExternalLink href='https://github.com/egorantonov/kyber' title='💫'>this project</ExternalLink> 💫
+            Created by <ExternalLink href={GITHUB_EYEMVX} title='Github'>EYEMVX</ExternalLink> in 2023. Subscribe or send a friend request: search for @EYEMVX on Origin, Discord, Twitch and Youtube. Have a Github account? Make sure you starred <ExternalLink href={`${GITHUB_EYEMVX}/kyber`} title='💫'>this project</ExternalLink> 💫
             </Trans> 
           </p>
         </InfoBlock>

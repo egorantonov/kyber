@@ -13,8 +13,8 @@
 }
 
 :root {
+  --bg-color: #222;
   --bg-color-alpha: #0007;  
-  --bg-color: #222;  
   --bg-color-substrate: #2223;
   --bg-highlight-alpha: #3182ce55;
   --bg-highlight: #3182ce;

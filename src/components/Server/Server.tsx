@@ -1,13 +1,14 @@
 import { KyberServer } from '../../api/models'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useAppDispatch } from '../../app/hooks'
 import { MODES } from '../../data/modes'
 import { isNullOrWhiteSpace } from '../../extensions/string'
-import { isBlur, setModalServer, toggleModal } from '../../features/Kyber/Servers/serversSlice'
+import { setModalServer, toggleModal } from '../../features/Kyber/Servers/serversSlice'
 import style from './server.module.scss'
 import { useTranslation } from 'react-i18next'
 import { getTimeHHmmFromTimeStamp } from '../../extensions/date'
 import { ensureMapName, mapImage } from '../../utils/maps'
 import { IMG_NEXUS_MOD } from '../../constants'
+import { blurOrBackground } from '../../utils/ui'
 
 function getMode(value?: string): string {
   if (isNullOrWhiteSpace(value)) {
@@ -18,13 +19,13 @@ function getMode(value?: string): string {
   return result
 }
 
-function getHost(value?: string, blur?: boolean) {
+function getHost(value?: string) {
   if (isNullOrWhiteSpace(value) || value?.toLowerCase() === 'unknown') {
     return ''
   }
   
   return (
-    <div className={`${style.info} ${blur && 'bd-filter-blur-5'}`}> 👤 {value?.toUpperCase()} </div>
+    <div className={`${style.info} ${blurOrBackground(5)}`}> 👤 {value?.toUpperCase()} </div>
   )
 }
 
@@ -38,7 +39,6 @@ export interface KyberServerProps {
 
 export function Server({server}: KyberServerProps) {
   const dispatch = useAppDispatch()
-  const blur = useAppSelector(isBlur)
   const { t } = useTranslation()
 
   function openModal(server: KyberServer) {
@@ -48,17 +48,15 @@ export function Server({server}: KyberServerProps) {
 
   const map = ensureMapName(server.map ?? '', server.mode ?? '')
   const mode = getMode(server.mode)
-  const host = getHost(server.host, blur)
+  const host = getHost(server.host)
   const image = mapImage(server.map)
   const name = `${server.requiresPassword ? '🔐 ' : ''}${server.name?.toUpperCase()}`
   const background = `linear-gradient(135deg, var(--bg-color), var(--bg-color-alpha), #fff0),
     url(${image}) center center / cover`
-  const blur5 = blur && 'bd-filter-blur-5'
-  const blur10 = blur && 'bd-filter-blur-10'
 
   return(
     <div key={server.id}
-      className={`r start ${style.server} ${blur10}`}
+      className={`r start ${style.server} ${blurOrBackground(10)}`}
       onClick={() => {
         openModal(server)
       }}
@@ -79,20 +77,20 @@ export function Server({server}: KyberServerProps) {
         <div className={style.description_container}>
         
           <div className={style.description}>
-            <div data-x={`mods.${mode}`} className={`${style.info} ${blur5} uppercase`}>🎮 {t(`modes.${mode}`).replace('modes.', '')}</div>
-            <div className={`${style.info} ${blur5} uppercase`}> 🌍 {t(`maps.${map}`).replace('maps.', '')}</div>
+            <div data-x={`mods.${mode}`} className={`${style.info} ${blurOrBackground(5)} uppercase`}>🎮 {t(`modes.${mode}`).replace('modes.', '')}</div>
+            <div className={`${style.info} ${blurOrBackground(5)} uppercase`}> 🌍 {t(`maps.${map}`).replace('maps.', '')}</div>
             {host}
           </div>
 
           <div className={style.description}>          
-            {!!server.mods?.length && (<div className={`${style.info} ${blur5}`}>
+            {!!server.mods?.length && (<div className={`${style.info} ${blurOrBackground(5)}`}>
               <img className={style.image_nexus_mod} loading="lazy" src={IMG_NEXUS_MOD} alt="nexus mod" /> {t('components.server.modsRequired')}: {server.mods?.length}
             </div>)}
-            <div className={`${style.info} ${blur5}`}> 👥 {server.users} / {server.maxPlayers}</div>             
-            <div className={`${style.info} ${blur5}`} title={`IP: ${server.proxy?.ip}`}>
+            <div className={`${style.info} ${blurOrBackground(5)}`}> 👥 {server.users} / {server.maxPlayers}</div>             
+            <div className={`${style.info} ${blurOrBackground(5)}`} title={`IP: ${server.proxy?.ip}`}>
               <img className={style.image_proxy_flag} loading="lazy" src={server.proxy?.flag} alt="location flag" /> {t(`locations.${server.proxy?.name}`).replace('locations.', '')}
             </div> 
-            <div className={`${style.info} ${blur5}`} title={server.startedAtPretty}> 🕓 {getTime(server.startedAt)}</div>
+            <div className={`${style.info} ${blurOrBackground(5)}`} title={server.startedAtPretty}> 🕓 {getTime(server.startedAt)}</div>
           </div>
         </div>
       </div>
