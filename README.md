@@ -1,4 +1,4 @@
-<a href="https://github.com/egorantonov/sbg-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/egorantonov/sbg-enhanced/webpack.yml?style=for-the-badge" /></a>
+<a href="https://github.com/egorantonov/sbg-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/egorantonov/kyber/node.js.yml?style=for-the-badge" /></a>
 <a href="https://kyber.pages.dev"><img src="https://img.shields.io/website?label=kyber.pages.dev&style=for-the-badge&url=https%3A%2F%2Fkyber.pages.dev" /></a>
 <img src="https://img.shields.io/github/package-json/v/egorantonov/kyber?style=for-the-badge" />
 <img src="https://img.shields.io/github/languages/top/egorantonov/kyber?color=%23200bb20&style=for-the-badge" />
