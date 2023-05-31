@@ -13,7 +13,7 @@ import './styles/text.scss'
 import { initializeTheme } from './contexts/ThemeContext'
 import { useEffect, useLayoutEffect } from 'react'
 import { useAppDispatch } from './app/hooks'
-import { fetchProxiesAsync } from './features/Kyber/Servers/serversSlice'
+import { fetchProxiesAsync } from './features/Kyber/Servers/proxiesSlice'
 import { KyberStatus } from './features/Status'
 import { useTranslation } from 'react-i18next'
 

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useAppSelector } from '../../app/hooks'
 import { HelmetWrapper } from '../../components/HelmetWrapper'
 import { Host } from '../../features/Kyber/Host'
-import { selectProxies } from '../../features/Kyber/Servers/serversSlice'
+import { selectProxies } from '../../features/Kyber/Servers/proxiesSlice'
 import style from './hostpage.module.scss'
 
 export function HostPage() {

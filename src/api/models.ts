@@ -50,7 +50,8 @@ export interface KyberServer {
 export interface KyberProxy {
   ip: string,
   name?: string,
-  flag?: string
+  flag?: string,
+  ping?: number
 }
 
 export interface HostKyberServerRequest {

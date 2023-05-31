@@ -43,7 +43,7 @@ export function Server({server}: KyberServerProps) {
 
   function openModal(server: KyberServer) {
     dispatch(setModalServer(server))
-    dispatch(toggleModal())
+    dispatch(toggleModal(true))
   }
 
   const map = ensureMapName(server.map ?? '', server.mode ?? '')

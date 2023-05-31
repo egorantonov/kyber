@@ -1,5 +1,6 @@
 import { getJson } from '../extensions/fetch'
 import { CONSTANTS } from '../features/Kyber/constants'
+import { pingAsync } from '../utils/network'
 import { KYBER_API } from './endpoints'
 import { ApiResponse, HostKyberServerRequest, HostKyberServerResponse, KyberProxy, KyberServer, KyberServersResponse } from './models'
 
@@ -50,12 +51,23 @@ export const fetchServers = async (): Promise<{data: KyberServer[]}> => {
 
 // FETCH PROXIES
 export const fetchProxies = async (): Promise<{data: KyberProxy[]}> => {
-  let proxies: KyberProxy[] = []
+  const proxies: KyberProxy[] = []
 
   await getJson(KYBER_API.proxies)
     .then(
       (data: KyberProxy[]) => {
-        proxies = data
+        for (let i = 0; i < data.length; i++) {
+          pingAsync(data[i].ip, 25200, console.log) // TODO: update store?
+            .then(elapsed => {
+              proxies.push({
+                ip: data[i].ip,
+                name: data[i].name,
+                flag: data[i].flag,
+                ping: elapsed
+              } as KyberProxy)
+            })
+        }
+        // proxies = data
       },
       (error) => {
         console.error(error)

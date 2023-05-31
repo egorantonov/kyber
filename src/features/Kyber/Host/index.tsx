@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { hostServer } from '../../../api/methods'
 import { ApiResponse, HostKyberServerRequest, HostKyberServerResponse, KyberProxy } from '../../../api/models'
@@ -116,7 +116,6 @@ export function Host({proxies}: HostProps) {
   function tx(localKey: string): string {
     return t(`features.host.form.${localKey}`)
   }
-
 
   //const proxy = proxies?.find(p => p.ip === proxyIp)
 

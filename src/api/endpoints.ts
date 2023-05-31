@@ -1,6 +1,7 @@
 import { KyberApi } from './models'
 
 const KYBER = 'https://kyber.gg'
+const KYBER_IP = 'https://162.243.175.62' // retrieved from NY proxy IP address
 const API = `${KYBER}/api`
 const API_SERVERS = `${API}/servers?page=`
 const API_PROXIES = `${API}/proxies`

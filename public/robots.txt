@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-Sitemap: https://kyber.pages.dev/stemap.xml
+Sitemap: https://kyber.pages.dev/sitemap.xml

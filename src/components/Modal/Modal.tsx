@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { KYBER_API } from '../../api/endpoints'
 import { KyberServer, MessageResponse } from '../../api/models'
-import { useAppSelector, useAppDispatch } from '../../app/hooks'
+import { useAppSelector, useAppDispatch, useEscapeKey } from '../../app/hooks'
 import { PlayRequest, Side } from '../../data/models'
 import { isNullOrWhiteSpace } from '../../extensions/string'
 import { CONSTANTS } from '../../features/Kyber/constants'
@@ -64,7 +64,7 @@ export function Modal({ modalServer }: ModalProps) {
   }
 
   function closeModal() {
-    dispatch(toggleModal())
+    dispatch(toggleModal(false))
     setPassword('')
   }
 
@@ -72,14 +72,16 @@ export function Modal({ modalServer }: ModalProps) {
     return t(`components.modal.${localKey}`)
   }
 
+  useEscapeKey(() => closeModal())
+
   if (!status) {
     return null
   }
 
   return (
-    <div id="modal" className={`${style.modal_wrapper} `}>
+    <div id="modal" className={`${style.modal_wrapper} `} onClick={() => closeModal()}>
       <div style={{margin: '0 25px'}}>
-        <div className={`r ${style.modal}`}>
+        <div className={`r ${style.modal}`} onClick={(e) => { e.stopPropagation() }}>
 
           <ImageContainer map={modalServer?.map as string} mode={modalServer?.mode as string} />
 

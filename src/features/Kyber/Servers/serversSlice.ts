@@ -10,12 +10,10 @@ export enum Status {
   Failed = 2
 }
 
-export interface KyberState {
-  proxies: KyberProxy[],
+export interface KyberServersState {
   servers: KyberServer[],
   modalServer?: KyberServer
   status: Status,
-  proxyStatus: Status,
   liveUpdate: boolean, // updates Server List each 5 seconds
   modalOpen: boolean
   
@@ -23,11 +21,9 @@ export interface KyberState {
   blur: boolean,
 }
 
-const initialState: KyberState = {
-  proxies: [],
+const initialState: KyberServersState = {
   servers: [],
   status: Status.Idle,
-  proxyStatus: Status.Loading, // loading proxies right immediately after the start
   liveUpdate: true,
   modalOpen: false,
 
@@ -49,18 +45,6 @@ export const fetchServersAsync = createAsyncThunk(
   }
 )
 
-export const fetchProxiesAsync = createAsyncThunk(
-  'servers/fetchProxies',
-  async () => {
-    console.log('thunk `servers/fetchProxies` invoked')
-
-
-    const response = await fetchProxies()
-    // The value we return becomes the `fulfilled` action payload
-    return response.data.sort((a, b) =>  a.name?.localeCompare(b.name ?? '') ?? 0) // TODO: temp sort until ping implemented
-  }
-)
-
 const serversSlice = createSlice({
   name: 'servers',
   initialState,
@@ -79,8 +63,9 @@ const serversSlice = createSlice({
       //state.liveUpdate = !state.liveUpdate
       state.liveUpdate = action.payload
     },
-    toggleModal: (state) => {
-      state.modalOpen = !state.modalOpen
+    toggleModal: (state, action) => {
+      //state.modalOpen = !state.modalOpen
+      state.modalOpen = action.payload
     },
     setModalServer: (state, action) => {
       state.modalServer = action.payload
@@ -98,26 +83,12 @@ const serversSlice = createSlice({
       .addCase(fetchServersAsync.rejected, (state) => {
         state.status = Status.Failed
       })
-      // TODO: move state (status) to another instance?
-      .addCase(fetchProxiesAsync.pending, (state) => {
-        state.proxyStatus = Status.Loading
-      })
-      .addCase(fetchProxiesAsync.fulfilled, (state, action) => {
-        state.proxyStatus = Status.Idle
-        state.proxies = action.payload
-      })
-      .addCase(fetchProxiesAsync.rejected, (state) => {
-        state.proxyStatus = Status.Failed
-      })
   },
 })
 
 export const selectServers = (state: RootState) => state.servers.servers
 export const getServersStatus = (state: RootState) => state.servers.status
 export const getModalServer = (state: RootState) => state.servers.modalServer
-
-export const selectProxies = (state: RootState) => state.servers.proxies
-export const getProxyStatus = (state: RootState) => state.servers.proxyStatus
 
 export const isLiveUpdate = (state: RootState) => state.servers.liveUpdate
 export const isModalOpen = (state: RootState) => state.servers.modalOpen
