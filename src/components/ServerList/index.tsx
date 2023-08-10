@@ -9,6 +9,7 @@ type ServerListProps = {
     showModal: any
 }
 
+// [OBSOLETE] Legacy code
 const ServerList = ({ servers, maps, modes, showModal }: ServerListProps) => {
 
   return (<>

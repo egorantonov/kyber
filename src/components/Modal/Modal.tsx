@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { KYBER_API } from '../../api/endpoints'
-import { KyberServer, MessageResponse } from '../../api/models'
+import { FrostbiteMod, KyberServer, MessageResponse } from '../../api/models'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { PlayRequest, Side } from '../../data/models'
 import { isNullOrWhiteSpace } from '../../extensions/string'
@@ -11,16 +11,26 @@ import { isModalOpen, toggleModal } from '../../features/Kyber/Servers/serversSl
 
 //import './styles.scss'
 import style from './modal.module.scss'
-import { IMG_NEXUS_MOD, MODS_SEARCH } from '../../constants'
+import { IMG_NEXUS_MOD, MODS_SEARCH, NEXUS_BATTLEFRONT } from '../../constants'
 
 const sides = [Side.Light, Side.Dark]
+const modVersionRegExp = /\/|\\|\||-|V\d.*\d*/gm
 
-function RemoveVersion(modName: string): string {
-  const modVersionRegExp = /\/|\\|\||-|V\d.*\d*/gm
-  const searchPhrase = modName
-    .substring(0, modName?.lastIndexOf('(') - 1)
-    .replaceAll(modVersionRegExp, ' ')
-  return encodeURIComponent(searchPhrase)
+function GetModLink(mod: FrostbiteMod): string {
+  try {
+    if (mod.link?.startsWith(NEXUS_BATTLEFRONT)) {
+      return mod.link
+    }
+    const searchPhrase = mod.name
+      ?.substring(0, mod.name.lastIndexOf('(') - 1)
+      .replaceAll(modVersionRegExp, ' ')
+  
+    return `${MODS_SEARCH}${encodeURIComponent(searchPhrase)}`
+  }
+  catch (error) {
+    console.error(error)
+    return NEXUS_BATTLEFRONT
+  }
 }
 
 export interface ModalProps {
@@ -147,10 +157,10 @@ export function Modal({ modalServer }: ModalProps) {
                     </div>
                     <div className={style.mods_details_content}>
                       {modalServer?.mods?.map((mod, index) => (
-                        <div key={`${index}_${mod}`}>
-                          <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
+                        <div key={`${index}_${mod.name}`}>
+                          <a href={GetModLink(mod)} target="_blank" rel="noreferrer">
                             <img src={IMG_NEXUS_MOD} loading="lazy" />
-                            <span>&nbsp;{mod}</span>
+                            <span>&nbsp;{mod.name}</span>
                           </a>
                         </div>
                       ))}
