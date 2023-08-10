@@ -14,6 +14,7 @@ function RemoveVersion(modName: string): string {
   return encodeURIComponent(modName.substring(0, modName?.lastIndexOf('(') - 1))
 }
 
+// [OBSOLETE] Legacy code
 const Server = ({ s, mapName, modeName, showModal }: ServerProps) => {
   const IMG_URL_PREFIX = `${KYBER_API.hostName}/static/images/maps/`
   const IMG_URL_POSTFIX = '.jpg'
@@ -80,9 +81,9 @@ const Server = ({ s, mapName, modeName, showModal }: ServerProps) => {
                 <div className="server-mods-details-content">
                   {s.mods?.map((mod, index) => (
                     <div key={`${index}_${mod}`}>
-                      <a href={`${MODS_SEARCH}${RemoveVersion(mod)}`} target="_blank" rel="noreferrer">
+                      <a href={mod.link} target="_blank" rel="noreferrer">
                         <img src={MODS_ICON} loading="lazy" />
-                        {mod}
+                        {mod.name}
                       </a>
                     </div>
                   ))}

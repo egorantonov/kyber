@@ -34,7 +34,7 @@ export interface KyberServer {
   name?: string,
   description?: string,
   map?: string,
-  mods?: string[],
+  mods?: FrostbiteMod[],
   mode: string,
   users?: number, // active players
   maxPlayers?: number, // server capacity
@@ -45,6 +45,11 @@ export interface KyberServer {
   requiresPassword?: boolean,
   region?: string,
   proxy?: KyberProxy
+}
+
+export interface FrostbiteMod {
+  name: string,
+  link?: string
 }
 
 export interface KyberProxy {
