@@ -61,7 +61,7 @@ describe('parseBrowser() tests: Apple User Agent Data', () => {
   })
 
   test('iPad Yandex 23', () => {
-    expect(parseBrowser(UserAgents.iPad.Yandex_23)).toBe('Yandex Browser 23.1.0.2677.11')
+    expect(parseBrowser(UserAgents.iPad.Yandex_23)).toBe('Yandex 23.1.0.2677.11')
   })
 })
 

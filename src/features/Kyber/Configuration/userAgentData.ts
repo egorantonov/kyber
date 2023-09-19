@@ -73,8 +73,11 @@ export function parseBrowser(userAgent: string) {
   else if (userAgent.includes(UA.GECKO)){
     browser = `Firefox ${getVersion(userAgent, UA.GECKO)}`
   }
-  else if (userAgent.includes(UA.YANDEX) || userAgent.includes(UA.YABROWSER)){
+  else if (userAgent.includes(UA.YANDEX)){
     browser = `Yandex ${getVersion(userAgent, UA.YANDEX)}`
+  }
+  else if (userAgent.includes(UA.YABROWSER)){
+    browser = `Yandex ${getVersion(userAgent, UA.YABROWSER)}`
   }
   else if (userAgent.includes(UA.VIVALDI)){
     browser = `Vivaldi ${getVersion(userAgent, UA.VIVALDI)}`
