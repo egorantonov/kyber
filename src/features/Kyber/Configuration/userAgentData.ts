@@ -50,9 +50,11 @@ export const UA = {
   EDGE_ANDROID: 'EdgA/',
   BRAVE: 'Brave/',
   VIVALDI: 'Vivaldi/',
-  YANDEX: 'YaBrowser/',
+  YANDEX: 'Yandex/',
+  YABROWSER: 'YaBrowser/',
   CHROME: 'Chrome/',
-  CHROME_IOS: 'CriOS/'
+  CHROME_IOS: 'CriOS/',
+  WEBVIEW: 'wv'
 }
 
 // parse most popular browsers from `userAgent` string
@@ -72,7 +74,10 @@ export function parseBrowser(userAgent: string) {
     browser = `Firefox ${getVersion(userAgent, UA.GECKO)}`
   }
   else if (userAgent.includes(UA.YANDEX)){
-    browser = `Yandex Browser ${getVersion(userAgent, UA.YANDEX)}`
+    browser = `Yandex ${getVersion(userAgent, UA.YANDEX)}`
+  }
+  else if (userAgent.includes(UA.YABROWSER)){
+    browser = `Yandex ${getVersion(userAgent, UA.YABROWSER)}`
   }
   else if (userAgent.includes(UA.VIVALDI)){
     browser = `Vivaldi ${getVersion(userAgent, UA.VIVALDI)}`
@@ -87,13 +92,21 @@ export function parseBrowser(userAgent: string) {
     browser = `Edge ${getVersion(userAgent, UA.EDGE_ANDROID)}`
   }
   else if (userAgent.includes(UA.CHROME)){
-    browser = `Chrome ${getVersion(userAgent, UA.CHROME)}`
+    if (userAgent.includes(UA.WEBVIEW)) {
+      browser = `Webview ${getVersion(userAgent, UA.CHROME)}`
+    }
+    else {
+      browser = `Chrome ${getVersion(userAgent, UA.CHROME)}`
+    }
   }
   else if (userAgent.includes(UA.CHROME_IOS)){
     browser = `Chrome ${getVersion(userAgent, UA.CHROME_IOS)}`
   }
   else if (userAgent.includes(UA.SAFARI)){
     browser = `Safari ${getVersion(userAgent, 'Version/')}`
+  }
+  else if (userAgent.includes(UA.WEBVIEW)){
+    browser = `Webview ${getVersion(userAgent, 'Version/')}`
   }
   else {
     browser = userAgent // other browsers?
